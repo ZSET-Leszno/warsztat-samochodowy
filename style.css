@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;900&display=swap');
+
+body{
+    font-family: Roboto;
+    overflow-x: hidden;
+    margin: 0;
+}
+
+header{
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+}
+
+header span{
+    color: gray;
+    font-weight: 100;
+    margin-right: 10px;
+}
+
+header span:last-child{
+    padding: 20px;
+    background-color: #FE3C59;
+    color: white;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    border-radius: 10px;
+    margin-right: 0;
+}
+
+#info{
+    position: relative;
+    z-index: 1;
+}
+
+#info img{
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: .4;
+    width: 100%;
+}
+
+#info-text{
+    padding-top: 20px;
+    padding-left: 50px;
+    letter-spacing: 3px;
+}
+
+#info-text button{
+    background-color: #FE3C59;
+    color: white;
+    border: none;
+    width: 150px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+}
+
+#info-text button:hover{
+    opacity: .8;
+}
