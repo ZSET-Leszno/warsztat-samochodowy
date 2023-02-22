@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;900&display=swap');
+
+body{
+    font-family: Roboto;
+    overflow-x: hidden;
+    margin: 0;
+}
+
+header{
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+}
+
+header img{
+    width: 100px;
+    height: 100px;
+}
+
+header span{
+    color: gray;
+    font-weight: 100;
+    margin-right: 10px;
+}
+
+header span:last-child{
+    padding: 20px;
+    background-color: #FE3C59;
+    color: white;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    border-radius: 10px;
+    margin-right: 0;
+}
+
+#info{
+    width: 100%;
+    height:500px;
+    background-color: rgb(196, 172, 172);
+    background-image: url(bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    letter-spacing: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#info h1{
+    font-size: 36px;
+}
+
+#info-text button{
+    background-color: #FE3C59;
+    border: none;
+    width: 220px;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+#info-text button:hover{
+    opacity: .8;
+}
+
+#info-text a{
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+
+#dojazd{
+    display: flex;
+    flex-direction: row;
+    letter-spacing: 1px;
+}
+
+#dojazd h4{
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.box{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 33%;
+    height: 260px;
+    padding-top: 30px;
+    font-weight: 100;
+}
+
+a{
+    color: #FE3C59;
+}
+
+.box img{
+    width: 80px;
+    height: 80px;
+}
+
+#uslugi{
+    text-align: center;
+    width: 100%;
+    height: 600px;
+    letter-spacing: 1px;
+}
+
+#uslugi img{
+    margin-bottom: 20px;
+}
+
+#uslugi .box{
+    margin: 10px;
+}
+
+#uslugi h2{
+    font-size: 36px;
+    font-weight: 400;
+}
+
+#uslugi p{
+    font-size: 18px;
+    font-weight: 100;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#container{
+    display: flex;
+}
+
+#obsluga{
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#obsluga h2{
+    font-size: 36px;
+    font-weight: 400;
+}
+
+#obsluga span{
+    font-weight: 100;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+#obsluga button{
+    width: 200px;
+    height: 30px;
+    border: none;
+    background-color: rgb(215, 215, 215);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-weight: 100;
+}
+
+#margin{
+    margin-top: 30px;
+}
+
+#box-obsluga{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#zaklad{
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+#zaklad h2{
+    font-size: 36px;
+    font-weight: 400;
+}
+
+#zaklad span{
+    font-weight: 100;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+footer{
+    background-color: rgb(61, 61, 61);
+    width: 100%;
+    height: 200px;
+    color: rgb(130, 130, 130);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    justify-content: center;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+footer p{
+    width: 80%;
+}
+
+.white{
+    color: rgb(215, 215, 215);
+}
+
+#faq{
+    font-weight: 100;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+#faq h5{
+    font-size: 28px;
+}
+
+#faq h6{
+    font-size: 16px;
+}
