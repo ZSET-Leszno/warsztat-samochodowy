@@ -12,9 +12,7 @@
         <a href="index.html"><img src="logo.png" alt="logo"></a>
         <!--MENU-->
         <div id="menu">
-            <span>STACJA KONTROLI POJAZDÓW</span>
-            <span>WARSZTAT SAMOCHODOWY</span>
-            <a href="https://www.google.pl/maps/dir//Auto+Zagórski,+Szamarzewskiego+42,+60-552+Poznań/@52.4113947,16.8946119,17z/data=!4m16!1m7!3m6!1s0x470444c7d574b2bf:0x67e94e3dc08f37fd!2sAuto+Zagórski!3b1!8m2!3d52.4113915!4d16.8948886!4m7!1m0!1m5!1m1!1s0x470444c7d574b2bf:0x67e94e3dc08f37fd!2m2!1d16.8948886!2d52.4113915"><span>WYZNACZ TRASĘ</span></a> 
+            <span>PANEL ADMINISTRATORA</span>
         </div>
     </header>
     <main>
