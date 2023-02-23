@@ -77,3 +77,16 @@ button:hover{
 footer p{
     width: 80%;
 }
+
+table, tr, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+.baza{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
