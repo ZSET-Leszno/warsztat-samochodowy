@@ -4,7 +4,7 @@ Kalalendarz :
 Dane klienta:
     Jeżeli osoba prywatna:
         Sprawdzenie danych czy są w bazie:
-            SELECT `id_klienta`, `nazwa_firmy`, `NIP`, `imie`, `nazwisko`, `telefon`, `email`, `kod_pocztowy`, `miejscowosc`, `adres`, `samochod` FROM `klienci` WHERE imie="$imie" and nazwisko="$nazwisko" and telefon="$telefon" and email="$email" and kod_pocztowy="$kod_pocztowy" and miejscowosc="$miejscowosc" and adres = "$adres";
+            SELECT `id_klienta`, `imie`, `nazwisko`, `telefon`, `email`, `kod_pocztowy`, `miejscowosc`, `adres`, `samochod` FROM `klienci` WHERE imie="$imie" and nazwisko="$nazwisko" and telefon="$telefon" and email="$email" and kod_pocztowy="$kod_pocztowy" and miejscowosc="$miejscowosc" and adres = "$adres";
         Jeżeli nie ma go w bazie to - dodanie do bazy:
             INSERT INTO `samochody`(`marka`, `model`, `rodzaj_silnika`, `numer_rejestracyjny`, `rocznik`, `pojemnosc`) VALUES ('$marka','$model','$rodzaj_silnika','$numer_rejestracyjny','$rocznik','$pojemnosc')
             SELECT `id_samochodu` FROM `samochody` WHERE `marka`="$marka" and `model`="$model" and `rodzaj_silnika`="$rodzaj_silnika" and `numer_rejestracyjny`="$numer_rejestracyjny" and `rocznik`="$rocznik" and `pojemnosc`="$pojemnosc";
@@ -17,7 +17,7 @@ Dane klienta:
 
     Jeżeli firma:
         Sprawdzenie danych czy są w bazie:
-            SELECT `id_klienta`, `nazwa_firmy`, `NIP`, `imie`, `nazwisko`, `telefon`, `email`, `kod_pocztowy`, `miejscowosc`, `adres`, `samochod` FROM `klienci` WHERE nazwa_firmy="$nazwa_firmy" and NIP="$NIP" and telefon="$telefon" and email="$email" and kod_pocztowy="$kod_pocztowy" and miejscowosc="$miejscowosc" and adres = "$adres";
+            SELECT `id_klienta`, `nazwa_firmy`, `NIP`, `telefon`, `email`, `kod_pocztowy`, `miejscowosc`, `adres`, `samochod` FROM `klienci` WHERE nazwa_firmy="$nazwa_firmy" and NIP="$NIP" and telefon="$telefon" and email="$email" and kod_pocztowy="$kod_pocztowy" and miejscowosc="$miejscowosc" and adres = "$adres";
         Jeżeli nie ma go w bazie to - dodanie do bazy:
             INSERT INTO `samochody`(`marka`, `model`, `rodzaj_silnika`, `numer_rejestracyjny`, `rocznik`, `pojemnosc`) VALUES ('$marka','$model','$rodzaj_silnika','$numer_rejestracyjny','$rocznik','$pojemnosc')
             SELECT `id_samochodu` FROM `samochody` WHERE `marka`="$marka" and `model`="$model" and `rodzaj_silnika`="$rodzaj_silnika" and `numer_rejestracyjny`="$numer_rejestracyjny" and `rocznik`="$rocznik" and `pojemnosc`="$pojemnosc";

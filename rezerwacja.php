@@ -50,6 +50,7 @@
           
         </section>-->
         <?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $nazwa_firmy = $_POST["nazwa_firmy"];
         $NIP = $_POST["nip"];
         $imie = $_POST["imie"];
@@ -59,33 +60,62 @@
         $kod_pocztowy = $_POST["kod_pocztowy"];
         $miejscowosc = $_POST["miejscowosc"];
         $adres = $_POST["adres"];
-        if(empty($nazwa_firmy)){
-          echo "Dodano rezerwacje";
-          #klient
-          $kwerenda;
-          $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
-          mysqli_query($polaczenie, $kwerenda);
-          mysqli_close($polaczenie);
-        }else{
-          echo "Dodano rezerwacje";
+        }
+        if(!empty($nazwa_firmy) and !empty($NIP)){
+          //header('Location: samochod.php');
+          //echo "Dodano rezerwacje";
           #firma
-          $kwerenda;
+          $kwerenda = "SELECT `id_klienta`, `nazwa_firmy`, `NIP`, `telefon`, `email`, `kod_pocztowy`, `miejscowosc`, `adres`, `samochod` FROM `klienci` WHERE nazwa_firmy='$nazwa_firmy' and NIP='$NIP' and telefon='$telefon' and email='$email' and kod_pocztowy='$kod_pocztowy' and miejscowosc='$miejscowosc' and adres = '$adres';";
           $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
-          mysqli_query($polaczenie, $kwerenda);
+          $klienci = mysqli_query($polaczenie, $kwerenda);
+          while($r = mysqli_fetch_row($klienci)){
+            echo "<tr>";
+            echo "<td>".$r[0]."</td>";
+            echo "<td>".$r[1]."</td>";
+            echo "<td>".$r[2]."</td>";
+            echo "<td>".$r[3]."</td>";
+            echo "<td>".$r[4]."</td>";
+            echo "<td>".$r[5]."</td>";
+            echo "<td>".$r[6]."</td>";
+            echo "<td>".$r[7]."</td>";
+            echo "<td>".$r[8]."</td>";
+            echo "</tr>";
+          }
           mysqli_close($polaczenie);
+        }else if(!empty($imie) and !empty($nazwisko)){
+          echo "Dodano rezerwacje2";
+          #klient
+          $kwerenda = "SELECT `id_klienta`, `imie`, `nazwisko`, `telefon`, `email`, `kod_pocztowy`, `miejscowosc`, `adres`, `samochod` FROM `klienci` WHERE imie='$imie' and nazwisko='$nazwisko' and telefon='$telefon' and email='$email' and kod_pocztowy='$kod_pocztowy' and miejscowosc='$miejscowosc' and adres = '$adres';";
+          $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
+          $klienci = mysqli_query($polaczenie, $kwerenda);
+          while($r = mysqli_fetch_row($klienci)){
+            echo "<tr>";
+            echo "<td>".$r[0]."</td>";
+            echo "<td>".$r[1]."</td>";
+            echo "<td>".$r[2]."</td>";
+            echo "<td>".$r[3]."</td>";
+            echo "<td>".$r[4]."</td>";
+            echo "<td>".$r[5]."</td>";
+            echo "<td>".$r[6]."</td>";
+            echo "<td>".$r[7]."</td>";
+            echo "<td>".$r[8]."</td>";
+            echo "</tr>";
+          }
+        }else{
+          echo"Uzupełnij dane formularza według wytycznych.";
         }
         ?>
         <section class="form">
-            <form action="rezerwacja.php" method="$_POST">
+            <form action="" method="post">
                 Nazwa firmy: <input type="text" name="nazwa_firmy">
                 NIP: <input type="text" name="nip">
                 Imie: <input type="text" name="imie">
                 Nazwisko: <input type="text" name="nazwisko">
-                Telefon: <input type="text" name="telefon">
-                E-mail: <input type="text" name="e-mail">
-                Kod pocztowy: <input type="text" name="kod_pocztowy">
-                Miejscowość: <input type="text" name="miejscowosc">
-                Adres: <input type="text" placeholder="Ulica i numer" name="adres">
+                Telefon: <input type="text" name="telefon" required>
+                E-mail: <input type="text" name="e-mail" required>
+                Kod pocztowy: <input type="text" name="kod_pocztowy" required>
+                Miejscowość: <input type="text" name="miejscowosc" required>
+                Adres: <input type="text" placeholder="Ulica i numer" name="adres" required>
                 <button type="submit">Zarezerwuj</button>
             </form>
         </section>
