@@ -104,6 +104,18 @@
         }else{
           echo"Uzupełnij dane formularza według wytycznych.";
         }
+        if (isset($_POST['button'])){
+          echo '<section class="form"><form action="" method="post">
+          Marka: <input type="text" name="marka">
+          Model: <input type="text" name="model">
+          Rodzaj silnika: <br><br><select name="rodzaj_silnika"><option>Benzyna</option><option>Diesel</option><option>Hybryda</option><option>Elektryczny</option></select><br>
+          Numer rejestracyjny: <input type="text" name="numer_rejestracyjny">
+          Nr VIN: <input type="text" name="vin" required>
+          Rocznik: <input type="text" name="rocznik" required>
+          Pojemność silnika: <input type="text" name="pojemnosc" required>
+          <button type="submit" name="button"  >Dodaj</button>
+          </form></section>';
+          }
         ?>
         <section class="form">
             <form action="" method="post">
@@ -116,7 +128,7 @@
                 Kod pocztowy: <input type="text" name="kod_pocztowy" required>
                 Miejscowość: <input type="text" name="miejscowosc" required>
                 Adres: <input type="text" placeholder="Ulica i numer" name="adres" required>
-                <button type="submit">Zarezerwuj</button>
+                <button type="submit" name="button"  >Zarezerwuj</button>
             </form>
         </section>
     </main>
