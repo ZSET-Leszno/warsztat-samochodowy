@@ -68,6 +68,22 @@
           $kwerenda = "SELECT `id_klienta`, `nazwa_firmy`, `NIP`, `telefon`, `email`, `kod_pocztowy`, `miejscowosc`, `adres`, `samochod` FROM `klienci` WHERE nazwa_firmy='$nazwa_firmy' and NIP='$NIP' and telefon='$telefon' and email='$email' and kod_pocztowy='$kod_pocztowy' and miejscowosc='$miejscowosc' and adres = '$adres';";
           $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
           $klienci = mysqli_query($polaczenie, $kwerenda);
+          $liczba_wierszy= mysqli_fetch_array($klienci);
+          if ($liczba_wierszy = 0)
+          {
+            //if (isset($_POST['button'])){
+              echo '<section class="form"><form action="" method="post">
+              Marka: <input type="text" name="marka">
+              Model: <input type="text" name="model">
+              Rodzaj silnika: <br><br><select name="rodzaj_silnika"><option>Benzyna</option><option>Diesel</option><option>Hybryda</option><option>Elektryczny</option></select><br>
+              Numer rejestracyjny: <input type="text" name="numer_rejestracyjny">
+              Nr VIN: <input type="text" name="vin" required>
+              Rocznik: <input type="text" name="rocznik" required>
+              Pojemność silnika: <input type="text" name="pojemnosc" required>
+              <button type="submit" name="button"  >Dodaj</button>
+              </form></section>';
+              //}
+          }
           while($r = mysqli_fetch_row($klienci)){
             echo "<tr>";
             echo "<td>".$r[0]."</td>";
@@ -104,18 +120,7 @@
         }else{
           echo"Uzupełnij dane formularza według wytycznych.";
         }
-        if (isset($_POST['button'])){
-          echo '<section class="form"><form action="" method="post">
-          Marka: <input type="text" name="marka">
-          Model: <input type="text" name="model">
-          Rodzaj silnika: <br><br><select name="rodzaj_silnika"><option>Benzyna</option><option>Diesel</option><option>Hybryda</option><option>Elektryczny</option></select><br>
-          Numer rejestracyjny: <input type="text" name="numer_rejestracyjny">
-          Nr VIN: <input type="text" name="vin" required>
-          Rocznik: <input type="text" name="rocznik" required>
-          Pojemność silnika: <input type="text" name="pojemnosc" required>
-          <button type="submit" name="button"  >Dodaj</button>
-          </form></section>';
-          }
+        
         ?>
         <section class="form">
             <form action="" method="post">
