@@ -49,6 +49,20 @@
               <script src="script.js" defer></script>
           
         </section>-->
+        <section class="form">
+            <form action="" method="post">
+                Nazwa firmy: <input type="text" name="nazwa_firmy">
+                NIP: <input type="text" name="nip">
+                Imie: <input type="text" name="imie">
+                Nazwisko: <input type="text" name="nazwisko">
+                Telefon: <input type="text" name="telefon" required>
+                E-mail: <input type="text" name="e-mail" required>
+                Kod pocztowy: <input type="text" name="kod_pocztowy" required>
+                Miejscowość: <input type="text" name="miejscowosc" required>
+                Adres: <input type="text" placeholder="Ulica i numer" name="adres" required>
+                <button type="submit" name="button"  >Zarezerwuj</button>
+            </form>
+        </section>
         <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $nazwa_firmy = $_POST["nazwa_firmy"];
@@ -68,8 +82,9 @@
           $kwerenda = "SELECT `id_klienta`, `nazwa_firmy`, `NIP`, `telefon`, `email`, `kod_pocztowy`, `miejscowosc`, `adres`, `samochod` FROM `klienci` WHERE nazwa_firmy='$nazwa_firmy' and NIP='$NIP' and telefon='$telefon' and email='$email' and kod_pocztowy='$kod_pocztowy' and miejscowosc='$miejscowosc' and adres = '$adres';";
           $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
           $klienci = mysqli_query($polaczenie, $kwerenda);
-          $liczba_wierszy= mysqli_fetch_array($klienci);
-          if ($liczba_wierszy = 0)
+          $liczba_wierszy = mysqli_num_rows($klienci);
+          echo "$liczba_wierszy";
+          if ($liczba_wierszy == 0)
           {
             //if (isset($_POST['button'])){
               echo '<section class="form"><form action="" method="post">
@@ -84,19 +99,32 @@
               </form></section>';
               //}
           }
-          while($r = mysqli_fetch_row($klienci)){
-            echo "<tr>";
-            echo "<td>".$r[0]."</td>";
-            echo "<td>".$r[1]."</td>";
-            echo "<td>".$r[2]."</td>";
-            echo "<td>".$r[3]."</td>";
-            echo "<td>".$r[4]."</td>";
-            echo "<td>".$r[5]."</td>";
-            echo "<td>".$r[6]."</td>";
-            echo "<td>".$r[7]."</td>";
-            echo "<td>".$r[8]."</td>";
-            echo "</tr>";
+          else if($liczba_wierszy > 0)
+          {
+            $array = [];
+            while($r = mysqli_fetch_row($klienci))
+            {
+              $id_samochodu = $r[8];
+              array_push($array, $id_samochodu);
+            }
+            foreach($array as $id_samochodu)
+            {
+              $kwerenda_samochody = "SELECT `id_samochodu`, `marka`, `model`, `rodzaj_silnika`, `numer_rejestracyjny`, `rocznik`, `pojemnosc` FROM `samochody` where id_samochodu='$id_samochodu';";
+              $samochody = mysqli_query($polaczenie, $kwerenda_samochody);
+              while($r = mysqli_fetch_row($samochody)){
+              echo "<tr>";
+              echo "<td>".$r[0]."</td>";
+              echo "<td>".$r[1]."</td>";
+              echo "<td>".$r[2]."</td>";
+              echo "<td>".$r[3]."</td>";
+              echo "<td>".$r[4]."</td>";
+              echo "<td>".$r[5]."</td>";
+              echo "<td>".$r[6]."</td>";
+              echo "</tr>";
+              }
+            }
           }
+          
           mysqli_close($polaczenie);
         }else if(!empty($imie) and !empty($nazwisko)){
           echo "Dodano rezerwacje2";
@@ -122,20 +150,6 @@
         }
         
         ?>
-        <section class="form">
-            <form action="" method="post">
-                Nazwa firmy: <input type="text" name="nazwa_firmy">
-                NIP: <input type="text" name="nip">
-                Imie: <input type="text" name="imie">
-                Nazwisko: <input type="text" name="nazwisko">
-                Telefon: <input type="text" name="telefon" required>
-                E-mail: <input type="text" name="e-mail" required>
-                Kod pocztowy: <input type="text" name="kod_pocztowy" required>
-                Miejscowość: <input type="text" name="miejscowosc" required>
-                Adres: <input type="text" placeholder="Ulica i numer" name="adres" required>
-                <button type="submit" name="button"  >Zarezerwuj</button>
-            </form>
-        </section>
     </main>
     <footer>
         <span class="white">STACJA KONTROLI POJAZDÓW
