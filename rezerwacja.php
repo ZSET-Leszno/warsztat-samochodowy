@@ -86,21 +86,38 @@
           echo "$liczba_wierszy";
           if ($liczba_wierszy == 0)
           {
+            echo "Dodaj swój samochód";
             //if (isset($_POST['button'])){
               echo '<section class="form"><form action="" method="post">
-              Marka: <input type="text" name="marka">
-              Model: <input type="text" name="model">
+              Marka: <br><br>';//<input type="text" name="marka">
+              $kwerenda_marki = "SELECT `id_marki`, `nazwa` FROM `marki_samochodów`";
+              $marki = mysqli_query($polaczenie, $kwerenda_marki);
+              echo'<select name = "marka">';
+              while($r = mysqli_fetch_row($marki)){
+                echo "<option value='".$r[0]."'>".$r[1]."</option>";
+                }
+              echo"</select><br>";
+              echo 'Model: <input type="text" name="model">
               Rodzaj silnika: <br><br><select name="rodzaj_silnika"><option>Benzyna</option><option>Diesel</option><option>Hybryda</option><option>Elektryczny</option></select><br>
               Numer rejestracyjny: <input type="text" name="numer_rejestracyjny">
-              Nr VIN: <input type="text" name="vin" required>
               Rocznik: <input type="text" name="rocznik" required>
               Pojemność silnika: <input type="text" name="pojemnosc" required>
               <button type="submit" name="button"  >Dodaj</button>
               </form></section>';
               //}
+              if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                $marka = $_POST["marka"];
+                $model = $_POST["model"];
+                $rodzaj_silnika = $_POST["rodzaj_silnika"];
+                $numer_rejestracyjny = $_POST["numer_rejestracyjny"];
+                $rocznik = $_POST["rocznik"];
+                $pojemnosc = $_POST["pojemnosc"];
+                }
+              
           }
           else if($liczba_wierszy > 0)
           {
+            echo "Wybierz swój samchód lub dodaj inny.";
             $array = [];
             while($r = mysqli_fetch_row($klienci))
             {
