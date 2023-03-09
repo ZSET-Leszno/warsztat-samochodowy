@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalendarz</title>
+    <link rel="stylesheet" href="kalendarz.css">
+    <script src="kalendarz.js" defer></script>
+</head>
+<body>
+    <div class="test-container">
+        <form class="form">
+            <div class="form-row">
+                <div class="col">
+                    <div class="input-calendar-cnt">
+                        <input type="text" class="input-demo input-calendar" id="demoInput">
+                        <div class="calendar">
+                            <div class="calendar-header">
+                                <div class="calendar-prev-next">
+                                    <button type="button" class="input-prev">&lt;</button>
+                                    <button class="input-next" type="button">&gt;</button>
+                                </div>
+                                <div class="date-name">marzec 2023</div>
+                            </div>
+                            <div class="calendar-table-cnt">
+                                <table class="calendar-table">
+                                    <tr class="calendar-table-days-names">
+                                        <th>Pon</th>
+                                        <th>Wto</th>
+                                        <th>Śro</th>
+                                        <th>Czw</th>
+                                        <th>Pią</th>
+                                        <th>Sob</th>
+                                        <th>Nie</th>
+                                    </tr>
+                                    <tr><td></td><td></td><td class="day">1</td><td class="day">2</td><td class="day">3</td><td class="day">4</td><td class="day">5</td></tr>
+                                    <tr><td class="day">6</td><td class="day">7</td><td class="day">8</td><td class="day current-day">9</td><td class="day">10</td><td class="day">11</td><td class="day">12</td></tr>
+                                    <tr><td class="day">13</td><td class="day">14</td><td class="day">15</td><td class="day">16</td><td class="day">17</td><td class="day">18</td><td class="day">19</td></tr>
+                                    <tr><td class="day">20</td><td class="day">21</td><td class="day">22</td><td class="day">23</td><td class="day">24</td><td class="day">25</td><td class="day">26</td></tr>
+                                    <tr><td class="day">27</td><td class="day">28</td><td class="day">29</td><td class="day">30</td><td class="day">31</td></tr></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <button class="button" type="button" id="enableDemo1">Włącz kalendarzowy input</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script>
+        {
+            const btn = document.querySelector("#enableDemo1");
+            btn.addEventListener("click", e => {
+                btn.disabled = true;
+                const input = document.querySelector("#demoInput");
+                const cal = new Calendar(input, {
+                    closeOnSelect : true,
+                    onDateSelect(day, month, year) {
+                        const dayText = (day<10)?"0"+day : day;
+                        const monthText = (month<10)?"0"+month : month;
+                        const date = dayText + "-" + monthText + "-" + year;
+                        input.value = date;
+                    }
+                });
+                cal.init();
+            });
+        }
+        </script>
+    <!--<script>
+        const input = document.querySelector(".input-date");
+        const cal = new Calendar(input, {
+            closeOnSelect : true,
+            onDateSelect(day, month, year) {
+                console.log(day);
+                console.log(month);
+                console.log(year);
+
+                const dayText = ((day + 1) < 10) ? "0" + (day + 1) : day + 1;
+                const monthsNames = ["styczeń", "luty", "marzec", "kwiecień", "maj", "czerwiec", "lipiec", "sierpień", "wrzesień", "październik", "listopad", "grudzień"];
+
+                input.value = dayText + " " + monthsNames[month] + " " + year;
+            }
+        });
+        cal.init();-->
+    </script>
+</body>
+</html>
