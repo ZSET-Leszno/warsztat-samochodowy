@@ -6,16 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Warsztat - administrator</title>
     <link rel="stylesheet" href="admin.css">
+    <script src="script.js"></script>
 </head>
 <body>
     <header>
         <a href="index.html"><img src="logo.png" alt="logo"></a>
         <!--MENU-->
         <div id="menu">
-            <span>PANEL ADMINISTRATORA</span>
+            <a href="/raporty"><button>Raporty </button></a>
+            <a href="/dzialania"><button>Działania</button></a>
+            <a href="/"><span>PANEL ADMINISTRATORA</span></a>
         </div>
     </header>
-    <main>
+    <main id="content">
+    <script src="https://cdn.jsdelivr.net/npm/page/page.js"></script>
+    <script>
+        // Definicja kontrolerów dla poszczególnych adresów URL
+        page('/', function() {
+            document.getElementById('content').innerHTML = 'To jest strona główna!';
+        });
+        
+        page('/raporty', function() {
+            document.getElementById('content').innerHTML = 'RAPORTY';
+        });
+
+        page('/dzialania', function() {
+            document.getElementById('content').innerHTML = 'DZIALANIA';
+        });
+        
+        // Uruchomienie routera
+        page();
+    </script>
        <section class="baza">
         <h3>Tabela - klienci</h3>
         <table>
