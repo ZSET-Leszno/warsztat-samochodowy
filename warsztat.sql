@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Czas generowania: 08 Mar 2023, 15:28
--- Wersja serwera: 10.4.27-MariaDB
--- Wersja PHP: 8.2.0
+-- Host: 127.0.0.1
+-- Czas generowania: 09 Mar 2023, 10:58
+-- Wersja serwera: 10.4.24-MariaDB
+-- Wersja PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,7 +39,7 @@ CREATE TABLE `klienci` (
   `miejscowosc` varchar(50) DEFAULT NULL,
   `adres` varchar(100) DEFAULT NULL,
   `samochod` int(6) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Zrzut danych tabeli `klienci`
@@ -53,14 +53,14 @@ INSERT INTO `klienci` (`id_klienta`, `nazwa_firmy`, `NIP`, `imie`, `nazwisko`, `
 (5, NULL, NULL, 'Agniszka', 'Wawrzyniak', 437209522, 'agnieszkawawrzyniak@vp.pl', '64-113', 'Kąkolewo', 'Krzywińska 25', 1),
 (6, 'IT Leszno', '2054981163', '', '', 781365915, 'itleszno@gmail.com', '64-100', 'Leszno', 'Fabryczna 3', 6),
 (7, NULL, NULL, 'Karolina', 'Woźniak', 289491641, 'karolinawozniak@op.pl', '87-800', 'Lipno', 'Graniczna 10', 11),
-(8, 'Pizza Leszno', '2131242411', '', '', 278476211, 'pizzaleszno@gmail.com', '64-100', 'Leszno', 'Gabriela Narutowicza 32', 8),
+(8, 'Pizza Leszno', '2131242411', '', '', 278476211, 'pizzaleszno@gmail.com', '64-100', 'Leszno', 'Gabriela Narutowicza 32', 18),
 (9, 'Komfort', '2027459926', '', '', 726617873, 'komfort@gmail.com', '64-113', 'Osieczna', 'Śniadeckich', 10),
 (10, 'Zakład Usług Leśnych', '1238649163', '', '', 823091347, 'zakladusluglesnych@gmail.com', '64-113', 'Osieczna', 'Adama Mickiewicza', 9),
 (11, NULL, NULL, 'Franciszek', 'Olejniczak', 245602742, 'franciszekkolejniczak@wp.pl', '63-800', 'Gostyń', 'Zielona 21', 7),
 (12, NULL, NULL, 'Sławek', 'Rosik', 828448256, 'slawekrosik@gmail.com', '64-113', 'Łoniewo', '23a', 12),
 (13, NULL, NULL, 'Tadeusz', 'Nowak', 382749165, 'tadeusznowak@gmail.com', '64-100', 'Leszno', 'Tylna 4', 8),
 (14, NULL, NULL, 'Wiktor', 'Nowaczyk', 892726491, 'wiktornowaczyk@gmail.com', '67-400', 'Wschowa', 'Robotnicza 14', 19),
-(15, NULL, NULL, 'Tomasz', 'Zygmunt', 892784012, 'tomaszzygmunt@wp.pl', '63-900', 'Rawicz', 'Nowa 2', 4),
+(15, NULL, NULL, 'Tomasz', 'Zygmunt', 892784012, 'tomaszzygmunt@wp.pl', '63-900', 'Rawicz', 'Nowa 2', 3),
 (16, 'Tom - tom', '2145267123', '', '', 184786334, 'tomtom@vp.pl', '64-113', 'Kąkolewo', 'Krzywińska 44', 20),
 (17, NULL, NULL, 'Jarosław', 'Fogg', 724198416, 'jaroslawfogg@wp.pl', '64-100', 'Leszno', 'Kwiatowa 18', 17),
 (18, 'Volta', '2047265981', '', '', 478265476, 'volta@wp.pl', '64-100', 'Leszno', 'Gronowska 9', 16),
@@ -76,7 +76,7 @@ INSERT INTO `klienci` (`id_klienta`, `nazwa_firmy`, `NIP`, `imie`, `nazwisko`, `
 CREATE TABLE `marki_samochodów` (
   `id_marki` int(2) NOT NULL,
   `nazwa` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Zrzut danych tabeli `marki_samochodów`
@@ -140,36 +140,35 @@ CREATE TABLE `samochody` (
   `model` varchar(30) DEFAULT NULL,
   `rodzaj_silnika` varchar(15) DEFAULT NULL,
   `numer_rejestracyjny` varchar(9) DEFAULT NULL,
-  `nr_VIN` varchar(17) DEFAULT NULL,
   `rocznik` int(4) DEFAULT NULL,
   `pojemnosc` varchar(4) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Zrzut danych tabeli `samochody`
 --
 
-INSERT INTO `samochody` (`id_samochodu`, `marka`, `model`, `rodzaj_silnika`, `numer_rejestracyjny`, `nr_VIN`, `rocznik`, `pojemnosc`) VALUES
-(1, 1, 'A3', 'Benzyna', 'PLE-892GB', 'WAUZZZ4F08N012345', 2016, '2.5'),
-(2, 30, 'Insignia', 'Benzyna', 'PLE-152G3', 'W0L0XCF0814000002', 2017, '2.0'),
-(3, 14, 'Focus', 'Diesel', 'PL -32465', 'WF05XXGCD56L10803', 2010, '1.6'),
-(4, 43, 'Caddy', 'Diesel', 'P0 -BUDKA', 'WVWZZZ7MZXV056234', 2015, '1.4'),
-(5, 6, 'M2', 'Benzyna', 'PL-GK128', 'WBADE6321WB992119', 2007, '2.0'),
-(6, 42, 'Yaris', 'Hybryda', 'PLE-HSH15', 'NMTDG26R70R086613', 2020, '1.5'),
-(7, 44, 'Xc60', 'Benzyna', 'PGS-83HD6', 'YV1PWA8BDJ1064896', 2008, '1.7'),
-(8, 30, 'Corsa', 'Benzyna', 'PL-38727', 'W0V7D9EB6L4062278', 2013, '1.4'),
-(9, 27, 'Gla 250', 'Diesel', 'PL -SH176', 'WDB2201751A432136', 2016, '2.0'),
-(10, 30, 'Movano', 'Benzyna', 'PLE-MN13A', 'W0LPC60B2C1049783', 2011, '1.5'),
-(11, 17, 'Rio', 'Diesel', 'PLE-RRE18', 'U5YHB312ACL070189', 2013, '1.4'),
-(12, 41, 'S paid', 'Elektryczny', 'PL -AM13A', '5YJSA1DP5CFF00000', 2021, ''),
-(13, 2, 'Giulia', 'Benzyna', 'PGS-DDHJ3', 'ZAR92900007280800', 2015, '1.4'),
-(14, 13, '500', 'Elektryczny', 'PKS-DDHJ3', 'ZFA25000002803868', 2018, ''),
-(15, 14, 'Fiesta', 'Benzyna', 'PLA-12H23', 'WF0JXXGCBJFC89987', 2007, '1.2'),
-(16, 34, 'Megane', 'Diesel', 'PL-44263', 'VF1BR1G0H41979181', 2011, '1.9'),
-(17, 27, 'C-klasse', 'Diesel', 'PLE-26SN1', 'WDD2050401R395380', 2006, '2.7'),
-(18, 30, 'Vivaro', 'Diesel', 'PL-77263', 'W0L0XEP68F4195750', 2009, '2.0'),
-(19, 31, '307', 'Benzyna', 'FWS-32313', 'VF38ERHH8BL061775', 2014, '1.6'),
-(20, 42, 'Corolla', 'Hybryda', 'PL-76232', 'JTNB23HK803098408', 2017, '1.6');
+INSERT INTO `samochody` (`id_samochodu`, `marka`, `model`, `rodzaj_silnika`, `numer_rejestracyjny`, `rocznik`, `pojemnosc`) VALUES
+(1, 1, 'A3', 'Benzyna', 'PLE-892GB', 2016, '2.5'),
+(2, 30, 'Insignia', 'Benzyna', 'PLE-152G3', 2017, '2.0'),
+(3, 14, 'Focus', 'Diesel', 'PL -32465', 2010, '1.6'),
+(4, 43, 'Caddy', 'Diesel', 'P0 -BUDKA', 2015, '1.4'),
+(5, 6, 'M2', 'Benzyna', 'PL-GK128', 2007, '2.0'),
+(6, 42, 'Yaris', 'Hybryda', 'PLE-HSH15', 2020, '1.5'),
+(7, 44, 'Xc60', 'Benzyna', 'PGS-83HD6', 2008, '1.7'),
+(8, 30, 'Corsa', 'Benzyna', 'PL-38727', 2013, '1.4'),
+(9, 27, 'Gla 250', 'Diesel', 'PL -SH176', 2016, '2.0'),
+(10, 30, 'Movano', 'Benzyna', 'PLE-MN13A', 2011, '1.5'),
+(11, 17, 'Rio', 'Diesel', 'PLE-RRE18', 2013, '1.4'),
+(12, 41, 'S paid', 'Elektryczny', 'PL -AM13A', 2021, ''),
+(13, 2, 'Giulia', 'Benzyna', 'PGS-DDHJ3', 2015, '1.4'),
+(14, 13, '500', 'Elektryczny', 'PKS-DDHJ3', 2018, ''),
+(15, 14, 'Fiesta', 'Benzyna', 'PLA-12H23', 2007, '1.2'),
+(16, 34, 'Megane', 'Diesel', 'PL-44263', 2011, '1.9'),
+(17, 27, 'C-klasse', 'Diesel', 'PLE-26SN1', 2006, '2.7'),
+(18, 30, 'Vivaro', 'Diesel', 'PL-77263', 2009, '2.0'),
+(19, 31, '307', 'Benzyna', 'FWS-32313', 2014, '1.6'),
+(20, 42, 'Corolla', 'Hybryda', 'PL-76232', 2017, '1.6');
 
 -- --------------------------------------------------------
 
@@ -186,7 +185,33 @@ CREATE TABLE `zgloszenia` (
   `koszt` int(5) DEFAULT NULL,
   `samochod` int(6) DEFAULT NULL,
   `wlasciciel` int(5) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Zrzut danych tabeli `zgloszenia`
+--
+
+INSERT INTO `zgloszenia` (`id_uslugi`, `data_przyjecia`, `godzina_przyjecia`, `data_wydania`, `usluga`, `koszt`, `samochod`, `wlasciciel`) VALUES
+(1, '2023-02-14', 13, '2023-02-16', 'Wymiana podnośnika szyby', 110, 19, 14),
+(2, '2023-02-19', 9, '2023-02-20', 'Wymiana filtrów powietrza', 200, 14, 19),
+(3, '2023-02-21', 11, '2023-02-21', 'Wymiana tarcz i klocków hamulcowych', 150, 1, 5),
+(4, '2023-02-22', 15, '2023-02-22', 'Wymiana opon', 80, 17, 17),
+(5, '2023-02-06', 10, '2023-02-07', 'Wymiana żarówki reflektora', 20, 4, 3),
+(6, '2023-02-09', 12, '2023-02-12', 'Wymiana końcówek drążków kierowniczych', 100, 20, 16),
+(7, '2023-02-14', 9, '2023-02-19', 'Wymiana rozrządu', 250, 8, 13),
+(8, '2023-02-26', 16, '2023-02-27', 'Wymiana oleju i filtra skrzyni automatycznej', 400, 15, 2),
+(9, '2023-02-19', 8, '2023-02-20', 'Wymiana sprzęgła', 2500, 3, 15),
+(10, '2023-02-01', 10, '2023-02-02', 'Wymiana nagrzewnicy', 150, 13, 20),
+(11, '2023-02-09', 11, '2023-02-13', 'Zbieżność układu kierowniczego', 120, 9, 10),
+(12, '2023-03-01', 10, '2023-03-06', 'Wymiana uszczelki głowicy', 500, 2, 1),
+(13, '2023-02-14', 8, '2023-02-14', 'Wymiana termostatu', 80, 5, 4),
+(14, '2023-02-07', 15, '2023-02-09', 'Diagnostyka komputerowa', 50, 16, 18),
+(15, '2023-02-23', 9, '2023-02-25', 'Wymiana amortyzatora przód', 250, 10, 9),
+(16, '2023-02-24', 11, '2023-02-27', 'Sprawdzenie układu klimatyzacji', 100, 11, 7),
+(17, '2023-02-28', 13, '2023-02-28', 'Wymiana termostatu', 170, 12, 12),
+(18, '2023-02-10', 14, '2023-02-14', 'Wymiana sprzęgła', 2500, 18, 8),
+(19, '2023-02-15', 13, '2023-02-18', 'Wymiana linek hamulcowych', 180, 7, 11),
+(20, '2023-02-20', 10, '2023-02-22', 'Wymiana termostatu', 180, 6, 6);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -246,7 +271,7 @@ ALTER TABLE `samochody`
 -- AUTO_INCREMENT dla tabeli `zgloszenia`
 --
 ALTER TABLE `zgloszenia`
-  MODIFY `id_uslugi` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_uslugi` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Ograniczenia dla zrzutów tabel
