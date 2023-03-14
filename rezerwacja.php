@@ -60,11 +60,12 @@
                 Kod pocztowy: <input type="text" name="kod_pocztowy" required>
                 Miejscowość: <input type="text" name="miejscowosc" required>
                 Adres: <input type="text" placeholder="Ulica i numer" name="adres" required>
-                <button type="submit" name="button"  >Zarezerwuj</button>
+                <button type="submit" name="button1"  >Zarezerwuj</button>
             </form>
         </section>
         <?php
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        //if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (isset($_POST['button1'])){
         $nazwa_firmy = $_POST["nazwa_firmy"];
         $NIP = $_POST["nip"];
         $imie = $_POST["imie"];
@@ -75,6 +76,7 @@
         $miejscowosc = $_POST["miejscowosc"];
         $adres = $_POST["adres"];
         }
+        echo "$nazwa_firmy";
         if(!empty($nazwa_firmy) and !empty($NIP)){
           //header('Location: samochod.php');
           //echo "Dodano rezerwacje";
@@ -101,18 +103,22 @@
               Rodzaj silnika: <br><br><select name="rodzaj_silnika"><option>Benzyna</option><option>Diesel</option><option>Hybryda</option><option>Elektryczny</option></select><br>
               Numer rejestracyjny: <input type="text" name="numer_rejestracyjny">
               Rocznik: <input type="text" name="rocznik" required>
-              Pojemność silnika: <input type="text" name="pojemnosc" required>
-              <button type="submit" name="button"  >Dodaj</button>
+              <button type="submit" name="button2"  >Dodaj</button>
               </form></section>';
               //}
-              if ($_SERVER["REQUEST_METHOD"] == "POST") {
+              if (isset($_POST['button2'])) {
                 $marka = $_POST["marka"];
                 $model = $_POST["model"];
                 $rodzaj_silnika = $_POST["rodzaj_silnika"];
                 $numer_rejestracyjny = $_POST["numer_rejestracyjny"];
                 $rocznik = $_POST["rocznik"];
-                $pojemnosc = $_POST["pojemnosc"];
                 }
+              if(!empty($marka) and !empty($model) and !empty($rodzaj_silnika) and !empty($numer_rejestracyjny) and !empty($rocznik)){
+                $kwerenda_dodaj_samochod = "INSERT INTO `samochody`(`marka`, `model`, `rodzaj_silnika`, `numer_rejestracyjny`, `rocznik`, `pojemnosc`) VALUES ('$marka','$model','$rodzaj_silnika','$numer_rejestracyjny','$rocznik')";
+                $dodaj_samochod = mysqli_query($polaczenie, $kwerenda_dodaj_samochod);
+                echo "Dodano twój samochód do bazy oraz umówiono wizytę";
+                }
+              
               
           }
           else if($liczba_wierszy > 0)
@@ -126,7 +132,7 @@
             }
             foreach($array as $id_samochodu)
             {
-              $kwerenda_samochody = "SELECT `id_samochodu`, `marka`, `model`, `rodzaj_silnika`, `numer_rejestracyjny`, `rocznik`, `pojemnosc` FROM `samochody` where id_samochodu='$id_samochodu';";
+              $kwerenda_samochody = "SELECT `id_samochodu`, `marka`, `model`, `rodzaj_silnika`, `numer_rejestracyjny`, `rocznik` FROM `samochody` where id_samochodu='$id_samochodu';";
               $samochody = mysqli_query($polaczenie, $kwerenda_samochody);
               while($r = mysqli_fetch_row($samochody)){
               echo "<tr>";
@@ -136,7 +142,6 @@
               echo "<td>".$r[3]."</td>";
               echo "<td>".$r[4]."</td>";
               echo "<td>".$r[5]."</td>";
-              echo "<td>".$r[6]."</td>";
               echo "</tr>";
               }
             }
