@@ -50,7 +50,7 @@
           
         </section>-->
         <section class="form">
-            <form action="" method="post">
+            <form action="samochod.php" method="post">
                 Nazwa firmy: <input type="text" name="nazwa_firmy">
                 NIP: <input type="text" name="nip">
                 Imie: <input type="text" name="imie">
@@ -65,7 +65,7 @@
         </section>
         <?php
         //if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (isset($_POST['button1'])){
+        /*if (isset($_POST['button1'])){
         $nazwa_firmy = $_POST["nazwa_firmy"];
         $NIP = $_POST["nip"];
         $imie = $_POST["imie"];
@@ -75,9 +75,8 @@
         $kod_pocztowy = $_POST["kod_pocztowy"];
         $miejscowosc = $_POST["miejscowosc"];
         $adres = $_POST["adres"];
-        }
-        echo "$nazwa_firmy";
-        if(!empty($nazwa_firmy) and !empty($NIP)){
+        }*/
+        /*if(!empty($nazwa_firmy) and !empty($NIP)){
           //header('Location: samochod.php');
           //echo "Dodano rezerwacje";
           #firma
@@ -167,9 +166,10 @@
             echo "<td>".$r[8]."</td>";
             echo "</tr>";
           }
-        }else{
+        }*/
+        //else{
           echo"Uzupełnij dane formularza według wytycznych.";
-        }
+        //}
         
         ?>
     </main>
