@@ -50,7 +50,8 @@
           
         </section>-->
         <section class="form">
-            <form action="samochod.php" method="post">
+            <!--<form action="samochod.php" method="post">-->
+            <form action="posrednia.php" method="post">
                 Nazwa firmy: <input type="text" name="nazwa_firmy">
                 NIP: <input type="text" name="nip">
                 Imie: <input type="text" name="imie">

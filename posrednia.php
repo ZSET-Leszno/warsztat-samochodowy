@@ -22,8 +22,18 @@
         </div>
     </header>
     <main>
-        <button>Wybierz</button>
-        <section class="form">
+        <?php
+          $nazwa_firmy = $_POST["nazwa_firmy"];
+          $NIP = $_POST["nip"];
+          $imie = $_POST["imie"];
+          $nazwisko = $_POST["nazwisko"];
+          $telefon = $_POST["telefon"];
+          $email = $_POST["e-mail"];
+          $kod_pocztowy = $_POST["kod_pocztowy"];
+          $miejscowosc = $_POST["miejscowosc"];
+          $adres = $_POST["adres"];
+        ?>
+        <section class="form" style="height: 100px;">
             <form action="samochod.php" method="post">
                 <input type="hidden" name="nazwa_firmy" value="<?php echo $nazwa_firmy;?>">
                 <input type="hidden" name="nip" value="<?php echo $NIP;?>">
@@ -34,10 +44,69 @@
                 <input type="hidden" name="kod_pocztowy" value="<?php echo $kod_pocztowy;?>" required>
                 <input type="hidden" name="miejscowosc" value="<?php echo $miejscowosc;?>" required>
                 <input type="hidden" placeholder="Ulica i numer" name="adres" value="<?php echo $adres;?>" required>
-                <button type="submit" name="button1"  >Dodaj nowy</button>
+                <button type="submit" name="button1">Dodaj nowy</button>
             </form>
         </section>
+        <p>Lub wybierz swój samochód z listy</p>
         <?php
+        if(!empty($nazwa_firmy) and !empty($NIP)){
+          $kwerenda = "SELECT `samochod` FROM `klienci` WHERE nazwa_firmy='$nazwa_firmy' and NIP='$NIP' and telefon='$telefon' and email='$email' and kod_pocztowy='$kod_pocztowy' and miejscowosc='$miejscowosc' and adres = '$adres';";
+          $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
+          $klienci = mysqli_query($polaczenie, $kwerenda);
+          $array = [];
+          while($r = mysqli_fetch_row($klienci))
+          {
+            $id_samochodu = $r[0];
+            array_push($array, $id_samochodu);
+          }
+          foreach($array as $id_samochodu)
+          {
+            $kwerenda_samochody = "SELECT `id_samochodu`, `marka`, `model`, `rodzaj_silnika`, `numer_rejestracyjny`, `rocznik` FROM `samochody` where id_samochodu='$id_samochodu';";
+            $samochody = mysqli_query($polaczenie, $kwerenda_samochody);
+            while($r = mysqli_fetch_row($samochody)){
+            echo "<tr>";
+            echo "<td>".$r[0]."</td>";
+            echo "<td>".$r[1]."</td>";
+            echo "<td>".$r[2]."</td>";
+            echo "<td>".$r[3]."</td>";
+            echo "<td>".$r[4]."</td>";
+            echo "<td>".$r[5]."</td>";
+            echo "</tr>";
+            }
+          }
+        }
+        else if(!empty($imie) and !empty($nazwisko)){
+          echo "Dodano rezerwacje2";
+          #klient
+          $kwerenda = "SELECT `samochod` FROM `klienci` WHERE imie='$imie' and nazwisko='$nazwisko' and telefon='$telefon' and email='$email' and kod_pocztowy='$kod_pocztowy' and miejscowosc='$miejscowosc' and adres = '$adres';";
+          $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
+          $klienci = mysqli_query($polaczenie, $kwerenda);
+          $array = [];
+          while($r = mysqli_fetch_row($klienci))
+          {
+            $id_samochodu = $r[0];
+            array_push($array, $id_samochodu);
+          }
+          foreach($array as $id_samochodu)
+          {
+            $kwerenda_samochody = "SELECT `id_samochodu`, `marka`, `model`, `rodzaj_silnika`, `numer_rejestracyjny`, `rocznik` FROM `samochody` where id_samochodu='$id_samochodu';";
+            $samochody = mysqli_query($polaczenie, $kwerenda_samochody);
+            while($r = mysqli_fetch_row($samochody)){
+            echo "<tr>";
+            echo "<td>".$r[0]."</td>";
+            echo "<td>".$r[1]."</td>";
+            echo "<td>".$r[2]."</td>";
+            echo "<td>".$r[3]."</td>";
+            echo "<td>".$r[4]."</td>";
+            echo "<td>".$r[5]."</td>";
+            echo "</tr>";
+            }
+          }
+        }
+        else
+        {
+          echo "Błąd w wypełnianiu formularza";
+        }
         //if ($_SERVER["REQUEST_METHOD"] == "POST") {
         /*if (isset($_POST['button1'])){
         $nazwa_firmy = $_POST["nazwa_firmy"];
@@ -141,8 +210,6 @@
             echo "</tr>";
           }
         }*/
-        //else{
-          echo"Uzupełnij dane formularza według wytycznych.";
         //}
         
         ?>

@@ -22,9 +22,9 @@
         </div>
     </header>
     <main>
-        <section class="form" style="display:none">
+        <!--<section class="form" style="display:none">
             <form action="" method="post">
-                Nazwa firmy: <input type="text" name="nazwa_firmy" value="<?php echo $nazwa_firmy = $_POST["nazwa_firmy"];?>">
+                Nazwa firmy: <input type="text" name="nazwa_firmy">
                 NIP: <input type="text" name="nip">
                 Imie: <input type="text" name="imie">
                 Nazwisko: <input type="text" name="nazwisko">
@@ -35,7 +35,7 @@
                 Adres: <input type="text" placeholder="Ulica i numer" name="adres" required>
                 <button type="submit" name="button1"  >Zarezerwuj</button>
             </form>
-        </section>
+        </section>-->
         <?php
         $nazwa_firmy = $_POST["nazwa_firmy"];
         $NIP = $_POST["nip"];
@@ -81,7 +81,7 @@
                 <input type="hidden" name="kod_pocztowy" value="<?php echo $kod_pocztowy;?>" required>
                 <input type="hidden" name="miejscowosc" value="<?php echo $miejscowosc;?>" required>
                 <input type="hidden" placeholder="Ulica i numer" name="adres" value="<?php echo $adres;?>" required>
-              <button type="submit" name="button2"  >Dodaj</button><?php
+              <button type="submit" name="button2">Dodaj</button><?php
               echo "</form></section>";
               //}
               if (isset($_POST['button2'])) {
@@ -99,7 +99,7 @@
                 $r = mysqli_fetch_row($szukaj_id_samochodu);
                 $id_samochodu = $r[0];
                 echo "$id_samochodu";
-                $kwerenda_dodawnie_klienta = "INSERT INTO `klienci`(`nazwa_firmy`, `NIP`, `telefon`, `email`, `kod_pocztowy`, `miejscowosc`, `adres`, `samochod`) VALUES ('$imie','$nazwisko','$telefon','$email','$kod_pocztowy','$miejscowosc','$adres','$id_samochodu');";
+                $kwerenda_dodawnie_klienta = "INSERT INTO `klienci`(`nazwa_firmy`, `NIP`, `telefon`, `email`, `kod_pocztowy`, `miejscowosc`, `adres`, `samochod`) VALUES ('$nazwa_firmy','$NIP','$telefon','$email','$kod_pocztowy','$miejscowosc','$adres','$id_samochodu');";
                 $dodaj_klienta = mysqli_query($polaczenie, $kwerenda_dodawnie_klienta);
                 echo "Dodano twój samochód do bazy oraz umówiono wizytę";
                 }
