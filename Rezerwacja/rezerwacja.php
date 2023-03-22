@@ -49,6 +49,7 @@
               <script src="script.js" defer></script>
           
         </section>-->
+<<<<<<< HEAD
         <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $nazwa_firmy = $_POST["nazwa_firmy"];
@@ -119,6 +120,11 @@
         ?>
         <section class="form">
             <form action="" method="post">
+=======
+        <section class="form">
+            <!--<form action="samochod.php" method="post">-->
+            <form action="posrednia.php" method="post">
+>>>>>>> main
                 Nazwa firmy: <input type="text" name="nazwa_firmy">
                 NIP: <input type="text" name="nip">
                 Imie: <input type="text" name="imie">
@@ -128,9 +134,18 @@
                 Kod pocztowy: <input type="text" name="kod_pocztowy" required>
                 Miejscowość: <input type="text" name="miejscowosc" required>
                 Adres: <input type="text" placeholder="Ulica i numer" name="adres" required>
+<<<<<<< HEAD
                 <button type="submit" name="button"  >Zarezerwuj</button>
             </form>
         </section>
+=======
+                <button type="submit" name="button1"  >Zarezerwuj</button>
+            </form>
+        </section>
+        <?php
+          echo"Uzupełnij dane formularza według wytycznych.";
+        ?>
+>>>>>>> main
     </main>
     <footer>
         <span class="white">STACJA KONTROLI POJAZDÓW
