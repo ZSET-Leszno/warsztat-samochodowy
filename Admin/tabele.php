@@ -9,38 +9,37 @@
 </head>
 <body>
     <header>
-        <a href="index.html"><img src="logo.png" alt="logo"></a>
-        <!--MENU-->
+        <a href="http://localhost/warsztat-samochodowy/Main/index.html"><img src="../images/logo.png" alt="logo"></a>
         <div id="menu">
-            <span>PANEL ADMINISTRATORA</span>
+            <a href="http://localhost/warsztat-samochodowy/admin/admin.php"><span>PANEL ADMINISTRATORA</span></a>
         </div>
     </header>
     <main>
-       <section class="baza">
-        <h3>Tabela - klienci</h3>
-        <table>
-        <?php  
-                $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
-                $klienci = mysqli_query($polaczenie, "SELECT id_klienta, nazwa_firmy, NIP, imie, nazwisko, telefon, email, kod_pocztowy, miejscowosc, adres, samochod FROM klienci;");
-                while($r = mysqli_fetch_row($klienci)){
-                    echo "<tr>";
-                    echo "<td>".$r[0]."</td>";
-                    echo "<td>".$r[1]."</td>";
-                    echo "<td>".$r[2]."</td>";
-                    echo "<td>".$r[3]."</td>";
-                    echo "<td>".$r[4]."</td>";
-                    echo "<td>".$r[5]."</td>";
-                    echo "<td>".$r[6]."</td>";
-                    echo "<td>".$r[7]."</td>";
-                    echo "<td>".$r[8]."</td>";
-                    echo "<td>".$r[9]."</td>";
-                    echo "<td>".$r[10]."</td>";
-                    echo "</tr>";
-                }
-                mysqli_close($polaczenie);
-            ?>
-        </table>
-       </section>
+        <section class="baza">
+                <h3>Tabela - klienci</h3>
+                <table>
+                <?php  
+                        $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
+                        $klienci = mysqli_query($polaczenie, "SELECT id_klienta, nazwa_firmy, NIP, imie, nazwisko, telefon, email, kod_pocztowy, miejscowosc, adres, samochod FROM klienci;");
+                        while($r = mysqli_fetch_row($klienci)){
+                            echo "<tr>";
+                            echo "<td>".$r[0]."</td>";
+                            echo "<td>".$r[1]."</td>";
+                            echo "<td>".$r[2]."</td>";
+                            echo "<td>".$r[3]."</td>";
+                            echo "<td>".$r[4]."</td>";
+                            echo "<td>".$r[5]."</td>";
+                            echo "<td>".$r[6]."</td>";
+                            echo "<td>".$r[7]."</td>";
+                            echo "<td>".$r[8]."</td>";
+                            echo "<td>".$r[9]."</td>";
+                            echo "<td>".$r[10]."</td>";
+                            echo "</tr>";
+                        }
+                        mysqli_close($polaczenie);
+                    ?>
+            </table>
+        </section>
        <section class="baza">
         <h3>Tabela - marki samochodów</h3>
         <table>
