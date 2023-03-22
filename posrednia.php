@@ -44,7 +44,7 @@
                 <input type="hidden" name="kod_pocztowy" value="<?php echo $kod_pocztowy;?>" required>
                 <input type="hidden" name="miejscowosc" value="<?php echo $miejscowosc;?>" required>
                 <input type="hidden" placeholder="Ulica i numer" name="adres" value="<?php echo $adres;?>" required>
-                <button type="submit" name="button1">Dodaj nowy</button>
+                <button type="submit" name="button">Dodaj nowy</button>
             </form>
         </section>
         <p>Lub wybierz swój samochód z listy</p>
@@ -61,11 +61,11 @@
           }
           foreach($array as $id_samochodu)
           {
-            $kwerenda_samochody = "SELECT `id_samochodu`, `marka`, `model`, `rodzaj_silnika`, `numer_rejestracyjny`, `rocznik` FROM `samochody` where id_samochodu='$id_samochodu';";
+            $kwerenda_samochody = "SELECT `id_samochodu`, marki_samochodów.nazwa, `model`, `rodzaj_silnika`, `numer_rejestracyjny`, `rocznik` FROM `samochody` join marki_samochodów on marki_samochodów.id_marki = samochody.marka where id_samochodu='$id_samochodu';";
             $samochody = mysqli_query($polaczenie, $kwerenda_samochody);
             while($r = mysqli_fetch_row($samochody)){
             echo "<tr>";
-            echo "<td>".$r[0]."</td>";
+            echo "<td><button name=".$r[0].">Wybierz</button></td>";
             echo "<td>".$r[1]."</td>";
             echo "<td>".$r[2]."</td>";
             echo "<td>".$r[3]."</td>";
