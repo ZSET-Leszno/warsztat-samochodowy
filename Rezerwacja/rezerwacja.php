@@ -50,7 +50,8 @@
           
         </section>-->
         <section class="form">
-            <form action="" method="post">
+            <!--<form action="samochod.php" method="post">-->
+            <form action="posrednia.php" method="post">
                 Nazwa firmy: <input type="text" name="nazwa_firmy">
                 NIP: <input type="text" name="nip">
                 Imie: <input type="text" name="imie">
@@ -60,95 +61,11 @@
                 Kod pocztowy: <input type="text" name="kod_pocztowy" required>
                 Miejscowość: <input type="text" name="miejscowosc" required>
                 Adres: <input type="text" placeholder="Ulica i numer" name="adres" required>
-                <button type="submit" name="button"  >Zarezerwuj</button>
+                <button type="submit" name="button1"  >Zarezerwuj</button>
             </form>
         </section>
         <?php
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $nazwa_firmy = $_POST["nazwa_firmy"];
-        $NIP = $_POST["nip"];
-        $imie = $_POST["imie"];
-        $nazwisko = $_POST["nazwisko"];
-        $telefon = $_POST["telefon"];
-        $email = $_POST["e-mail"];
-        $kod_pocztowy = $_POST["kod_pocztowy"];
-        $miejscowosc = $_POST["miejscowosc"];
-        $adres = $_POST["adres"];
-        }
-        if(!empty($nazwa_firmy) and !empty($NIP)){
-          //header('Location: samochod.php');
-          //echo "Dodano rezerwacje";
-          #firma
-          $kwerenda = "SELECT `id_klienta`, `nazwa_firmy`, `NIP`, `telefon`, `email`, `kod_pocztowy`, `miejscowosc`, `adres`, `samochod` FROM `klienci` WHERE nazwa_firmy='$nazwa_firmy' and NIP='$NIP' and telefon='$telefon' and email='$email' and kod_pocztowy='$kod_pocztowy' and miejscowosc='$miejscowosc' and adres = '$adres';";
-          $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
-          $klienci = mysqli_query($polaczenie, $kwerenda);
-          $liczba_wierszy = mysqli_num_rows($klienci);
-          echo "$liczba_wierszy";
-          if ($liczba_wierszy == 0)
-          {
-            //if (isset($_POST['button'])){
-              echo '<section class="form"><form action="" method="post">
-              Marka: <input type="text" name="marka">
-              Model: <input type="text" name="model">
-              Rodzaj silnika: <br><br><select name="rodzaj_silnika"><option>Benzyna</option><option>Diesel</option><option>Hybryda</option><option>Elektryczny</option></select><br>
-              Numer rejestracyjny: <input type="text" name="numer_rejestracyjny">
-              Nr VIN: <input type="text" name="vin" required>
-              Rocznik: <input type="text" name="rocznik" required>
-              Pojemność silnika: <input type="text" name="pojemnosc" required>
-              <button type="submit" name="button"  >Dodaj</button>
-              </form></section>';
-              //}
-          }
-          else if($liczba_wierszy > 0)
-          {
-            $array = [];
-            while($r = mysqli_fetch_row($klienci))
-            {
-              $id_samochodu = $r[8];
-              array_push($array, $id_samochodu);
-            }
-            foreach($array as $id_samochodu)
-            {
-              $kwerenda_samochody = "SELECT `id_samochodu`, `marka`, `model`, `rodzaj_silnika`, `numer_rejestracyjny`, `rocznik`, `pojemnosc` FROM `samochody` where id_samochodu='$id_samochodu';";
-              $samochody = mysqli_query($polaczenie, $kwerenda_samochody);
-              while($r = mysqli_fetch_row($samochody)){
-              echo "<tr>";
-              echo "<td>".$r[0]."</td>";
-              echo "<td>".$r[1]."</td>";
-              echo "<td>".$r[2]."</td>";
-              echo "<td>".$r[3]."</td>";
-              echo "<td>".$r[4]."</td>";
-              echo "<td>".$r[5]."</td>";
-              echo "<td>".$r[6]."</td>";
-              echo "</tr>";
-              }
-            }
-          }
-          
-          mysqli_close($polaczenie);
-        }else if(!empty($imie) and !empty($nazwisko)){
-          echo "Dodano rezerwacje2";
-          #klient
-          $kwerenda = "SELECT `id_klienta`, `imie`, `nazwisko`, `telefon`, `email`, `kod_pocztowy`, `miejscowosc`, `adres`, `samochod` FROM `klienci` WHERE imie='$imie' and nazwisko='$nazwisko' and telefon='$telefon' and email='$email' and kod_pocztowy='$kod_pocztowy' and miejscowosc='$miejscowosc' and adres = '$adres';";
-          $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
-          $klienci = mysqli_query($polaczenie, $kwerenda);
-          while($r = mysqli_fetch_row($klienci)){
-            echo "<tr>";
-            echo "<td>".$r[0]."</td>";
-            echo "<td>".$r[1]."</td>";
-            echo "<td>".$r[2]."</td>";
-            echo "<td>".$r[3]."</td>";
-            echo "<td>".$r[4]."</td>";
-            echo "<td>".$r[5]."</td>";
-            echo "<td>".$r[6]."</td>";
-            echo "<td>".$r[7]."</td>";
-            echo "<td>".$r[8]."</td>";
-            echo "</tr>";
-          }
-        }else{
           echo"Uzupełnij dane formularza według wytycznych.";
-        }
-        
         ?>
     </main>
     <footer>

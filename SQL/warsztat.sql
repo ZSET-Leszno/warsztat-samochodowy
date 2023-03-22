@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 09 Mar 2023, 10:58
+-- Czas generowania: 15 Mar 2023, 16:02
 -- Wersja serwera: 10.4.24-MariaDB
 -- Wersja PHP: 8.1.6
 
@@ -140,35 +140,34 @@ CREATE TABLE `samochody` (
   `model` varchar(30) DEFAULT NULL,
   `rodzaj_silnika` varchar(15) DEFAULT NULL,
   `numer_rejestracyjny` varchar(9) DEFAULT NULL,
-  `rocznik` int(4) DEFAULT NULL,
-  `pojemnosc` varchar(4) DEFAULT NULL
+  `rocznik` int(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Zrzut danych tabeli `samochody`
 --
 
-INSERT INTO `samochody` (`id_samochodu`, `marka`, `model`, `rodzaj_silnika`, `numer_rejestracyjny`, `rocznik`, `pojemnosc`) VALUES
-(1, 1, 'A3', 'Benzyna', 'PLE-892GB', 2016, '2.5'),
-(2, 30, 'Insignia', 'Benzyna', 'PLE-152G3', 2017, '2.0'),
-(3, 14, 'Focus', 'Diesel', 'PL -32465', 2010, '1.6'),
-(4, 43, 'Caddy', 'Diesel', 'P0 -BUDKA', 2015, '1.4'),
-(5, 6, 'M2', 'Benzyna', 'PL-GK128', 2007, '2.0'),
-(6, 42, 'Yaris', 'Hybryda', 'PLE-HSH15', 2020, '1.5'),
-(7, 44, 'Xc60', 'Benzyna', 'PGS-83HD6', 2008, '1.7'),
-(8, 30, 'Corsa', 'Benzyna', 'PL-38727', 2013, '1.4'),
-(9, 27, 'Gla 250', 'Diesel', 'PL -SH176', 2016, '2.0'),
-(10, 30, 'Movano', 'Benzyna', 'PLE-MN13A', 2011, '1.5'),
-(11, 17, 'Rio', 'Diesel', 'PLE-RRE18', 2013, '1.4'),
-(12, 41, 'S paid', 'Elektryczny', 'PL -AM13A', 2021, ''),
-(13, 2, 'Giulia', 'Benzyna', 'PGS-DDHJ3', 2015, '1.4'),
-(14, 13, '500', 'Elektryczny', 'PKS-DDHJ3', 2018, ''),
-(15, 14, 'Fiesta', 'Benzyna', 'PLA-12H23', 2007, '1.2'),
-(16, 34, 'Megane', 'Diesel', 'PL-44263', 2011, '1.9'),
-(17, 27, 'C-klasse', 'Diesel', 'PLE-26SN1', 2006, '2.7'),
-(18, 30, 'Vivaro', 'Diesel', 'PL-77263', 2009, '2.0'),
-(19, 31, '307', 'Benzyna', 'FWS-32313', 2014, '1.6'),
-(20, 42, 'Corolla', 'Hybryda', 'PL-76232', 2017, '1.6');
+INSERT INTO `samochody` (`id_samochodu`, `marka`, `model`, `rodzaj_silnika`, `numer_rejestracyjny`, `rocznik`) VALUES
+(1, 1, 'A3', 'Benzyna', 'PLE-892GB', 2016),
+(2, 30, 'Insignia', 'Benzyna', 'PLE-152G3', 2017),
+(3, 14, 'Focus', 'Diesel', 'PL -32465', 2010),
+(4, 43, 'Caddy', 'Diesel', 'P0 -BUDKA', 2015),
+(5, 6, 'M2', 'Benzyna', 'PL-GK128', 2007),
+(6, 42, 'Yaris', 'Hybryda', 'PLE-HSH15', 2020),
+(7, 44, 'Xc60', 'Benzyna', 'PGS-83HD6', 2008),
+(8, 30, 'Corsa', 'Benzyna', 'PL-38727', 2013),
+(9, 27, 'Gla 250', 'Diesel', 'PL -SH176', 2016),
+(10, 30, 'Movano', 'Benzyna', 'PLE-MN13A', 2011),
+(11, 17, 'Rio', 'Diesel', 'PLE-RRE18', 2013),
+(12, 41, 'S paid', 'Elektryczny', 'PL -AM13A', 2021),
+(13, 2, 'Giulia', 'Benzyna', 'PGS-DDHJ3', 2015),
+(14, 13, '500', 'Elektryczny', 'PKS-DDHJ3', 2018),
+(15, 14, 'Fiesta', 'Benzyna', 'PLA-12H23', 2007),
+(16, 34, 'Megane', 'Diesel', 'PL-44263', 2011),
+(17, 27, 'C-klasse', 'Diesel', 'PLE-26SN1', 2006),
+(18, 30, 'Vivaro', 'Diesel', 'PL-77263', 2009),
+(19, 31, '307', 'Benzyna', 'FWS-32313', 2014),
+(20, 42, 'Corolla', 'Hybryda', 'PL-76232', 2017);
 
 -- --------------------------------------------------------
 
@@ -265,7 +264,7 @@ ALTER TABLE `marki_samochodów`
 -- AUTO_INCREMENT dla tabeli `samochody`
 --
 ALTER TABLE `samochody`
-  MODIFY `id_samochodu` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_samochodu` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT dla tabeli `zgloszenia`
