@@ -13,7 +13,7 @@
 </head>
 <body>
     <header>
-        <a href="index.html"><img src="logo.png" alt="logo"></a>
+        <a href="../Main/index.html"><img src="../images/logo.png" alt="logo"></a>
         <!--MENU-->
         <div id="menu">
             <span>STACJA KONTROLI POJAZDÓW</span>
