@@ -12,14 +12,11 @@
     />
 </head>
 <body>
-    <header>
-        <a href="../Main/index.html"><img src="../images/logo.png" alt="logo"></a>
-        <!--MENU-->
-        <div id="menu">
-            <span>STACJA KONTROLI POJAZDÓW</span>
-            <span>WARSZTAT SAMOCHODOWY</span>
-            <a href="https://www.google.pl/maps/dir//Auto+Zagórski,+Szamarzewskiego+42,+60-552+Poznań/@52.4113947,16.8946119,17z/data=!4m16!1m7!3m6!1s0x470444c7d574b2bf:0x67e94e3dc08f37fd!2sAuto+Zagórski!3b1!8m2!3d52.4113915!4d16.8948886!4m7!1m0!1m5!1m1!1s0x470444c7d574b2bf:0x67e94e3dc08f37fd!2m2!1d16.8948886!2d52.4113915"><span>WYZNACZ TRASĘ</span></a> 
-        </div>
+<header>
+            <a href="../Main/index.html"><img src="../images/logo.png" alt="logo"></a>
+            <p>STACJA KONTROLI POJAZDÓW</p>
+            <p>WARSZTAT SAMOCHODOWY</p>
+            <a href="https://www.google.pl/maps/dir//Auto+Zagórski,+Szamarzewskiego+42,+60-552+Poznań/@52.4113947,16.8946119,17z/data=!4m16!1m7!3m6!1s0x470444c7d574b2bf:0x67e94e3dc08f37fd!2sAuto+Zagórski!3b1!8m2!3d52.4113915!4d16.8948886!4m7!1m0!1m5!1m1!1s0x470444c7d574b2bf:0x67e94e3dc08f37fd!2m2!1d16.8948886!2d52.4113915" target="_blank"><p>WYZNACZ TRASĘ</p></a> 
     </header>
     <main>
         <!--<section id="calendar">
@@ -51,29 +48,26 @@
         </section>-->
         <section class="form">
             <!--<form action="samochod.php" method="post">-->
-            <form action="posrednia.php" method="post">
-                Nazwa firmy: <input type="text" name="nazwa_firmy">
-                NIP: <input type="text" name="nip">
-                Imie: <input type="text" name="imie">
-                Nazwisko: <input type="text" name="nazwisko">
-                Telefon: <input type="text" name="telefon" required>
-                E-mail: <input type="text" name="e-mail" required>
-                Kod pocztowy: <input type="text" name="kod_pocztowy" required>
-                Miejscowość: <input type="text" name="miejscowosc" required>
-                Adres: <input type="text" placeholder="Ulica i numer" name="adres" required>
-                <button type="submit" name="button"  >Zarezerwuj</button>
+            <form action="posrednia.php" method="post" id='form'>
+                Nazwa firmy: <input type="text" name="nazwa_firmy" id="nazwa_firmy" placeholder="Wpisz nazwę firmy" required>
+                NIP: <input type="text" pattern="[0-9]{10}" maxlength="10" placeholder="Wpisz numer NIP" name="NIP" required>
+                Imie: <input type="text" name="imie" placeholder="Wpisz swoje imię" required>
+                Nazwisko: <input type="text" name="nazwisko"placeholder="Wpisz swoje nazwisko" required>
+                Telefon: <input type="tel" pattern="[0-9]{9}" placeholder="Wpisz numer telefonu" name="telefon" required>
+                E-mail: <input type="email" name="e-mail"  placeholder="Wpisz swój adres e-mail" required>
+                Kod pocztowy: <input type="text" pattern="[0-9]{2}-[0-9]{3}" placeholder="Wpisz kod pocztowy" name="kod_pocztowy" required>
+                Miejscowość: <input type="text" name="miejscowosc" placeholder="Wpisz miejscowość" required>
+                Adres: <input type="text" pattern="[a-zA-ZęóąśłżźćńĘÓĄŚŁŻŹĆŃ]+\s[a-zA-Z0-9ęóąśłżźćńĘÓĄŚŁŻŹĆŃ]+\s?[a-zA-Z0-9ęóąśłżźćńĘÓĄŚŁŻŹĆŃ]*" required placeholder="Wpisz nazwę ulicy i numer domu" name="adres">
+                <button type="submit" name="button1"  >Zarezerwuj</button>
             </form>
         </section>
-        <?php
-          echo"Uzupełnij dane formularza według wytycznych.";
-        ?>
     </main>
     <footer>
-        <span class="white">STACJA KONTROLI POJAZDÓW
-        </span>
-        <span class="white">WARSZTAT SAMOCHODOWY</span>
+        <p class="white">STACJA KONTROLI POJAZDÓW
+</p>
+        <p class="white">WARSZTAT SAMOCHODOWY</p>
         <br>
-        <span>© 2023 AUTO ZAGÓRSKI | Wykorzystujemy pliki cookies. </span>
+        <p>© 2023 AUTO ZAGÓRSKI | Wykorzystujemy pliki cookies. </p>
         <br>
         <p>Warsztat Samochodowy Tomasz Zagórski, ul. Augustyna Szamarzewskiego 42, 60-552 Poznań, NIP: 7772507820, REGON: 634640527</p>
     </footer>
