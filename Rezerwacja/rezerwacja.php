@@ -12,14 +12,11 @@
     />
 </head>
 <body>
-    <header>
-        <a href="../Main/index.html"><img src="../images/logo.png" alt="logo"></a>
-        <!--MENU-->
-        <div id="menu">
-            <span>STACJA KONTROLI POJAZDÓW</span>
-            <span>WARSZTAT SAMOCHODOWY</span>
-            <a href="https://www.google.pl/maps/dir//Auto+Zagórski,+Szamarzewskiego+42,+60-552+Poznań/@52.4113947,16.8946119,17z/data=!4m16!1m7!3m6!1s0x470444c7d574b2bf:0x67e94e3dc08f37fd!2sAuto+Zagórski!3b1!8m2!3d52.4113915!4d16.8948886!4m7!1m0!1m5!1m1!1s0x470444c7d574b2bf:0x67e94e3dc08f37fd!2m2!1d16.8948886!2d52.4113915"><span>WYZNACZ TRASĘ</span></a> 
-        </div>
+<header>
+            <a href="index.html"><img src="../images/logo.png" alt="logo"></a>
+            <p>STACJA KONTROLI POJAZDÓW</p>
+            <p>WARSZTAT SAMOCHODOWY</p>
+            <a href="https://www.google.pl/maps/dir//Auto+Zagórski,+Szamarzewskiego+42,+60-552+Poznań/@52.4113947,16.8946119,17z/data=!4m16!1m7!3m6!1s0x470444c7d574b2bf:0x67e94e3dc08f37fd!2sAuto+Zagórski!3b1!8m2!3d52.4113915!4d16.8948886!4m7!1m0!1m5!1m1!1s0x470444c7d574b2bf:0x67e94e3dc08f37fd!2m2!1d16.8948886!2d52.4113915" target="_blank"><p>WYZNACZ TRASĘ</p></a> 
     </header>
     <main>
         <!--<section id="calendar">
@@ -66,11 +63,11 @@
         </section>
     </main>
     <footer>
-        <span class="white">STACJA KONTROLI POJAZDÓW
-        </span>
-        <span class="white">WARSZTAT SAMOCHODOWY</span>
+        <p class="white">STACJA KONTROLI POJAZDÓW
+</p>
+        <p class="white">WARSZTAT SAMOCHODOWY</p>
         <br>
-        <span>© 2023 AUTO ZAGÓRSKI | Wykorzystujemy pliki cookies. </span>
+        <p>© 2023 AUTO ZAGÓRSKI | Wykorzystujemy pliki cookies. </p>
         <br>
         <p>Warsztat Samochodowy Tomasz Zagórski, ul. Augustyna Szamarzewskiego 42, 60-552 Poznań, NIP: 7772507820, REGON: 634640527</p>
     </footer>
