@@ -49,103 +49,21 @@
               <script src="script.js" defer></script>
           
         </section>-->
-<<<<<<< HEAD
-        <?php
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $nazwa_firmy = $_POST["nazwa_firmy"];
-        $NIP = $_POST["nip"];
-        $imie = $_POST["imie"];
-        $nazwisko = $_POST["nazwisko"];
-        $telefon = $_POST["telefon"];
-        $email = $_POST["e-mail"];
-        $kod_pocztowy = $_POST["kod_pocztowy"];
-        $miejscowosc = $_POST["miejscowosc"];
-        $adres = $_POST["adres"];
-        }
-        if(!empty($nazwa_firmy) and !empty($NIP)){
-          //header('Location: samochod.php');
-          //echo "Dodano rezerwacje";
-          #firma
-          $kwerenda = "SELECT `id_klienta`, `nazwa_firmy`, `NIP`, `telefon`, `email`, `kod_pocztowy`, `miejscowosc`, `adres`, `samochod` FROM `klienci` WHERE nazwa_firmy='$nazwa_firmy' and NIP='$NIP' and telefon='$telefon' and email='$email' and kod_pocztowy='$kod_pocztowy' and miejscowosc='$miejscowosc' and adres = '$adres';";
-          $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
-          $klienci = mysqli_query($polaczenie, $kwerenda);
-          while($r = mysqli_fetch_row($klienci)){
-            echo "<tr>";
-            echo "<td>".$r[0]."</td>";
-            echo "<td>".$r[1]."</td>";
-            echo "<td>".$r[2]."</td>";
-            echo "<td>".$r[3]."</td>";
-            echo "<td>".$r[4]."</td>";
-            echo "<td>".$r[5]."</td>";
-            echo "<td>".$r[6]."</td>";
-            echo "<td>".$r[7]."</td>";
-            echo "<td>".$r[8]."</td>";
-            echo "</tr>";
-          }
-          mysqli_close($polaczenie);
-        }else if(!empty($imie) and !empty($nazwisko)){
-          echo "Dodano rezerwacje2";
-          #klient
-          $kwerenda = "SELECT `id_klienta`, `imie`, `nazwisko`, `telefon`, `email`, `kod_pocztowy`, `miejscowosc`, `adres`, `samochod` FROM `klienci` WHERE imie='$imie' and nazwisko='$nazwisko' and telefon='$telefon' and email='$email' and kod_pocztowy='$kod_pocztowy' and miejscowosc='$miejscowosc' and adres = '$adres';";
-          $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
-          $klienci = mysqli_query($polaczenie, $kwerenda);
-          while($r = mysqli_fetch_row($klienci)){
-            echo "<tr>";
-            echo "<td>".$r[0]."</td>";
-            echo "<td>".$r[1]."</td>";
-            echo "<td>".$r[2]."</td>";
-            echo "<td>".$r[3]."</td>";
-            echo "<td>".$r[4]."</td>";
-            echo "<td>".$r[5]."</td>";
-            echo "<td>".$r[6]."</td>";
-            echo "<td>".$r[7]."</td>";
-            echo "<td>".$r[8]."</td>";
-            echo "</tr>";
-          }
-        }else{
-          echo"Uzupełnij dane formularza według wytycznych.";
-        }
-        if (isset($_POST['button'])){
-          echo '<section class="form"><form action="" method="post">
-          Marka: <input type="text" name="marka">
-          Model: <input type="text" name="model">
-          Rodzaj silnika: <br><br><select name="rodzaj_silnika"><option>Benzyna</option><option>Diesel</option><option>Hybryda</option><option>Elektryczny</option></select><br>
-          Numer rejestracyjny: <input type="text" name="numer_rejestracyjny">
-          Nr VIN: <input type="text" name="vin" required>
-          Rocznik: <input type="text" name="rocznik" required>
-          Pojemność silnika: <input type="text" name="pojemnosc" required>
-          <button type="submit" name="button"  >Dodaj</button>
-          </form></section>';
-          }
-        ?>
-        <section class="form">
-            <form action="" method="post">
-=======
         <section class="form">
             <!--<form action="samochod.php" method="post">-->
-            <form action="posrednia.php" method="post">
->>>>>>> main
-                Nazwa firmy: <input type="text" name="nazwa_firmy">
-                NIP: <input type="text" name="nip">
-                Imie: <input type="text" name="imie">
-                Nazwisko: <input type="text" name="nazwisko">
-                Telefon: <input type="text" name="telefon" required>
-                E-mail: <input type="text" name="e-mail" required>
-                Kod pocztowy: <input type="text" name="kod_pocztowy" required>
-                Miejscowość: <input type="text" name="miejscowosc" required>
-                Adres: <input type="text" placeholder="Ulica i numer" name="adres" required>
-<<<<<<< HEAD
-                <button type="submit" name="button"  >Zarezerwuj</button>
-            </form>
-        </section>
-=======
+            <form action="posrednia.php" method="post" id='form'>
+                Nazwa firmy: <input type="text" name="nazwa_firmy" id="nazwa_firmy" placeholder="Wpisz nazwę firmy" required>
+                NIP: <input type="text" pattern="[0-9]{10}" maxlength="10" placeholder="Wpisz numer NIP" name="NIP" required>
+                Imie: <input type="text" name="imie" placeholder="Wpisz swoje imię" required>
+                Nazwisko: <input type="text" name="nazwisko"placeholder="Wpisz swoje nazwisko" required>
+                Telefon: <input type="tel" pattern="[0-9]{9}" placeholder="Wpisz numer telefonu" name="telefon" required>
+                E-mail: <input type="email" name="e-mail"  placeholder="Wpisz swój adres e-mail" required>
+                Kod pocztowy: <input type="text" pattern="[0-9]{2}-[0-9]{3}" placeholder="Wpisz kod pocztowy" name="kod_pocztowy" required>
+                Miejscowość: <input type="text" name="miejscowosc" placeholder="Wpisz miejscowość" required>
+                Adres: <input type="text" pattern="[a-zA-ZęóąśłżźćńĘÓĄŚŁŻŹĆŃ]+\s[a-zA-Z0-9ęóąśłżźćńĘÓĄŚŁŻŹĆŃ]+\s?[a-zA-Z0-9ęóąśłżźćńĘÓĄŚŁŻŹĆŃ]*" required placeholder="Wpisz nazwę ulicy i numer domu" name="adres">
                 <button type="submit" name="button1"  >Zarezerwuj</button>
             </form>
         </section>
-        <?php
-          echo"Uzupełnij dane formularza według wytycznych.";
-        ?>
->>>>>>> main
     </main>
     <footer>
         <span class="white">STACJA KONTROLI POJAZDÓW
