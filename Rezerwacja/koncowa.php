@@ -32,6 +32,7 @@
         $kod_pocztowy = $_POST["kod_pocztowy"];
         $miejscowosc = $_POST["miejscowosc"];
         $adres = $_POST["adres"];
+        $id_samochodu = $_POST["id_samochodu"];
         ?>
         <p>Twoja wizyta została zarezerwowana<p>
     </main>
