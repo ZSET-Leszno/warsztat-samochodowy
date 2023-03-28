@@ -36,7 +36,7 @@ Panel admina:
         SELECT `id_klienta`, `imie`, `nazwisko`, `telefon`, `email`, `kod_pocztowy`, `miejscowosc`, `adres`, `samochod` FROM `klienci` WHERE `nazwa_firmy` is null or `nazwa_firmy` = "" and `NIP` is null or `NIP` = "";
     + Wyświetlenie danych firm:
         SELECT `id_klienta`, `nazwa_firmy`, `NIP`, `telefon`, `email`, `kod_pocztowy`, `miejscowosc`, `adres`, `samochod` FROM `klienci` WHERE `imie` is null or `imie` = "" and `nazwisko` is null or `nazwisko` = "";
-    Wyświetlenie danych samochodów:
+    + Wyświetlenie danych samochodów:
         SELECT `id_samochodu`, marki_samochodów.nazwa , `model`, `rodzaj_silnika`, `numer_rejestracyjny`, `rocznik` FROM `samochody` join marki_samochodów on marki_samochodów.id_marki = samochody.marka WHERE 1;
     Wyświetlenie zgłoszeń:
         SELECT * FROM `zgloszenia`;
