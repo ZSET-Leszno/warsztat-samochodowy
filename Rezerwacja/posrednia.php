@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -22,6 +23,7 @@
         </div>
     </header>
     <main>
+      <div id="posrednia">
         <?php
           $nazwa_firmy = $_POST["nazwa_firmy"];
           $NIP = $_POST["nip"];
@@ -47,12 +49,33 @@
                 <button type="submit" name="button">Dodaj nowy</button>
             </form>
         </section>
-        <p>Lub wybierz swój samochód z listy</p>
         <?php
         if(!empty($nazwa_firmy) and !empty($NIP)){
           $kwerenda = "SELECT `samochod` FROM `klienci` WHERE nazwa_firmy='$nazwa_firmy' and NIP='$NIP' and telefon='$telefon' and email='$email' and kod_pocztowy='$kod_pocztowy' and miejscowosc='$miejscowosc' and adres = '$adres';";
           $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
           $klienci = mysqli_query($polaczenie, $kwerenda);
+          $liczba_wierszy = mysqli_num_rows($klienci);
+          if ($liczba_wierszy == 0)
+          {
+            ?><form action="koncowa.php" method="post">
+                <input type="hidden" name="nazwa_firmy" value="<?php echo $nazwa_firmy;?>">
+                <input type="hidden" name="nip" value="<?php echo $NIP;?>">
+                <input type="hidden" name="imie" value="<?php echo $imie;?>">
+                <input type="hidden" name="nazwisko" value="<?php echo $nazwisko;?>">
+                <input type="hidden" name="telefon" value="<?php  echo $telefon;?>" required>
+                <input type="hidden" name="e-mail" value="<?php echo $email;?>" required>
+                <input type="hidden" name="kod_pocztowy" value="<?php echo $kod_pocztowy;?>" required>
+                <input type="hidden" name="miejscowosc" value="<?php echo $miejscowosc;?>" required>
+                <input type="hidden" name="adres" value="<?php echo $adres;?>" required>
+            <button type='sumbit' name="Dalej">Wybierz</button><?php
+            //if(!isset($_POST['Dalej']))
+            {
+              //header('Location: http://localhost/warsztat/warsztat-samochodowy/Rezerwacja/samochod.php');
+            }
+          }
+          elseif ($liczba_wierszy > 0)
+          {
+          echo "<p>Lub wybierz swój samochód z listy</p>";
           $array = [];
           while($r = mysqli_fetch_row($klienci))
           {
@@ -75,10 +98,11 @@
                 <input type="hidden" name="e-mail" value="<?php echo $email;?>" required>
                 <input type="hidden" name="kod_pocztowy" value="<?php echo $kod_pocztowy;?>" required>
                 <input type="hidden" name="miejscowosc" value="<?php echo $miejscowosc;?>" required>
-                <input type="hidden" placeholder="Ulica i numer" name="adres" value="<?php echo $adres;?>" required>
+                <input type="hidden" name="adres" value="<?php echo $adres;?>" required>
             <?php
-            echo "<button type='sumbit'  name=".$r[0].">Wybierz</button>";
+            echo '<input type="hidden" name="id_samochodu" value="<?php echo '.$r[0].';?>" >';
             ?>
+            <button type='sumbit'  name="Wybierz">Wybierz</button>
             </form>
             <?php
             echo "<table style='border: 1px solid black;border-collapse: collapse;'>";
@@ -92,7 +116,12 @@
             echo "</table>";?>
             </section><?php
             }
-          }
+            }
+            }
+            else
+            {
+              echo "Błąd";
+            }
         }
         else if(!empty($imie) and !empty($nazwisko)){
           echo "Dodano rezerwacje2";
@@ -232,6 +261,7 @@
         //}
         
         ?>
+      </div>
     </main>
     <footer>
         <span class="white">STACJA KONTROLI POJAZDÓW
