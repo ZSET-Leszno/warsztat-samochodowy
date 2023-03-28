@@ -16,6 +16,7 @@
     </header>
     <main>
         <a href="samochody.php"><button>Samochody</button></a>
+        <a href="zgloszenia.php"><button>Zgłoszenia</button></a>
         <h2>Podgląd klientów:</h2>
         <a href="osoby_prywatne.php"><button>Osoby prywatne</button></a>
         <a href="firmy.php"><button>Firmy</button></a>
