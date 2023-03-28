@@ -61,7 +61,7 @@
         <table>
         <?php  
                 $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
-                $klienci = mysqli_query($polaczenie, "SELECT id_samochodu, marka, model,rodzaj_silnika, numer_rejestracyjny, nr_VIN, rocznik, pojemnosc FROM samochody;");
+                $klienci = mysqli_query($polaczenie, "SELECT id_samochodu, marka, model,rodzaj_silnika, numer_rejestracyjny, rocznik FROM samochody;");
                 while($r = mysqli_fetch_row($klienci)){
                     echo "<tr>";
                     echo "<td>".$r[0]."</td>";
@@ -70,8 +70,6 @@
                     echo "<td>".$r[3]."</td>";
                     echo "<td>".$r[4]."</td>";
                     echo "<td>".$r[5]."</td>";
-                    echo "<td>".$r[6]."</td>";
-                    echo "<td>".$r[7]."</td>";
                     echo "</tr>";
                 }
                 mysqli_close($polaczenie);

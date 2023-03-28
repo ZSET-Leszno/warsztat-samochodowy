@@ -10,9 +10,11 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
     />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
 <body>
-<header>
+  <header>
             <a href="../Main/index.html"><img src="../images/logo.png" alt="logo"></a>
             <p>STACJA KONTROLI POJAZDÓW</p>
             <p>WARSZTAT SAMOCHODOWY</p>
@@ -46,6 +48,12 @@
               <script src="script.js" defer></script>
           
         </section>-->
+        <section id="calendar">
+          <form>
+            <label for="date">Wybierz datę:</label>
+            <input type="text" id="date" name="date">
+	        </form>
+        </section>
         <section class="form">
             <!--<form action="samochod.php" method="post">-->
             <form action="posrednia.php" method="post" id='form'>
@@ -71,5 +79,11 @@
         <br>
         <p>Warsztat Samochodowy Tomasz Zagórski, ul. Augustyna Szamarzewskiego 42, 60-552 Poznań, NIP: 7772507820, REGON: 634640527</p>
     </footer>
+    <script>
+		flatpickr("#date", {
+			enableTime: false,
+			dateFormat: "Y-m-d",
+		});
+    </script>
 </body>
 </html>

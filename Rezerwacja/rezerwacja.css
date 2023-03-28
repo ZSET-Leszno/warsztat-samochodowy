@@ -106,6 +106,13 @@ footer p{
     margin: 0px;
 }
 
+<<<<<<< HEAD
+#calendar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+=======
 /* CALENDAR */
 
 .container {
@@ -222,3 +229,4 @@ footer p{
     justify-content: center;
     align-items: center;
   }
+>>>>>>> 52ca8e425dda79abd4b261fa7d0afab720f372e0
