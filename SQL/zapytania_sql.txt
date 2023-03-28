@@ -32,7 +32,7 @@ Dane klienta:
 
 
 Panel admina:
-    Wyświetlenie danych osób prywatnych:
+    + Wyświetlenie danych osób prywatnych:
         SELECT `id_klienta`, `imie`, `nazwisko`, `telefon`, `email`, `kod_pocztowy`, `miejscowosc`, `adres`, `samochod` FROM `klienci` WHERE `nazwa_firmy` is null or `nazwa_firmy` = "" and `NIP` is null or `NIP` = "";
     Wyświetlenie danych firm:
         SELECT `id_klienta`, `nazwa_firmy`, `NIP`, `telefon`, `email`, `kod_pocztowy`, `miejscowosc`, `adres`, `samochod` FROM `klienci` WHERE `imie` is null or `imie` = "" and `nazwisko` is null or `nazwisko` = "";

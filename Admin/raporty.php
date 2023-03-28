@@ -16,7 +16,7 @@
     </header>
     <main>
         <h2>Podgląd klient:</h2>
-        <button>Osoby prywatne</button>
+        <a href="osoby_prywatne.php"><button>Osoby prywatne</button></a>
         <button>Firmy</button>
         <h2>Raporty według zostawionych pieniędzy:</h2>
         <button>Firmy</button>
