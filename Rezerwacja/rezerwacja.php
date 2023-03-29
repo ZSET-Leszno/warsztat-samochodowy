@@ -58,7 +58,7 @@
             <!--<form action="samochod.php" method="post">-->
             <form action="posrednia.php" method="post" id='form'>
                 Nazwa firmy: <input type="text" name="nazwa_firmy" id="nazwa_firmy" placeholder="Wpisz nazwę firmy" required>
-                NIP: <input type="text" pattern="[0-9]{10}" maxlength="10" placeholder="Wpisz numer NIP" name="NIP" required>
+                NIP: <input type="text" pattern="[0-9]{10}" maxlength="10" placeholder="Wpisz numer NIP" name="nip" required>
                 Imie: <input type="text" name="imie" placeholder="Wpisz swoje imię" required>
                 Nazwisko: <input type="text" name="nazwisko"placeholder="Wpisz swoje nazwisko" required>
                 Telefon: <input type="tel" pattern="[0-9]{9}" placeholder="Wpisz numer telefonu" name="telefon" required>
@@ -66,7 +66,7 @@
                 Kod pocztowy: <input type="text" pattern="[0-9]{2}-[0-9]{3}" placeholder="Wpisz kod pocztowy" name="kod_pocztowy" required>
                 Miejscowość: <input type="text" name="miejscowosc" placeholder="Wpisz miejscowość" required>
                 Adres: <input type="text" pattern="[a-zA-ZęóąśłżźćńĘÓĄŚŁŻŹĆŃ]+\s[a-zA-Z0-9ęóąśłżźćńĘÓĄŚŁŻŹĆŃ]+\s?[a-zA-Z0-9ęóąśłżźćńĘÓĄŚŁŻŹĆŃ]*" required placeholder="Wpisz nazwę ulicy i numer domu" name="adres">
-                <button type="submit" name="button1"  >Zarezerwuj</button>
+                <button type="submit" name="button1">Zarezerwuj</button>
             </form>
         </section>
     </main>

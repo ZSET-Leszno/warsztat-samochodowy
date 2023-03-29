@@ -57,7 +57,7 @@
           $liczba_wierszy = mysqli_num_rows($klienci);
           if ($liczba_wierszy == 0)
           {
-            ?><form action="koncowa.php" method="post">
+            ?><form action="samochod.php" method="post">
                 <input type="hidden" name="nazwa_firmy" value="<?php echo $nazwa_firmy;?>">
                 <input type="hidden" name="nip" value="<?php echo $NIP;?>">
                 <input type="hidden" name="imie" value="<?php echo $imie;?>">
@@ -67,10 +67,14 @@
                 <input type="hidden" name="kod_pocztowy" value="<?php echo $kod_pocztowy;?>" required>
                 <input type="hidden" name="miejscowosc" value="<?php echo $miejscowosc;?>" required>
                 <input type="hidden" name="adres" value="<?php echo $adres;?>" required>
-            <button type='sumbit' name="Dalej">Wybierz</button><?php
-            //if(!isset($_POST['Dalej']))
-            {
-              //header('Location: http://localhost/warsztat/warsztat-samochodowy/Rezerwacja/samochod.php');
+            <button type='sumbit' name="Dalej" id="Dalej">Wybierz</button>
+            <?php
+            if(!isset($_POST['Dalej']))
+            {?>
+              <script>
+                document.querySelector("#Dalej").click()
+              </script>
+            <?php
             }
           }
           elseif ($liczba_wierszy > 0)
