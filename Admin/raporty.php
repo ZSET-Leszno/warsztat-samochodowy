@@ -22,10 +22,14 @@
         <a href="firmy.php"><button>Firmy</button></a>
         <h2>Raporty według zostawionych pieniędzy:</h2>
         <button>Firmy</button>
-        <button>Klienci</button>
+        <a href="klienci_sort.php"><button>Klienci</button></a>
         <button>Miesiące</button>
         <button>Marka</button>
         <button>Miejscowość</button>
+        <h2>Aktualizacja zgłoszeń</h2>
+        <a href="wydanie.php"><button>Wydanie pojazdu</button></a>
+        <h2>Wyświetlanie samochodu</h2>
+        <button>Klienta/Firmy</button>
     </main>
     <footer>
         <span class="white">STACJA KONTROLI POJAZDÓW
