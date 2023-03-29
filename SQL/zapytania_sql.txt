@@ -54,7 +54,7 @@ Panel admina:
         SELECT klienci.imie, klienci.nazwisko, klienci.email , sum(`koszt`) as suma FROM `zgloszenia` join klienci on klienci.id_klienta = zgloszenia.wlasciciel WHERE klienci.nazwa_firmy is null or klienci.nazwa_firmy = "" and klienci.NIP is null or klienci.NIP = "" GROUP by klienci.email order by sum(koszt);
     + Wyświetlenie firm posortowanych po pieniądzach jakie u nas zostawili:
         SELECT klienci.nazwa_firmy, klienci.NIP, klienci.email , sum(`koszt`) as suma FROM `zgloszenia` join klienci on klienci.id_klienta = zgloszenia.wlasciciel WHERE klienci.imie is null or klienci.imie = "" and klienci.nazwisko is null or klienci.nazwisko = "" GROUP by klienci.email order by sum(koszt);
-    Wyświetlenie zestawienia z miesiącami w danym roku:
+    [w trakcie] Wyświetlenie zestawienia z miesiącami w danym roku:
         SELECT date_format(`data_wydania`, "%Y") as Rok , date_format(`data_wydania`, "%M") as Miesiąc, sum(`koszt`) as suma FROM `zgloszenia` WHERE `data_wydania` is not null or data_wydania != "" group by Rok, Miesiąc;
         (ta funkcja zwraca miesiące w języku angielskim, dlatego trzeba podpiąc ten kod:
         $month = $row['miesiac']; 

@@ -15,6 +15,7 @@
         </div>
     </header>
     <main>
+        <h2>Raporty:</h2>
         <a href="samochody.php"><button>Samochody</button></a>
         <a href="zgloszenia.php"><button>Zgłoszenia</button></a>
         <h2>Podgląd klientów:</h2>
@@ -23,9 +24,9 @@
         <h2>Raporty według zostawionych pieniędzy:</h2>
         <a href="firmy_sort.php"><button>Firmy</button></a>
         <a href="klienci_sort.php"><button>Klienci</button></a>
-        <button>Miesiące</button>
-        <button>Marka</button>
-        <button>Miejscowość</button>
+        <a href="zestawienie_m.php"><button>Miesiące</button></a>
+        <!--<button>Marka</button>
+        <button>Miejscowość</button>-->
         <h2>Aktualizacja zgłoszeń</h2>
         <a href="wydanie.php"><button>Wydanie pojazdu</button></a>
         <h2>Wyświetlanie samochodu</h2>
