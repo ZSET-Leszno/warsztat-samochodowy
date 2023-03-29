@@ -21,7 +21,7 @@
         <a href="osoby_prywatne.php"><button>Osoby prywatne</button></a>
         <a href="firmy.php"><button>Firmy</button></a>
         <h2>Raporty według zostawionych pieniędzy:</h2>
-        <button>Firmy</button>
+        <a href="firmy_sort.php"><button>Firmy</button></a>
         <a href="klienci_sort.php"><button>Klienci</button></a>
         <button>Miesiące</button>
         <button>Marka</button>
