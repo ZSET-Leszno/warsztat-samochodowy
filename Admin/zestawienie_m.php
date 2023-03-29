@@ -19,40 +19,32 @@
                 <h3>Wyświetlenie firm posortowanych po zostawionych pieniądzach:</h3>
                 <table>
                 <?php  
-                        $month = $row['miesiac']; 
-
-                        if($month == 'October') {$month = 'Październik';}
-                
-                        elseif ($month == 'November') {$month = 'Listopad';}
-                
-                        elseif ($month == 'December') {$month = 'Grudzień';}
-                
-                        elseif ($month == 'September') {$month = 'Wrzesień';}
-                
-                        elseif ($month == 'August') {$month = 'Sierpień';}
-                
-                        elseif ($month == 'July') {$month = 'Lipiec';}
-                
-                        elseif ($month == 'June') {$month = 'Czerwiec';}
-                
-                        elseif ($month == 'May') {$month = 'Maj';}
-                
-                        elseif ($month == 'April') {$month = 'Kwiecień';}
-                
-                        elseif ($month == 'March') {$month = 'Marzec';}
-                
-                        elseif ($month == 'February') {$month = 'Luty';}
-                
-                        elseif ($month == 'January') {$month = 'Styczeń';}
-                
-                        else {$month = $month;}
                         $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
                         $klienci = mysqli_query($polaczenie, 'SELECT date_format(`data_wydania`, "%Y") as Rok , date_format(`data_wydania`, "%M") as Miesiąc, sum(`koszt`) as suma FROM `zgloszenia` WHERE `data_wydania` is not null or data_wydania != "" group by Rok, Miesiąc;');
-                        while($r = mysqli_fetch_row($klienci)){
+                        while ($row = mysqli_fetch_assoc($klienci)) {
+                            $rok = $row['Rok'];
+                            $month = $row['Miesiąc'];
+                            $suma = $row['suma'];
+
+                            if($month == 'October') {$month = 'Październik';}
+                            elseif ($month == 'November') {$month = 'Listopad';}
+                            elseif ($month == 'December') {$month = 'Grudzień';}
+                            elseif ($month == 'September') {$month = 'Wrzesień';}
+                            elseif ($month == 'August') {$month = 'Sierpień';}
+                            elseif ($month == 'July') {$month = 'Lipiec';}
+                            elseif ($month == 'June') {$month = 'Czerwiec';}
+                            elseif ($month == 'May') {$month = 'Maj';}
+                            elseif ($month == 'April') {$month = 'Kwiecień';}
+                            elseif ($month == 'March') {$month = 'Marzec';}
+                            elseif ($month == 'February') {$month = 'Luty';}
+                            elseif ($month == 'January') {$month = 'Styczeń';}
+                    
+                            else {$month = $month;}
+
                             echo "<tr>";
-                            echo "<td>".$r[0]."</td>";
-                            echo "<td>".$r[1]."</td>";
-                            echo "<td>".$r[2]."</td>";
+                            echo "<td>".$rok."</td>";
+                            echo "<td>".$month."</td>";
+                            echo "<td>".$suma."</td>";
                             echo "</tr>";
                         }
                         mysqli_close($polaczenie);
