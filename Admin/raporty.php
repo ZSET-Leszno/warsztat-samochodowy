@@ -15,17 +15,22 @@
         </div>
     </header>
     <main>
+        <h2>Raporty:</h2>
         <a href="samochody.php"><button>Samochody</button></a>
         <a href="zgloszenia.php"><button>Zgłoszenia</button></a>
         <h2>Podgląd klientów:</h2>
         <a href="osoby_prywatne.php"><button>Osoby prywatne</button></a>
         <a href="firmy.php"><button>Firmy</button></a>
         <h2>Raporty według zostawionych pieniędzy:</h2>
-        <button>Firmy</button>
-        <button>Klienci</button>
-        <button>Miesiące</button>
-        <button>Marka</button>
-        <button>Miejscowość</button>
+        <a href="firmy_sort.php"><button>Firmy</button></a>
+        <a href="klienci_sort.php"><button>Klienci</button></a>
+        <a href="zestawienie_m.php"><button>Miesiące</button></a>
+        <!--<button>Marka</button>
+        <button>Miejscowość</button>-->
+        <h2>Aktualizacja zgłoszeń</h2>
+        <a href="wydanie.php"><button>Wydanie pojazdu</button></a>
+        <h2>Wyświetlanie samochodu</h2>
+        <button>Klienta/Firmy</button>
     </main>
     <footer>
         <span class="white">STACJA KONTROLI POJAZDÓW
