@@ -30,7 +30,7 @@
         <h2>Aktualizacja zgłoszeń</h2>
         <a href="wydanie.php"><button>Wydanie pojazdu</button></a>
         <h2>Wyświetlanie samochodu</h2>
-        <button>Klienta/Firmy</button>
+        <a href="wyswietlenie_samochodu.php"><button>Klienta/Firmy</button></a>
     </main>
     <footer>
         <span class="white">STACJA KONTROLI POJAZDÓW
