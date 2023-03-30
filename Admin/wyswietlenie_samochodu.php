@@ -16,7 +16,7 @@
     </header>
     <main>
     <section class="baza">
-                <h3>Samochody do wydania</h3>
+                <h3>Wyświetlenie samochodu danego klienta lub firmy</h3>
                 <table>
                 <?php  
                         $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
@@ -37,31 +37,56 @@
                     ?>
             </table>
         </section>
-        <section id="form">
-            <form method="POST" action="wydanie.php">
-                <label for="id_samochodu">ID samochodu:</label>
-                <input type="text" id="id_samochodu" name="id_samochodu">
-                <button type="submit" name="submit_zaktualizuj">Zaktualizuj</button>
-            </form>
-            <?php
-            // połączenie z bazą danych
-            $conn = mysqli_connect('localhost', 'root', '', 'warsztat');
+        <section id="form2">
+        <h1>Wyświetlanie samochodów klienta</h1>
+        <form action="wyswietl_samochody.php" method="POST">
+            <label>Imię:</label>
+            <input type="text" name="imie"><br>
+            <label>Nazwisko:</label>
+            <input type="text" name="nazwisko"><br>
+            <input type="submit" name="submit" value="Wyświetl samochody">
+        </form>
+        </section>
+        <?php
+        // dane do połączenia z bazą danych
+        $host = 'localhost';
+        $dbname = 'warsztat';
+        $user = 'root';
+        $password = '';
 
-            if(isset($_POST['submit_zaktualizuj'])) {
-                $id_samochodu = $_POST['id_samochodu'];
-                $sql = "UPDATE `zgloszenia` SET `data_wydania`= ( SELECT CURDATE()) WHERE samochod = $id_samochodu";
-                
-                // wykonanie zapytania SQL
-                if(mysqli_query($conn, $sql)) {
-                    echo "Zapytanie SQL wykonane";
-                } else {
-                    echo "Błąd wykonania zapytania SQL: " . mysqli_error($conn);
+        // połączenie z bazą danych
+        $conn = mysqli_connect($host, $user, $password, $dbname);
+
+        if(isset($_POST['submit'])) {
+            $imie = $_POST['imie'];
+            $nazwisko = $_POST['nazwisko'];
+            
+            // zapytanie SQL
+            $sql = "SELECT * FROM `klienci` WHERE `imie` = '$imie' AND `nazwisko` = '$nazwisko'";
+            
+            // wykonanie zapytania SQL
+            $result = mysqli_query($conn, $sql);
+            
+            if(mysqli_num_rows($result) > 0) {
+                // wyświetlenie wyników
+                while($row = mysqli_fetch_assoc($result)) {
+                    echo "Marka: " . $row['marka'] . " | Model: " . $row['model'] . " | Numer rejestracyjny: " . $row['numer_rejestracyjny'] . "<br>";
                 }
+            } else {
+                echo "Brak wyników";
             }
+        }
 
-            // zamknięcie połączenia z bazą danych
-            mysqli_close($conn);
-            ?>
+        // zamknięcie połączenia z bazą danych
+        mysqli_close($conn);
+        ?>
+        <section id="form2">
+        <h1>Wyświetlanie samochodów firmy</h1>
+        <form action="wyswietl_samochody.php" method="POST">
+            <label>Nazwa firmy:</label>
+            <input type="text" name="firma"><br>
+            <input type="submit" name="submit" value="Wyświetl samochody">
+        </form>
         </section>
     </main>
     <footer>
