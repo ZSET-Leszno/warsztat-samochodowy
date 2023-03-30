@@ -38,18 +38,30 @@
             </table>
         </section>
         <section id="form">
-            <form action="posrednia.php" method="post" id='form'>
-                Nazwa firmy: <input type="text" name="nazwa_firmy" id="nazwa_firmy" placeholder="Wpisz nazwę firmy" required>
-                NIP: <input type="text" pattern="[0-9]{10}" maxlength="10" placeholder="Wpisz numer NIP" name="nip" required>
-                Imie: <input type="text" name="imie" placeholder="Wpisz swoje imię" required>
-                Nazwisko: <input type="text" name="nazwisko"placeholder="Wpisz swoje nazwisko" required>
-                Telefon: <input type="tel" pattern="[0-9]{9}" placeholder="Wpisz numer telefonu" name="telefon" required>
-                E-mail: <input type="email" name="e-mail"  placeholder="Wpisz swój adres e-mail" required>
-                Kod pocztowy: <input type="text" pattern="[0-9]{2}-[0-9]{3}" placeholder="Wpisz kod pocztowy" name="kod_pocztowy" required>
-                Miejscowość: <input type="text" name="miejscowosc" placeholder="Wpisz miejscowość" required>
-                Adres: <input type="text" pattern="[a-zA-ZęóąśłżźćńĘÓĄŚŁŻŹĆŃ]+\s[a-zA-Z0-9ęóąśłżźćńĘÓĄŚŁŻŹĆŃ]+\s?[a-zA-Z0-9ęóąśłżźćńĘÓĄŚŁŻŹĆŃ]*" required placeholder="Wpisz nazwę ulicy i numer domu" name="adres">
-                <button type="submit" name="button1">Zarezerwuj</button>
+            <form method="POST" action="wydanie.php">
+                <label for="id_samochodu">ID samochodu:</label>
+                <input type="text" id="id_samochodu" name="id_samochodu">
+                <button type="submit" name="submit_zaktualizuj">Zaktualizuj</button>
             </form>
+            <?php
+            // połączenie z bazą danych
+            $conn = mysqli_connect('localhost', 'root', '', 'warsztat');
+
+            if(isset($_POST['submit_zaktualizuj'])) {
+                $id_samochodu = $_POST['id_samochodu'];
+                $sql = "UPDATE `zgloszenia` SET `data_wydania`= ( SELECT CURDATE()) WHERE samochod = $id_samochodu";
+                
+                // wykonanie zapytania SQL
+                if(mysqli_query($conn, $sql)) {
+                    echo "Zapytanie SQL wykonane";
+                } else {
+                    echo "Błąd wykonania zapytania SQL: " . mysqli_error($conn);
+                }
+            }
+
+            // zamknięcie połączenia z bazą danych
+            mysqli_close($conn);
+            ?>
         </section>
     </main>
     <footer>
