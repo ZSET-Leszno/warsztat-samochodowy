@@ -53,6 +53,7 @@
                 $id_uslugi = $_POST['id_uslugi'];
                 $usluga = $_POST['usluga'];
                 $koszt = $_POST['koszt'];
+
                 $sql = "UPDATE `zgloszenia` SET `data_wydania`= ( SELECT CURDATE()), `usluga` = '$usluga' , `koszt` = '$koszt' WHERE id_uslugi = '$id_uslugi'";
                 
                 // wykonanie zapytania SQL

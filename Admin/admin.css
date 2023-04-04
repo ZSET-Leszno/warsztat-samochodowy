@@ -129,6 +129,10 @@ input{
     margin: 10px;
 }
 
+#car{
+    display: flex;
+    justify-content: center;
+
 #form3{
     width: 50%;
     display: flex;
