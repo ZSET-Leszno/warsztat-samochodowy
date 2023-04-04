@@ -20,7 +20,7 @@
                 <table>
                 <?php  
                         $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
-                        $klienci = mysqli_query($polaczenie, 'SELECT * FROM `zgloszenia` WHERE `data_wydania` is null or `data_wydania` = "";');
+                        $klienci = mysqli_query($polaczenie, 'SELECT `id_uslugi`, `data_przyjecia`, `godzina_przyjecia`, marki_samochodów.nazwa, samochody.model, samochody.numer_rejestracyjny FROM `zgloszenia` join samochody on samochody.id_samochodu = zgloszenia.samochod join marki_samochodów on marki_samochodów.id_marki = samochody.marka WHERE `data_wydania` is null or `data_wydania` = "";');
                         while($r = mysqli_fetch_row($klienci)){
                             echo "<tr>";
                             echo "<td>".$r[0]."</td>";
@@ -29,8 +29,6 @@
                             echo "<td>".$r[3]."</td>";
                             echo "<td>".$r[4]."</td>";
                             echo "<td>".$r[5]."</td>";
-                            echo "<td>".$r[6]."</td>";
-                            echo "<td>".$r[7]."</td>";
                             echo "</tr>";
                         }
                         mysqli_close($polaczenie);
@@ -40,7 +38,11 @@
         <section id="form">
             <form method="POST" action="wydanie.php">
                 <label for="id_samochodu">ID samochodu:</label>
-                <input type="text" id="id_samochodu" name="id_samochodu">
+                <input type="text" id="id_uslugi" name="id_uslugi">
+                <label for="usluga">Usługa:</label>
+                <input type="text" id="usluga" name="usluga">
+                <label for="koszt">Koszt usługi:</label>
+                <input type="text" id="koszt" name="koszt">
                 <button type="submit" name="submit_zaktualizuj">Zaktualizuj</button>
             </form>
             <?php
@@ -48,8 +50,10 @@
             $conn = mysqli_connect('localhost', 'root', '', 'warsztat');
 
             if(isset($_POST['submit_zaktualizuj'])) {
-                $id_samochodu = $_POST['id_samochodu'];
-                $sql = "UPDATE `zgloszenia` SET `data_wydania`= ( SELECT CURDATE()) WHERE samochod = $id_samochodu";
+                $id_uslugi = $_POST['id_uslugi'];
+                $usluga = $_POST['usluga'];
+                $koszt = $_POST['koszt'];
+                $sql = "UPDATE `zgloszenia` SET `data_wydania`= ( SELECT CURDATE()), `usluga` = $usluga, `koszt` = $koszt WHERE id_uslugi = $id_uslugi";
                 
                 // wykonanie zapytania SQL
                 if(mysqli_query($conn, $sql)) {

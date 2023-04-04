@@ -42,9 +42,9 @@ Panel admina:
         SELECT * FROM `zgloszenia`;
     [w trakcie] Aktualizacja zgłoszeń - wydanie pojazdu (potrzebny formularz):
         Wyszukanie samochodów, które jeszcze nie zostały wydane:
-            SELECT * FROM `zgloszenia` WHERE `data_wydania` is null or `data_wydania` = "";
+            SELECT `id_uslugi`, `data_przyjecia`, `godzina_przyjecia`, marki_samochodów.nazwa, samochody.model, samochody.numer_rejestracyjny FROM `zgloszenia` join samochody on samochody.id_samochodu = zgloszenia.samochod join marki_samochodów on marki_samochodów.id_marki = samochody.marka WHERE `data_wydania` is null or `data_wydania` = "";
         Zaktualizowanie tabeli - wydanie pojazdu:
-            UPDATE `zgloszenia` SET `data_wydania`= ( SELECT CURDATE()) WHERE samochod = $id_samochodu";
+            "UPDATE `zgloszenia` SET `data_wydania`= ( SELECT CURDATE()), `usluga` = $usluga, `koszt` = $koszt WHERE id_uslugi = $id_uslugi";
     Wyświetlenie samochodu danego klienta lub firmy (krótki formularz - tylko wybór danego kliena - potrzebne wybranie wszystkich id_samochodu):
         Jeżeli z tablicy zawierające id:
             SELECT * FROM `samochody` WHERE `id_samochodu` in (wszytskie id);
