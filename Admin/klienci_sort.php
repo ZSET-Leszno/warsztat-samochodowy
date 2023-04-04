@@ -20,7 +20,7 @@
                 <table>
                 <?php  
                         $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
-                        $klienci = mysqli_query($polaczenie, 'SELECT klienci.imie, klienci.nazwisko, klienci.email , sum(`koszt`) as suma FROM `zgloszenia` join klienci on klienci.id_klienta = zgloszenia.wlasciciel WHERE klienci.nazwa_firmy is null or klienci.nazwa_firmy = "" and klienci.NIP is null or klienci.NIP = "" GROUP by klienci.email order by sum(koszt);');
+                        $klienci = mysqli_query($polaczenie, 'SELECT klienci.imie, klienci.nazwisko, klienci.email , sum(`koszt`) as suma FROM `zgloszenia` join klienci on klienci.id_klienta = zgloszenia.wlasciciel WHERE klienci.nazwa_firmy is null or klienci.nazwa_firmy = "" and klienci.NIP is null or klienci.NIP = "" GROUP by klienci.email order by sum(koszt) desc;');
                         while($r = mysqli_fetch_row($klienci)){
                             echo "<tr>";
                             echo "<td>".$r[0]."</td>";
