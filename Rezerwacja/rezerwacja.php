@@ -57,10 +57,10 @@
         <section class="form">
             <!--<form action="samochod.php" method="post">-->
             <form action="posrednia.php" method="post" id='form'>
-                Nazwa firmy: <input type="text" name="nazwa_firmy" id="nazwa_firmy" placeholder="Wpisz nazwę firmy" required>
-                NIP: <input type="text" pattern="[0-9]{10}" maxlength="10" placeholder="Wpisz numer NIP" name="nip" required>
-                Imie: <input type="text" name="imie" placeholder="Wpisz swoje imię" required>
-                Nazwisko: <input type="text" name="nazwisko"placeholder="Wpisz swoje nazwisko" required>
+                Nazwa firmy: <input type="text" name="nazwa_firmy" id="nazwa_firmy" placeholder="Wpisz nazwę firmy">
+                NIP: <input type="text" pattern="[0-9]{9 or 10}" maxlength="10" placeholder="Wpisz numer NIP" name="nip">
+                Imie: <input type="text" name="imie" placeholder="Wpisz swoje imię">
+                Nazwisko: <input type="text" name="nazwisko"placeholder="Wpisz swoje nazwisko">
                 Telefon: <input type="tel" pattern="[0-9]{9}" placeholder="Wpisz numer telefonu" name="telefon" required>
                 E-mail: <input type="email" name="e-mail"  placeholder="Wpisz swój adres e-mail" required>
                 Kod pocztowy: <input type="text" pattern="[0-9]{2}-[0-9]{3}" placeholder="Wpisz kod pocztowy" name="kod_pocztowy" required>

@@ -35,7 +35,7 @@
                     ?>
             </table>
         </section>
-        <section id="form">
+        <section id="form3">
             <form method="POST" action="wydanie.php">
                 <label for="id_samochodu">ID samochodu:</label>
                 <input type="text" id="id_uslugi" name="id_uslugi">
@@ -53,7 +53,7 @@
                 $id_uslugi = $_POST['id_uslugi'];
                 $usluga = $_POST['usluga'];
                 $koszt = $_POST['koszt'];
-                $sql = "UPDATE `zgloszenia` SET `data_wydania`= ( SELECT CURDATE()), `usluga` = $usluga, `koszt` = $koszt WHERE id_uslugi = $id_uslugi";
+                $sql = "UPDATE `zgloszenia` SET `data_wydania`= ( SELECT CURDATE()), `usluga` = '$usluga' , `koszt` = '$koszt' WHERE id_uslugi = '$id_uslugi'";
                 
                 // wykonanie zapytania SQL
                 if(mysqli_query($conn, $sql)) {
