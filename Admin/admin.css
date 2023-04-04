@@ -127,3 +127,9 @@ form{
 input{
     margin: 10px;
 }
+
+#car{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
