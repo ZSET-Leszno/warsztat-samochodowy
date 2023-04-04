@@ -47,19 +47,13 @@
         $miejscowosc = $_POST["miejscowosc"];
         $adres = $_POST["adres"];
         if(!empty($nazwa_firmy) and !empty($NIP)){
-          //header('Location: samochod.php');
-          //echo "Dodano rezerwacje";
           #firma
           $kwerenda = "SELECT `id_klienta`, `nazwa_firmy`, `NIP`, `telefon`, `email`, `kod_pocztowy`, `miejscowosc`, `adres`, `samochod` FROM `klienci` WHERE nazwa_firmy='$nazwa_firmy' and NIP='$NIP' and telefon='$telefon' and email='$email' and kod_pocztowy='$kod_pocztowy' and miejscowosc='$miejscowosc' and adres = '$adres';";
           $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
           $klienci = mysqli_query($polaczenie, $kwerenda);
-          $liczba_wierszy = mysqli_num_rows($klienci);
-          echo "$liczba_wierszy";
-          if ($liczba_wierszy == 0)
-          {
-            echo "Dodaj swój samochód";
+          echo "Dodaj swój samochód";
             //if (isset($_POST['button'])){
-              echo '<section class="form"><form action="" method="post">
+              echo '<section class="form"><form action="koncowa.php" method="post">
               Marka: <br><br>';//<input type="text" name="marka">
               $kwerenda_marki = "SELECT `id_marki`, `nazwa` FROM `marki_samochodów`";
               $marki = mysqli_query($polaczenie, $kwerenda_marki);
@@ -106,34 +100,7 @@
               
               
           }
-          else if($liczba_wierszy > 0)
-          {
-            echo "Wybierz swój samchód lub dodaj inny.";
-            $array = [];
-            while($r = mysqli_fetch_row($klienci))
-            {
-              $id_samochodu = $r[8];
-              array_push($array, $id_samochodu);
-            }
-            foreach($array as $id_samochodu)
-            {
-              $kwerenda_samochody = "SELECT `id_samochodu`, `marka`, `model`, `rodzaj_silnika`, `numer_rejestracyjny`, `rocznik` FROM `samochody` where id_samochodu='$id_samochodu';";
-              $samochody = mysqli_query($polaczenie, $kwerenda_samochody);
-              while($r = mysqli_fetch_row($samochody)){
-              echo "<tr>";
-              echo "<td>".$r[0]."</td>";
-              echo "<td>".$r[1]."</td>";
-              echo "<td>".$r[2]."</td>";
-              echo "<td>".$r[3]."</td>";
-              echo "<td>".$r[4]."</td>";
-              echo "<td>".$r[5]."</td>";
-              echo "</tr>";
-              }
-            }
-          }
-          
-          mysqli_close($polaczenie);
-        }else if(!empty($imie) and !empty($nazwisko)){
+        else if(!empty($imie) and !empty($nazwisko)){
           echo "Dodano rezerwacje2";
           #klient
           $kwerenda = "SELECT `id_klienta`, `imie`, `nazwisko`, `telefon`, `email`, `kod_pocztowy`, `miejscowosc`, `adres`, `samochod` FROM `klienci` WHERE imie='$imie' and nazwisko='$nazwisko' and telefon='$telefon' and email='$email' and kod_pocztowy='$kod_pocztowy' and miejscowosc='$miejscowosc' and adres = '$adres';";
@@ -155,6 +122,7 @@
         }else{
           echo"Uzupełnij dane formularza według wytycznych.";
         }
+        mysqli_close($polaczenie);
         ?>
     </main>
     <footer>

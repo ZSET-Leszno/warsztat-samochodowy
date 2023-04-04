@@ -23,6 +23,7 @@
     </header>
     <main>
         <?php
+        $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
         $nazwa_firmy = $_POST["nazwa_firmy"];
         $NIP = $_POST["nip"];
         $imie = $_POST["imie"];
@@ -32,7 +33,29 @@
         $kod_pocztowy = $_POST["kod_pocztowy"];
         $miejscowosc = $_POST["miejscowosc"];
         $adres = $_POST["adres"];
+        if (isset($_POST['Wybierz'])) {
         $id_samochodu = $_POST["id_samochodu"];
+        }
+        if (isset($_POST['button2'])) {
+            $marka = $_POST["marka"];
+            $model = $_POST["model"];
+            $rodzaj_silnika = $_POST["rodzaj_silnika"];
+            $numer_rejestracyjny = $_POST["numer_rejestracyjny"];
+            $rocznik = $_POST["rocznik"];
+        }
+        if(!empty($nazwa_firmy) and !empty($NIP) and !empty($marka) and !empty($model) and !empty($rodzaj_silnika) and !empty($numer_rejestracyjny) and !empty($rocznik)){
+            $kwerenda_dodaj_samochod = "INSERT INTO `samochody`(`marka`, `model`, `rodzaj_silnika`, `numer_rejestracyjny`, `rocznik`) VALUES ('$marka','$model','$rodzaj_silnika','$numer_rejestracyjny','$rocznik')";
+            $dodaj_samochod = mysqli_query($polaczenie, $kwerenda_dodaj_samochod);
+            $kwerenda_szukanie_id_samochodu = "SELECT `id_samochodu` FROM `samochody` WHERE `numer_rejestracyjny`='$numer_rejestracyjny';";
+            $szukaj_id_samochodu = mysqli_query($polaczenie, $kwerenda_szukanie_id_samochodu);
+            $r = mysqli_fetch_row($szukaj_id_samochodu);
+            $id_samochodu = $r[0];
+            echo "$id_samochodu";
+            $kwerenda_dodawnie_klienta = "INSERT INTO `klienci`(`nazwa_firmy`, `NIP`, `telefon`, `email`, `kod_pocztowy`, `miejscowosc`, `adres`, `samochod`) VALUES ('$nazwa_firmy','$NIP','$telefon','$email','$kod_pocztowy','$miejscowosc','$adres','$id_samochodu');";
+            $dodaj_klienta = mysqli_query($polaczenie, $kwerenda_dodawnie_klienta);
+            echo "Dodano twój samochód do bazy oraz umówiono wizytę";
+        }
+        mysqli_close($polaczenie);
         ?>
         <p>Twoja wizyta została zarezerwowana<p>
     </main>
