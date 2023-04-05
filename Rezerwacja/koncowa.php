@@ -50,10 +50,24 @@
             $szukaj_id_samochodu = mysqli_query($polaczenie, $kwerenda_szukanie_id_samochodu);
             $r = mysqli_fetch_row($szukaj_id_samochodu);
             $id_samochodu = $r[0];
-            echo "$id_samochodu";
             $kwerenda_dodawnie_klienta = "INSERT INTO `klienci`(`nazwa_firmy`, `NIP`, `telefon`, `email`, `kod_pocztowy`, `miejscowosc`, `adres`, `samochod`) VALUES ('$nazwa_firmy','$NIP','$telefon','$email','$kod_pocztowy','$miejscowosc','$adres','$id_samochodu');";
             $dodaj_klienta = mysqli_query($polaczenie, $kwerenda_dodawnie_klienta);
             echo "Dodano twój samochód do bazy oraz umówiono wizytę";
+        }
+        else if(!empty($imie) and !empty($nazwisko) and !empty($marka) and !empty($model) and !empty($rodzaj_silnika) and !empty($numer_rejestracyjny) and !empty($rocznik)){
+            $kwerenda_dodaj_samochod = "INSERT INTO `samochody`(`marka`, `model`, `rodzaj_silnika`, `numer_rejestracyjny`, `rocznik`) VALUES ('$marka','$model','$rodzaj_silnika','$numer_rejestracyjny','$rocznik')";
+            $dodaj_samochod = mysqli_query($polaczenie, $kwerenda_dodaj_samochod);
+            $kwerenda_szukanie_id_samochodu = "SELECT `id_samochodu` FROM `samochody` WHERE `numer_rejestracyjny`='$numer_rejestracyjny';";
+            $szukaj_id_samochodu = mysqli_query($polaczenie, $kwerenda_szukanie_id_samochodu);
+            $r = mysqli_fetch_row($szukaj_id_samochodu);
+            $id_samochodu = $r[0];
+            $kwerenda_dodawnie_klienta = "INSERT INTO `klienci`(`imie`, `nazwisko`, `telefon`, `email`, `kod_pocztowy`, `miejscowosc`, `adres`, `samochod`) VALUES ('$imie','$nazwisko','$telefon','$email','$kod_pocztowy','$miejscowosc','$adres','$id_samochodu');";
+            $dodaj_klienta = mysqli_query($polaczenie, $kwerenda_dodawnie_klienta);
+            echo "Dodano twój samochód do bazy oraz umówiono wizytę";
+        }
+        else
+        {
+            echo "Błąd";
         }
         mysqli_close($polaczenie);
         ?>
