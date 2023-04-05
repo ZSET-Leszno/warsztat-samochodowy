@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 05 Kwi 2023, 15:15
+-- Czas generowania: 05 Kwi 2023, 15:22
 -- Wersja serwera: 10.4.24-MariaDB
 -- Wersja PHP: 8.1.6
 
@@ -66,7 +66,7 @@ INSERT INTO `klienci` (`id_klienta`, `nazwa_firmy`, `NIP`, `imie`, `nazwisko`, `
 (18, 'Volta', '2047265981', '', '', 478265476, 'volta@wp.pl', '64-100', 'Leszno', 'Gronowska 9', 16),
 (19, NULL, NULL, 'Krzysztof', 'Prałat', 762478401, 'krzysztofpralat@gmail.com', '64-000', 'Kościan', 'Pocztowa 23', 14),
 (20, 'Luster', '2048597236', '', '', 248726412, 'luster@gmail.com', '63-800', 'Gostyń', 'Poznańska 6', 13),
-(21, 'zakladdom@gmail.com', '238591644', NULL, NULL, 742684311, 'zakladdom@gmail.com', '63-800', 'Gostyń', 'Krótka 5', 22);
+(21, 'Zakład ogólno budowlany - dom', '238591644', NULL, NULL, 742684311, 'zakladdom@gmail.com', '63-800', 'Gostyń', 'Krótka 5', 22);
 
 -- --------------------------------------------------------
 

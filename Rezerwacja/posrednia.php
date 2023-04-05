@@ -128,11 +128,36 @@
             }
         }
         else if(!empty($imie) and !empty($nazwisko)){
-          echo "Dodano rezerwacje2";
           #klient
           $kwerenda = "SELECT `samochod` FROM `klienci` WHERE imie='$imie' and nazwisko='$nazwisko' and telefon='$telefon' and email='$email' and kod_pocztowy='$kod_pocztowy' and miejscowosc='$miejscowosc' and adres = '$adres';";
           $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
           $klienci = mysqli_query($polaczenie, $kwerenda);
+          $liczba_wierszy = mysqli_num_rows($klienci);
+          if ($liczba_wierszy == 0)
+          {
+            ?><form action="samochod.php" method="post">
+                <input type="hidden" name="nazwa_firmy" value="<?php echo $nazwa_firmy;?>">
+                <input type="hidden" name="nip" value="<?php echo $NIP;?>">
+                <input type="hidden" name="imie" value="<?php echo $imie;?>">
+                <input type="hidden" name="nazwisko" value="<?php echo $nazwisko;?>">
+                <input type="hidden" name="telefon" value="<?php  echo $telefon;?>" required>
+                <input type="hidden" name="e-mail" value="<?php echo $email;?>" required>
+                <input type="hidden" name="kod_pocztowy" value="<?php echo $kod_pocztowy;?>" required>
+                <input type="hidden" name="miejscowosc" value="<?php echo $miejscowosc;?>" required>
+                <input type="hidden" name="adres" value="<?php echo $adres;?>" required>
+            <button type='sumbit' name="Dalej" id="Dalej">Wybierz</button>
+            <?php
+            if(!isset($_POST['Dalej']))
+            {?>
+              <script>
+                document.querySelector("#Dalej").click()
+              </script>
+            <?php
+            }
+          }
+          elseif ($liczba_wierszy > 0)
+          {
+          echo "<p>Lub wybierz swój samochód z listy</p>";
           $array = [];
           while($r = mysqli_fetch_row($klienci))
           {
@@ -141,19 +166,44 @@
           }
           foreach($array as $id_samochodu)
           {
-            $kwerenda_samochody = "SELECT `id_samochodu`, `marka`, `model`, `rodzaj_silnika`, `numer_rejestracyjny`, `rocznik` FROM `samochody` where id_samochodu='$id_samochodu';";
+            $kwerenda_samochody = "SELECT `id_samochodu`, marki_samochodów.nazwa, `model`, `rodzaj_silnika`, `numer_rejestracyjny`, `rocznik` FROM `samochody` join marki_samochodów on marki_samochodów.id_marki = samochody.marka where id_samochodu='$id_samochodu';";
             $samochody = mysqli_query($polaczenie, $kwerenda_samochody);
             while($r = mysqli_fetch_row($samochody)){
+            ?>
+            <section style="height: 100px; display:flex; flex-direction: row; align-items:center;">
+            <form action="koncowa.php" method="post">
+                <input type="hidden" name="nazwa_firmy" value="<?php echo $nazwa_firmy;?>">
+                <input type="hidden" name="nip" value="<?php echo $NIP;?>">
+                <input type="hidden" name="imie" value="<?php echo $imie;?>">
+                <input type="hidden" name="nazwisko" value="<?php echo $nazwisko;?>">
+                <input type="hidden" name="telefon" value="<?php  echo $telefon;?>" required>
+                <input type="hidden" name="e-mail" value="<?php echo $email;?>" required>
+                <input type="hidden" name="kod_pocztowy" value="<?php echo $kod_pocztowy;?>" required>
+                <input type="hidden" name="miejscowosc" value="<?php echo $miejscowosc;?>" required>
+                <input type="hidden" name="adres" value="<?php echo $adres;?>" required>
+            <?php
+            echo '<input type="hidden" name="id_samochodu" value="<?php echo '.$r[0].';?>" >';
+            ?>
+            <button type='sumbit'  name="Wybierz">Wybierz</button>
+            </form>
+            <?php
+            echo "<table style='border: 1px solid black;border-collapse: collapse;'>";
             echo "<tr>";
-            echo "<td>".$r[0]."</td>";
-            echo "<td>".$r[1]."</td>";
-            echo "<td>".$r[2]."</td>";
-            echo "<td>".$r[3]."</td>";
-            echo "<td>".$r[4]."</td>";
-            echo "<td>".$r[5]."</td>";
+            echo "<td style='border: 1px solid black;'>".$r[1]."</td>";
+            echo "<td style='border: 1px solid black;'>".$r[2]."</td>";
+            echo "<td style='border: 1px solid black;'>".$r[3]."</td>";
+            echo "<td style='border: 1px solid black;'>".$r[4]."</td>";
+            echo "<td style='border: 1px solid black;'>".$r[5]."</td>";
             echo "</tr>";
+            echo "</table>";?>
+            </section><?php
             }
-          }
+            }
+            }
+            else
+            {
+              echo "Błąd";
+            }
         }
         else
         {
