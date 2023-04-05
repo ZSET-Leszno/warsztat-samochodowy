@@ -22,41 +22,43 @@
     </header>
     <main>
         <!--<section id="calendar">
-            <div class="container">
-                <div class="calendar">
-                  <div class="month">
-                    <i class="fas fa-angle-left prev"></i>
-                    <div class="date">
-                      <h1></h1>
-                      <p></p>
-                    </div>
-                    <i class="fas fa-angle-right next"></i>
-                  </div>
-                  <div class="weekdays">
-                    <div>Sun</div>
-                    <div>Mon</div>
-                    <div>Tue</div>
-                    <div>Wed</div>
-                    <div>Thu</div>
-                    <div>Fri</div>
-                    <div>Sat</div>
-                  </div>
-                  <div class="days"></div>
-                </div>
-              </div>
-          
-              <script src="script.js" defer></script>
-          
-        </section>-->
-        <section id="calendar">
           <form>
             <label for="date">Wybierz datę:</label>
             <input type="text" id="date" name="date">
 	        </form>
-        </section>
-        <section class="form">
-            <!--<form action="samochod.php" method="post">-->
+        </section>-->
+        <section class="form" id="calendar">
             <form action="posrednia.php" method="post" id='form'>
+            <label for="date">Wybierz datę:</label>
+            <input type="text" id="date" name="date">
+            <!--<script type="text/javascript" defer>
+              var pole = document.querySelector("#date");
+              pole.onchange = eventHandler;
+              function eventHandler() {
+                var data = document.querySelector("#date").value;
+              }
+            </script>-->
+            <?php /*$data = '<script type="text/javascript" defer>console.log(data);</script>'; */?>
+            <?php
+              /*if (isset($data) and !empty($data))
+              {
+                $kwerenda_godziny = "SELECT godzina_przyjecia FROM `zgloszenia` WHERE data_przyjecia = '$data';";
+                $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
+                $godziny = mysqli_query($polaczenie, $kwerenda_godziny);
+                $godziny_tab = [];
+                while($r = mysqli_fetch_row($godziny))
+                {
+                  $godziny_p = $r[0];
+                  array_push($godziny_tab, $godziny_p);
+                }
+                $tablica = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
+                $roz_tab = array_diff($tablica, $godziny_tab);
+                foreach($roz_tab as $pojedyncza_godzina)
+                {
+                  echo "$pojedyncza_godzina";
+                }
+              }*/
+            ?>
                 Nazwa firmy: <input type="text" name="nazwa_firmy" id="nazwa_firmy" placeholder="Wpisz nazwę firmy">
                 NIP: <input type="text" pattern="[0-9]{9 or 10}" maxlength="10" placeholder="Wpisz numer NIP" name="nip">
                 Imie: <input type="text" name="imie" placeholder="Wpisz swoje imię">
