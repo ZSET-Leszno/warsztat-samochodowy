@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 15 Mar 2023, 16:02
+-- Czas generowania: 05 Kwi 2023, 15:15
 -- Wersja serwera: 10.4.24-MariaDB
 -- Wersja PHP: 8.1.6
 
@@ -48,7 +48,7 @@ CREATE TABLE `klienci` (
 INSERT INTO `klienci` (`id_klienta`, `nazwa_firmy`, `NIP`, `imie`, `nazwisko`, `telefon`, `email`, `kod_pocztowy`, `miejscowosc`, `adres`, `samochod`) VALUES
 (1, NULL, NULL, 'Stefan', 'Woźniak', 123392352, 'andrzejwozniak@gmail.com', '64-100', 'Leszno', 'Wysoka 11', 2),
 (2, NULL, NULL, 'Adam', 'Nowak', 843623832, 'adamnowak@vp.pl', '64-113', 'Osieczna', 'Tadeusz Kościuszki 12', 15),
-(3, 'Zakład ogólno budowlany - dom', '238591644', '', '', 742684311, 'zakładdom@gmail.com', '63-800', 'Gostyń', 'Krótka 5', 4),
+(3, 'Zakład ogólno budowlany - dom', '238591644', '', '', 742684311, 'zakladdom@gmail.com', '63-800', 'Gostyń', 'Krótka 5', 4),
 (4, NULL, NULL, 'Michał', 'Stefaniak', 926548241, 'michalstefaniak@wp.pl', '64-100', 'Leszno', 'Długa 17', 5),
 (5, NULL, NULL, 'Agniszka', 'Wawrzyniak', 437209522, 'agnieszkawawrzyniak@vp.pl', '64-113', 'Kąkolewo', 'Krzywińska 25', 1),
 (6, 'IT Leszno', '2054981163', '', '', 781365915, 'itleszno@gmail.com', '64-100', 'Leszno', 'Fabryczna 3', 6),
@@ -65,7 +65,8 @@ INSERT INTO `klienci` (`id_klienta`, `nazwa_firmy`, `NIP`, `imie`, `nazwisko`, `
 (17, NULL, NULL, 'Jarosław', 'Fogg', 724198416, 'jaroslawfogg@wp.pl', '64-100', 'Leszno', 'Kwiatowa 18', 17),
 (18, 'Volta', '2047265981', '', '', 478265476, 'volta@wp.pl', '64-100', 'Leszno', 'Gronowska 9', 16),
 (19, NULL, NULL, 'Krzysztof', 'Prałat', 762478401, 'krzysztofpralat@gmail.com', '64-000', 'Kościan', 'Pocztowa 23', 14),
-(20, 'Luster', '2048597236', '', '', 248726412, 'luster@gmail.com', '63-800', 'Gostyń', 'Poznańska 6', 13);
+(20, 'Luster', '2048597236', '', '', 248726412, 'luster@gmail.com', '63-800', 'Gostyń', 'Poznańska 6', 13),
+(21, 'zakladdom@gmail.com', '238591644', NULL, NULL, 742684311, 'zakladdom@gmail.com', '63-800', 'Gostyń', 'Krótka 5', 22);
 
 -- --------------------------------------------------------
 
@@ -167,7 +168,8 @@ INSERT INTO `samochody` (`id_samochodu`, `marka`, `model`, `rodzaj_silnika`, `nu
 (17, 27, 'C-klasse', 'Diesel', 'PLE-26SN1', 2006),
 (18, 30, 'Vivaro', 'Diesel', 'PL-77263', 2009),
 (19, 31, '307', 'Benzyna', 'FWS-32313', 2014),
-(20, 42, 'Corolla', 'Hybryda', 'PL-76232', 2017);
+(20, 42, 'Corolla', 'Hybryda', 'PL-76232', 2017),
+(22, 1, 'A1', 'Benzyna', 'PLE-26131', 2018);
 
 -- --------------------------------------------------------
 
@@ -210,7 +212,8 @@ INSERT INTO `zgloszenia` (`id_uslugi`, `data_przyjecia`, `godzina_przyjecia`, `d
 (17, '2023-02-28', 13, '2023-02-28', 'Wymiana termostatu', 170, 12, 12),
 (18, '2023-02-10', 14, '2023-02-14', 'Wymiana sprzęgła', 2500, 18, 8),
 (19, '2023-02-15', 13, '2023-02-18', 'Wymiana linek hamulcowych', 180, 7, 11),
-(20, '2023-02-20', 10, '2023-02-22', 'Wymiana termostatu', 180, 6, 6);
+(20, '2023-02-20', 10, '2023-02-22', 'Wymiana termostatu', 180, 6, 6),
+(22, '2023-04-03', 17, '2023-04-05', 'Wymiana podnośnika szyby', 110, 3, 15);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -252,7 +255,7 @@ ALTER TABLE `zgloszenia`
 -- AUTO_INCREMENT dla tabeli `klienci`
 --
 ALTER TABLE `klienci`
-  MODIFY `id_klienta` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_klienta` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT dla tabeli `marki_samochodów`
@@ -264,13 +267,13 @@ ALTER TABLE `marki_samochodów`
 -- AUTO_INCREMENT dla tabeli `samochody`
 --
 ALTER TABLE `samochody`
-  MODIFY `id_samochodu` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_samochodu` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT dla tabeli `zgloszenia`
 --
 ALTER TABLE `zgloszenia`
-  MODIFY `id_uslugi` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_uslugi` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Ograniczenia dla zrzutów tabel
