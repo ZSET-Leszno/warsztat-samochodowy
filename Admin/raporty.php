@@ -25,12 +25,6 @@
         <a href="firmy_sort.php"><button>Firmy</button></a>
         <a href="klienci_sort.php"><button>Klienci</button></a>
         <a href="zestawienie_m.php"><button>Miesiące</button></a>
-        <!--<button>Marka</button>
-        <button>Miejscowość</button>-->
-        <h2>Aktualizacja zgłoszeń</h2>
-        <a href="wydanie.php"><button>Wydanie pojazdu</button></a>
-        <h2>Wyświetlanie samochodu</h2>
-        <a href="wyswietlenie_samochodu.php"><button>Klienta/Firmy</button></a>
     </main>
     <footer>
         <span class="white">STACJA KONTROLI POJAZDÓW
