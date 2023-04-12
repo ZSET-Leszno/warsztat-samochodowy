@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Warsztat - rezerwacja</title>
     <link rel="stylesheet" href="rezerwacja.css">
-    <link
+    <!--<link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
     />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>-->
 </head>
 <body>
   <header>
@@ -30,15 +30,7 @@
         <section class="form" id="calendar">
             <form action="posrednia.php" method="post" id='form'>
             <label for="date">Wybierz datę:</label>
-            <input type="text" id="date" name="date">
-            <!--<script type="text/javascript" defer>
-              var pole = document.querySelector("#date");
-              pole.onchange = eventHandler;
-              function eventHandler() {
-                var data = document.querySelector("#date").value;
-              }
-            </script>-->
-            <?php /*$data = '<script type="text/javascript" defer>console.log(data);</script>'; */?>
+            <input type="date" id="date" name="date" min="2023-04-10">
             <?php
               /*if (isset($data) and !empty($data))
               {
