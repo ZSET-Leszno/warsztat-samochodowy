@@ -16,11 +16,11 @@
     </header>
     <main>
     <section class="baza">
-                <h3>Wyświetlenie firm posortowanych po zostawionych pieniądzach:</h3>
+                <h3>Zestawienie miesięczne:</h3>
                 <table>
                 <?php  
                         $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
-                        $klienci = mysqli_query($polaczenie, 'SELECT date_format(`data_wydania`, "%Y") as Rok , date_format(`data_wydania`, "%M") as Miesiąc, sum(`koszt`) as suma FROM `zgloszenia` WHERE `data_wydania` is not null or data_wydania != "" group by Rok, Miesiąc;');
+                        $klienci = mysqli_query($polaczenie, 'SELECT date_format(`data_wydania`, "%Y") as Rok , date_format(`data_wydania`, "%M") as Miesiąc, sum(`koszt`) as suma FROM `zgloszenia` WHERE `data_wydania` is not null or data_wydania != "" group by Rok, Miesiąc order by Rok and Miesiąc;');
                         while ($row = mysqli_fetch_assoc($klienci)) {
                             $rok = $row['Rok'];
                             $month = $row['Miesiąc'];

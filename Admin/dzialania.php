@@ -15,8 +15,8 @@
         </div>
     </header>
     <main>
-        <button>Wydanie samochodu</button>
-        <button>Wybór samochodu</button>
+        <a href="wydanie.php"><button>Wydanie samochodu</button></a>
+        <a href="wyswietlenie_samochodu.php"><button>Wyświetlenie samochodu</button></a>
     </main>
     <footer>
         <span class="white">STACJA KONTROLI POJAZDÓW
