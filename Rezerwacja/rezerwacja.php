@@ -30,7 +30,46 @@
         <section class="form" id="calendar">
             <form action="posrednia.php" method="post" id='form'>
             <label for="date">Wybierz datę:</label>
-            <input type="date" id="date" name="date" min="2023-04-10">
+            <input type="date" id="date" name="date" required>
+            <label for="time">Wybierz godzinę:</label>
+            <select id="time" name="time" required>
+              <option value="">Wybierz godzinę</option>
+            </select>
+            <script>
+              const dateInput = document.getElementById("date");
+              const timeSelect = document.getElementById("time");
+
+              // Funkcja do pobierania wolnych godzin z serwera za pomocą AJAX
+              function getFreeTimes(date) {
+                const xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                  if (this.readyState === 4 && this.status === 200) {
+                    const freeTimes = JSON.parse(this.responseText);
+                    displayFreeTimes(freeTimes);
+                  }
+                };
+                xhr.open("GET", "get_free_times.php?date=" + date, true);
+                xhr.send();
+              }
+
+              // Funkcja do wyświetlania wolnych godzin w polu wyboru
+              function displayFreeTimes(freeTimes) {
+                timeSelect.innerHTML = "<option value=''>Wybierz godzinę</option>";
+                for (let time of freeTimes) {
+                  const option = document.createElement("option");
+                  option.value = time;
+                  option.textContent = time;
+                  timeSelect.appendChild(option);
+                }
+              }
+
+              // Reakcja na zmianę daty
+              dateInput.addEventListener("change", (event) => {
+                const selectedDate = event.target.value;
+                getFreeTimes(selectedDate);
+              });
+            </script>
+            <br>
             <?php
               /*if (isset($data) and !empty($data))
               {
