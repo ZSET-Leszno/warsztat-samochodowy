@@ -25,6 +25,8 @@
     <main>
       <div id="posrednia">
         <?php
+          $data = $_POST["date"];
+          $godzina = $_POST["time"];
           $nazwa_firmy = $_POST["nazwa_firmy"];
           $NIP = $_POST["nip"];
           $imie = $_POST["imie"];
@@ -37,6 +39,8 @@
         ?>
         <section style="height: 100px;">
             <form action="samochod.php" method="post">
+                <input type="hidden" name="date" value="<?php echo $data;?>">
+                <input type="hidden" name="time" value="<?php echo $godzina;?>">
                 <input type="hidden" name="nazwa_firmy" value="<?php echo $nazwa_firmy;?>">
                 <input type="hidden" name="nip" value="<?php echo $NIP;?>">
                 <input type="hidden" name="imie" value="<?php echo $imie;?>">
@@ -58,6 +62,8 @@
           if ($liczba_wierszy == 0)
           {
             ?><form action="samochod.php" method="post">
+                <input type="hidden" name="date" value="<?php echo $data;?>">
+                <input type="hidden" name="time" value="<?php echo $godzina;?>">
                 <input type="hidden" name="nazwa_firmy" value="<?php echo $nazwa_firmy;?>">
                 <input type="hidden" name="nip" value="<?php echo $NIP;?>">
                 <input type="hidden" name="imie" value="<?php echo $imie;?>">
@@ -94,6 +100,8 @@
             ?>
             <section style="height: 100px; display:flex; flex-direction: row; align-items:center;">
             <form action="koncowa.php" method="post">
+                <input type="hidden" name="date" value="<?php echo $data;?>">
+                <input type="hidden" name="time" value="<?php echo $godzina;?>">
                 <input type="hidden" name="nazwa_firmy" value="<?php echo $nazwa_firmy;?>">
                 <input type="hidden" name="nip" value="<?php echo $NIP;?>">
                 <input type="hidden" name="imie" value="<?php echo $imie;?>">
@@ -136,6 +144,8 @@
           if ($liczba_wierszy == 0)
           {
             ?><form action="samochod.php" method="post">
+                <input type="hidden" name="date" value="<?php echo $data;?>">
+                <input type="hidden" name="time" value="<?php echo $godzina;?>">
                 <input type="hidden" name="nazwa_firmy" value="<?php echo $nazwa_firmy;?>">
                 <input type="hidden" name="nip" value="<?php echo $NIP;?>">
                 <input type="hidden" name="imie" value="<?php echo $imie;?>">
@@ -172,6 +182,8 @@
             ?>
             <section style="height: 100px; display:flex; flex-direction: row; align-items:center;">
             <form action="koncowa.php" method="post">
+                <input type="hidden" name="date" value="<?php echo $data;?>">
+                <input type="hidden" name="time" value="<?php echo $godzina;?>">
                 <input type="hidden" name="nazwa_firmy" value="<?php echo $nazwa_firmy;?>">
                 <input type="hidden" name="nip" value="<?php echo $NIP;?>">
                 <input type="hidden" name="imie" value="<?php echo $imie;?>">

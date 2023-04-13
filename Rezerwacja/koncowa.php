@@ -24,6 +24,8 @@
     <main>
         <?php
         $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
+        $data = $_POST["date"];
+        $godzina = $_POST["time"];
         $nazwa_firmy = $_POST["nazwa_firmy"];
         $NIP = $_POST["nip"];
         $imie = $_POST["imie"];

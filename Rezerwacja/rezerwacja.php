@@ -29,67 +29,23 @@
         </section>-->
         <section class="form" id="calendar">
             <form action="posrednia.php" method="post" id='form'>
-            <label for="date">Wybierz datę:</label>
-            <input type="date" id="date" name="date" required>
+            <label for="date-input">Wybierz datę:</label>
+            <input type="date" id="date-input" name="date" required>
             <label for="time">Wybierz godzinę:</label>
             <select id="time" name="time" required>
-              <option value="">Wybierz godzinę</option>
+              <option value="">8</option>
+              <option value="">9</option>
+              <option value="">10</option>
+              <option value="">11</option>
+              <option value="">12</option>
+              <option value="">13</option>
+              <option value="">14</option>
+              <option value="">15</option>
+              <option value="">16</option>
+              <option value="">17</option>
+              <option value="">18</option>
             </select>
-            <script>
-              const dateInput = document.getElementById("date");
-              const timeSelect = document.getElementById("time");
-
-              // Funkcja do pobierania wolnych godzin z serwera za pomocą AJAX
-              function getFreeTimes(date) {
-                const xhr = new XMLHttpRequest();
-                xhr.onreadystatechange = function() {
-                  if (this.readyState === 4 && this.status === 200) {
-                    const freeTimes = JSON.parse(this.responseText);
-                    displayFreeTimes(freeTimes);
-                  }
-                };
-                xhr.open("GET", "get_free_times.php?date=" + date, true);
-                xhr.send();
-              }
-
-              // Funkcja do wyświetlania wolnych godzin w polu wyboru
-              function displayFreeTimes(freeTimes) {
-                timeSelect.innerHTML = "<option value=''>Wybierz godzinę</option>";
-                for (let time of freeTimes) {
-                  const option = document.createElement("option");
-                  option.value = time;
-                  option.textContent = time;
-                  timeSelect.appendChild(option);
-                }
-              }
-
-              // Reakcja na zmianę daty
-              dateInput.addEventListener("change", (event) => {
-                const selectedDate = event.target.value;
-                getFreeTimes(selectedDate);
-              });
-            </script>
             <br>
-            <?php
-              /*if (isset($data) and !empty($data))
-              {
-                $kwerenda_godziny = "SELECT godzina_przyjecia FROM `zgloszenia` WHERE data_przyjecia = '$data';";
-                $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
-                $godziny = mysqli_query($polaczenie, $kwerenda_godziny);
-                $godziny_tab = [];
-                while($r = mysqli_fetch_row($godziny))
-                {
-                  $godziny_p = $r[0];
-                  array_push($godziny_tab, $godziny_p);
-                }
-                $tablica = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
-                $roz_tab = array_diff($tablica, $godziny_tab);
-                foreach($roz_tab as $pojedyncza_godzina)
-                {
-                  echo "$pojedyncza_godzina";
-                }
-              }*/
-            ?>
                 Nazwa firmy: <input type="text" name="nazwa_firmy" id="nazwa_firmy" placeholder="Wpisz nazwę firmy">
                 NIP: <input type="text" pattern="[0-9]{9 or 10}" maxlength="10" placeholder="Wpisz numer NIP" name="nip">
                 Imie: <input type="text" name="imie" placeholder="Wpisz swoje imię">
@@ -102,6 +58,15 @@
                 <button type="submit" name="button1">Zarezerwuj</button>
             </form>
         </section>
+        <script>
+          const dateInput = document.querySelector('#date-input');
+          const maxDate = new Date();
+          const minDate = new Date();
+          maxDate.setDate(maxDate.getDate() + 21);
+          minDate.setDate(minDate.getDate());
+          dateInput.setAttribute('max', maxDate.toISOString().split('T')[0]);
+          dateInput.setAttribute('min', minDate.toISOString().split('T')[0]);
+        </script>
     </main>
     <footer>
         <p class="white">STACJA KONTROLI POJAZDÓW
