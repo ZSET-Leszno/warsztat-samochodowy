@@ -54,8 +54,20 @@
             $id_samochodu = $r[0];
             $kwerenda_dodawnie_klienta = "INSERT INTO `klienci`(`nazwa_firmy`, `NIP`, `telefon`, `email`, `kod_pocztowy`, `miejscowosc`, `adres`, `samochod`) VALUES ('$nazwa_firmy','$NIP','$telefon','$email','$kod_pocztowy','$miejscowosc','$adres','$id_samochodu');";
             $dodaj_klienta = mysqli_query($polaczenie, $kwerenda_dodawnie_klienta);
+
             echo "Dodano twój samochód do bazy oraz umówiono wizytę";
         }
+        
+        else if(!empty($nazwa_firmy) and !empty($NIP) and !empty($id_samochodu))
+        {
+            $kwerenda_szukanie_id_wlascicela = "SELECT `id_klienta` FROM `klienci` WHERE nazwa_firmy='$nazwa_firmy' and NIP='$NIP' and telefon='$telefon' and email='$email' and kod_pocztowy='$kod_pocztowy' and miejscowosc='$miejscowosc' and adres = '$adres';";
+            $szukaj_id_wlasciciela = mysqli_query($polaczenie, $kwerenda_szukanie_id_wlascicela);
+            $r = mysqli_fetch_row($szukaj_id_wlasciciela);
+            $wlascicel = $r[0];
+            $kwerenda_dodawnie_zgloszenia = "INSERT INTO `klienci` (`data_przyjecia`, `godzina_przyjecia`, `samochod`, `wlasciciel`) VALUES ('$data','$godzina','$id_samochodu','$wlascicel');";
+            $dodaj_zgloszenie = mysqli_query($polaczenie, $kwerenda_dodawnie_zgloszenia);
+        }
+
         else if(!empty($imie) and !empty($nazwisko) and !empty($marka) and !empty($model) and !empty($rodzaj_silnika) and !empty($numer_rejestracyjny) and !empty($rocznik)){
             $kwerenda_dodaj_samochod = "INSERT INTO `samochody`(`marka`, `model`, `rodzaj_silnika`, `numer_rejestracyjny`, `rocznik`) VALUES ('$marka','$model','$rodzaj_silnika','$numer_rejestracyjny','$rocznik')";
             $dodaj_samochod = mysqli_query($polaczenie, $kwerenda_dodaj_samochod);
@@ -67,6 +79,17 @@
             $dodaj_klienta = mysqli_query($polaczenie, $kwerenda_dodawnie_klienta);
             echo "Dodano twój samochód do bazy oraz umówiono wizytę";
         }
+
+        else if(!empty($imie) and !empty($nazwisko) and !empty($id_samochodu))
+        {
+            $kwerenda_szukanie_id_wlascicela = "SELECT `id_klienta` FROM `klienci` WHERE nazwa_firmy='$imie' and NIP='$nazwisko' and telefon='$telefon' and email='$email' and kod_pocztowy='$kod_pocztowy' and miejscowosc='$miejscowosc' and adres = '$adres';";
+            $szukaj_id_wlasciciela = mysqli_query($polaczenie, $kwerenda_szukanie_id_wlascicela);
+            $r = mysqli_fetch_row($szukaj_id_wlasciciela);
+            $wlascicel = $r[0];
+            $kwerenda_dodawnie_zgloszenia = "INSERT INTO `klienci` (`data_przyjecia`, `godzina_przyjecia`, `samochod`, `wlasciciel`) VALUES ('$data','$godzina','$id_samochodu','$wlascicel');";
+            $dodaj_zgloszenie = mysqli_query($polaczenie, $kwerenda_dodawnie_zgloszenia);
+        }
+        
         else
         {
             echo "Błąd";
