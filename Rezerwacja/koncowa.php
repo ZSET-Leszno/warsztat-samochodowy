@@ -66,6 +66,8 @@
             $wlasciciel = $r[0];
             $kwerenda_dodawanie_zgloszenia = "INSERT INTO `zgloszenia` (`data_przyjecia`, `godzina_przyjecia`, `samochod`, `wlasciciel`) VALUES ('$data','$godzina','$id_samochodu','$wlasciciel');";
             $dodaj_zgloszenie = mysqli_query($polaczenie, $kwerenda_dodawanie_zgloszenia);
+
+            echo "Dodano twój samochód do bazy oraz umówiono wizytę";
         }
 
         else if(!empty($imie) and !empty($nazwisko) and !empty($marka) and !empty($model) and !empty($rodzaj_silnika) and !empty($numer_rejestracyjny) and !empty($rocznik)){
@@ -88,6 +90,8 @@
             $wlascicel = $r[0];
             $kwerenda_dodawanie_zgloszenia = "INSERT INTO `zgloszenia` (`data_przyjecia`, `godzina_przyjecia`, `samochod`, `wlasciciel`) VALUES ('$data','$godzina','$id_samochodu','$wlascicel');";
             $dodaj_zgloszenie = mysqli_query($polaczenie, $kwerenda_dodawanie_zgloszenia);
+
+            echo "Dodano twój samochód do bazy oraz umówiono wizytę";
         }
         
         else
