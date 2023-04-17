@@ -14,36 +14,48 @@
 	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>-->
 </head>
 <body>
-  <header>
+    <header>
             <a href="../Main/index.html"><img src="../images/logo.png" alt="logo"></a>
             <p>STACJA KONTROLI POJAZDÓW</p>
             <p>WARSZTAT SAMOCHODOWY</p>
             <a href="https://www.google.pl/maps/dir//Auto+Zagórski,+Szamarzewskiego+42,+60-552+Poznań/@52.4113947,16.8946119,17z/data=!4m16!1m7!3m6!1s0x470444c7d574b2bf:0x67e94e3dc08f37fd!2sAuto+Zagórski!3b1!8m2!3d52.4113915!4d16.8948886!4m7!1m0!1m5!1m1!1s0x470444c7d574b2bf:0x67e94e3dc08f37fd!2m2!1d16.8948886!2d52.4113915" target="_blank"><p>WYZNACZ TRASĘ</p></a> 
+            <script>
+              function validateForm() {
+                var companyName = document.forms["myForm"]["nazwa_firmy"].value;
+                var NIP = document.forms["myForm"]["nip"].value;
+                var firstName = document.forms["myForm"]["imie"].value;
+                var lastName = document.forms["myForm"]["nazwisko"].value;
+                
+                if ((companyName && NIP) && (!firstName && !lastName)) {
+                  return true;
+                } else if ((!companyName && !NIP) && (firstName && lastName)) {
+                  return true;
+                } else {
+                  alert("Proszę wypełnić pola zgodnie z wymaganiami.");
+                  return false;
+                }
+              }
+            </script>
     </header>
     <main  style="height: 900px;">
-        <!--<section id="calendar">
-          <form>
-            <label for="date">Wybierz datę:</label>
-            <input type="text" id="date" name="date">
-	        </form>
-        </section>-->
+        <p style="text-align: center; height:50px">W przypadku firmy uzupełnij pola <b>Nazwę firmy</b> oraz <b>NIP</b>, a w przypadku osoby prywatnej pola <b>Imię</b> i <b>Nazwisko</b> - reszta pól jest wspólna.</p>
         <section class="form" id="calendar">
-            <form action="posrednia.php" method="post" id='form'>
+            <form onsubmit="return validateForm()" action="posrednia.php" method="post" id='form' name="myForm">
             <label for="date-input">Wybierz datę:</label>
             <input type="date" id="date-input" name="date" required>
-            <label for="time">Wybierz godzinę:</label>
-            <select id="time" name="time" required>
-              <option value="">8</option>
-              <option value="">9</option>
-              <option value="">10</option>
-              <option value="">11</option>
-              <option value="">12</option>
-              <option value="">13</option>
-              <option value="">14</option>
-              <option value="">15</option>
-              <option value="">16</option>
-              <option value="">17</option>
-              <option value="">18</option>
+            <label for="czas">Wybierz godzinę:</label>
+            <select id="czas" name="czas" required>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
             </select>
             <br>
                 Nazwa firmy: <input type="text" name="nazwa_firmy" id="nazwa_firmy" placeholder="Wpisz nazwę firmy">

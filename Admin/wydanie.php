@@ -20,7 +20,7 @@
                 <table>
                 <?php  
                         $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
-                        $klienci = mysqli_query($polaczenie, 'SELECT `id_uslugi`, `data_przyjecia`, `godzina_przyjecia`, marki_samochodów.nazwa, samochody.model, samochody.numer_rejestracyjny FROM `zgloszenia` join samochody on samochody.id_samochodu = zgloszenia.samochod join marki_samochodów on marki_samochodów.id_marki = samochody.marka WHERE `data_wydania` is null or `data_wydania` = "";');
+                        $klienci = mysqli_query($polaczenie, 'SELECT `id_uslugi`, `data_przyjecia`, `godzina_przyjecia`, marki_samochodów.nazwa, samochody.model, samochody.numer_rejestracyjny FROM `zgloszenia` join samochody on samochody.id_samochodu = zgloszenia.samochod join marki_samochodów on marki_samochodów.id_marki = samochody.marka WHERE `data_przyjecia` <= CURRENT_DATE and `data_wydania` is null or `data_wydania` = "";');
                         while($r = mysqli_fetch_row($klienci)){
                             echo "<tr>";
                             echo "<td>".$r[0]."</td>";

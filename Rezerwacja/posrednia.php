@@ -26,7 +26,7 @@
       <div id="posrednia">
         <?php
           $data = $_POST["date"];
-          $godzina = $_POST["time"];
+          $godzina = $_POST["czas"];
           $nazwa_firmy = $_POST["nazwa_firmy"];
           $NIP = $_POST["nip"];
           $imie = $_POST["imie"];
@@ -40,7 +40,7 @@
         <section style="height: 100px;">
             <form action="samochod.php" method="post">
                 <input type="hidden" name="date" value="<?php echo $data;?>">
-                <input type="hidden" name="time" value="<?php echo $godzina;?>">
+                <input type="hidden" name="czas" value="<?php echo $godzina;?>">
                 <input type="hidden" name="nazwa_firmy" value="<?php echo $nazwa_firmy;?>">
                 <input type="hidden" name="nip" value="<?php echo $NIP;?>">
                 <input type="hidden" name="imie" value="<?php echo $imie;?>">
@@ -63,7 +63,7 @@
           {
             ?><form action="samochod.php" method="post">
                 <input type="hidden" name="date" value="<?php echo $data;?>">
-                <input type="hidden" name="time" value="<?php echo $godzina;?>">
+                <input type="hidden" name="czas" value="<?php echo $godzina;?>">
                 <input type="hidden" name="nazwa_firmy" value="<?php echo $nazwa_firmy;?>">
                 <input type="hidden" name="nip" value="<?php echo $NIP;?>">
                 <input type="hidden" name="imie" value="<?php echo $imie;?>">
@@ -101,7 +101,7 @@
             <section style="height: 100px; display:flex; flex-direction: row; align-items:center;">
             <form action="koncowa.php" method="post">
                 <input type="hidden" name="date" value="<?php echo $data;?>">
-                <input type="hidden" name="time" value="<?php echo $godzina;?>">
+                <input type="hidden" name="czas" value="<?php echo $godzina;?>">
                 <input type="hidden" name="nazwa_firmy" value="<?php echo $nazwa_firmy;?>">
                 <input type="hidden" name="nip" value="<?php echo $NIP;?>">
                 <input type="hidden" name="imie" value="<?php echo $imie;?>">
@@ -112,9 +112,9 @@
                 <input type="hidden" name="miejscowosc" value="<?php echo $miejscowosc;?>" required>
                 <input type="hidden" name="adres" value="<?php echo $adres;?>" required>
             <?php
-            echo '<input type="hidden" name="id_samochodu" value="<?php echo '.$r[0].';?>" >';
+            echo '<input type="hidden" name="id_samochodu" value="'.$r[0].'" >';
             ?>
-            <button type='sumbit'  name="Wybierz">Wybierz</button>
+            <button type='sumbit' name="Wybierz">Wybierz</button>
             </form>
             <?php
             echo "<table style='border: 1px solid black;border-collapse: collapse;'>";
@@ -145,7 +145,7 @@
           {
             ?><form action="samochod.php" method="post">
                 <input type="hidden" name="date" value="<?php echo $data;?>">
-                <input type="hidden" name="time" value="<?php echo $godzina;?>">
+                <input type="hidden" name="czas" value="<?php echo $godzina;?>">
                 <input type="hidden" name="nazwa_firmy" value="<?php echo $nazwa_firmy;?>">
                 <input type="hidden" name="nip" value="<?php echo $NIP;?>">
                 <input type="hidden" name="imie" value="<?php echo $imie;?>">
@@ -183,7 +183,7 @@
             <section style="height: 100px; display:flex; flex-direction: row; align-items:center;">
             <form action="koncowa.php" method="post">
                 <input type="hidden" name="date" value="<?php echo $data;?>">
-                <input type="hidden" name="time" value="<?php echo $godzina;?>">
+                <input type="hidden" name="czas" value="<?php echo $godzina;?>">
                 <input type="hidden" name="nazwa_firmy" value="<?php echo $nazwa_firmy;?>">
                 <input type="hidden" name="nip" value="<?php echo $NIP;?>">
                 <input type="hidden" name="imie" value="<?php echo $imie;?>">
@@ -194,7 +194,7 @@
                 <input type="hidden" name="miejscowosc" value="<?php echo $miejscowosc;?>" required>
                 <input type="hidden" name="adres" value="<?php echo $adres;?>" required>
             <?php
-            echo '<input type="hidden" name="id_samochodu" value="<?php echo '.$r[0].';?>" >';
+            echo '<input type="hidden" name="id_samochodu" value="'.$r[0].'" >';
             ?>
             <button type='sumbit'  name="Wybierz">Wybierz</button>
             </form>

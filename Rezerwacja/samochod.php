@@ -13,7 +13,7 @@
 </head>
 <body>
     <header>
-        <a href="index.html"><img src="logo.png" alt="logo"></a>
+        <a href="index.html"><img src="../images/logo.png" alt="logo"></a>
         <!--MENU-->
         <div id="menu">
             <span>STACJA KONTROLI POJAZDÓW</span>
@@ -24,7 +24,7 @@
     <main>
         <?php
         $data = $_POST["date"];
-        $godzina = $_POST["time"];
+        $godzina = $_POST["czas"];
         $nazwa_firmy = $_POST["nazwa_firmy"];
         $NIP = $_POST["nip"];
         $imie = $_POST["imie"];
@@ -54,7 +54,7 @@
               Numer rejestracyjny: <input type="text" name="numer_rejestracyjny">
               Rocznik: <input type="text" name="rocznik" required>
                 <input type="hidden" name="date" value="<?php echo $data;?>">
-                <input type="hidden" name="time" value="<?php echo $godzina;?>">
+                <input type="hidden" name="czas" value="<?php echo $godzina;?>">
                 <input type="hidden" name="nazwa_firmy" value="<?php echo $nazwa_firmy;?>">
                 <input type="hidden" name="nip" value="<?php echo $NIP;?>">
                 <input type="hidden" name="imie" value="<?php echo $imie;?>">
@@ -87,7 +87,7 @@
               Numer rejestracyjny: <input type="text" name="numer_rejestracyjny">
               Rocznik: <input type="text" name="rocznik" required>
                 <input type="hidden" name="date" value="<?php echo $data;?>">
-                <input type="hidden" name="time" value="<?php echo $godzina;?>">
+                <input type="hidden" name="czas" value="<?php echo $godzina;?>">
                 <input type="hidden" name="nazwa_firmy" value="<?php echo $nazwa_firmy;?>">
                 <input type="hidden" name="nip" value="<?php echo $NIP;?>">
                 <input type="hidden" name="imie" value="<?php echo $imie;?>">
