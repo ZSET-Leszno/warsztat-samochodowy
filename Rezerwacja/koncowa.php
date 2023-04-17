@@ -24,6 +24,8 @@
     <main>
         <?php
         $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
+        $data = $_POST["date"];
+        $godzina = $_POST["czas"];
         $nazwa_firmy = $_POST["nazwa_firmy"];
         $NIP = $_POST["nip"];
         $imie = $_POST["imie"];
@@ -50,10 +52,30 @@
             $szukaj_id_samochodu = mysqli_query($polaczenie, $kwerenda_szukanie_id_samochodu);
             $r = mysqli_fetch_row($szukaj_id_samochodu);
             $id_samochodu = $r[0];
-            $kwerenda_dodawnie_klienta = "INSERT INTO `klienci`(`nazwa_firmy`, `NIP`, `telefon`, `email`, `kod_pocztowy`, `miejscowosc`, `adres`, `samochod`) VALUES ('$nazwa_firmy','$NIP','$telefon','$email','$kod_pocztowy','$miejscowosc','$adres','$id_samochodu');";
-            $dodaj_klienta = mysqli_query($polaczenie, $kwerenda_dodawnie_klienta);
+            $kwerenda_dodawanie_klienta = "INSERT INTO `klienci`(`nazwa_firmy`, `NIP`, `telefon`, `email`, `kod_pocztowy`, `miejscowosc`, `adres`, `samochod`) VALUES ('$nazwa_firmy','$NIP','$telefon','$email','$kod_pocztowy','$miejscowosc','$adres','$id_samochodu');";
+            $dodaj_klienta = mysqli_query($polaczenie, $kwerenda_dodawanie_klienta);
+            $kwerenda_szukanie_id_wlascicela = "SELECT `id_klienta` FROM `klienci` WHERE nazwa_firmy='$nazwa_firmy' and NIP='$NIP' and telefon='$telefon' and email='$email' and kod_pocztowy='$kod_pocztowy' and miejscowosc='$miejscowosc' and adres = '$adres' and samochod = '$id_samochodu';";
+            $szukaj_id_wlasciciela = mysqli_query($polaczenie, $kwerenda_szukanie_id_wlascicela);
+            $r = mysqli_fetch_row($szukaj_id_wlasciciela);
+            $wlasciciel = $r[0];
+            $kwerenda_dodawanie_zgloszenia = "INSERT INTO `zgloszenia` (`data_przyjecia`, `godzina_przyjecia`, `samochod`, `wlasciciel`) VALUES ('$data','$godzina','$id_samochodu','$wlasciciel');";
+            $dodaj_zgloszenie = mysqli_query($polaczenie, $kwerenda_dodawanie_zgloszenia);
+
             echo "Dodano twój samochód do bazy oraz umówiono wizytę";
         }
+        
+        else if(!empty($nazwa_firmy) and !empty($NIP) and !empty($id_samochodu))
+        {
+            $kwerenda_szukanie_id_wlascicela = "SELECT `id_klienta` FROM `klienci` WHERE nazwa_firmy='$nazwa_firmy' and NIP='$NIP' and telefon='$telefon' and email='$email' and kod_pocztowy='$kod_pocztowy' and miejscowosc='$miejscowosc' and adres = '$adres' and samochod = '$id_samochodu';";
+            $szukaj_id_wlasciciela = mysqli_query($polaczenie, $kwerenda_szukanie_id_wlascicela);
+            $r = mysqli_fetch_row($szukaj_id_wlasciciela);
+            $wlasciciel = $r[0];
+            $kwerenda_dodawanie_zgloszenia = "INSERT INTO `zgloszenia` (`data_przyjecia`, `godzina_przyjecia`, `samochod`, `wlasciciel`) VALUES ('$data','$godzina','$id_samochodu','$wlasciciel');";
+            $dodaj_zgloszenie = mysqli_query($polaczenie, $kwerenda_dodawanie_zgloszenia);
+
+            echo "Umówiono twoją wizytę";
+        }
+
         else if(!empty($imie) and !empty($nazwisko) and !empty($marka) and !empty($model) and !empty($rodzaj_silnika) and !empty($numer_rejestracyjny) and !empty($rocznik)){
             $kwerenda_dodaj_samochod = "INSERT INTO `samochody`(`marka`, `model`, `rodzaj_silnika`, `numer_rejestracyjny`, `rocznik`) VALUES ('$marka','$model','$rodzaj_silnika','$numer_rejestracyjny','$rocznik')";
             $dodaj_samochod = mysqli_query($polaczenie, $kwerenda_dodaj_samochod);
@@ -61,17 +83,36 @@
             $szukaj_id_samochodu = mysqli_query($polaczenie, $kwerenda_szukanie_id_samochodu);
             $r = mysqli_fetch_row($szukaj_id_samochodu);
             $id_samochodu = $r[0];
-            $kwerenda_dodawnie_klienta = "INSERT INTO `klienci`(`imie`, `nazwisko`, `telefon`, `email`, `kod_pocztowy`, `miejscowosc`, `adres`, `samochod`) VALUES ('$imie','$nazwisko','$telefon','$email','$kod_pocztowy','$miejscowosc','$adres','$id_samochodu');";
-            $dodaj_klienta = mysqli_query($polaczenie, $kwerenda_dodawnie_klienta);
+            $kwerenda_dodawanie_klienta = "INSERT INTO `klienci`(`imie`, `nazwisko`, `telefon`, `email`, `kod_pocztowy`, `miejscowosc`, `adres`, `samochod`) VALUES ('$imie','$nazwisko','$telefon','$email','$kod_pocztowy','$miejscowosc','$adres','$id_samochodu');";
+            $dodaj_klienta = mysqli_query($polaczenie, $kwerenda_dodawanie_klienta);
+            $kwerenda_szukanie_id_wlascicela = "SELECT `id_klienta` FROM `klienci` WHERE `imie`='$imie' and `nazwisko`='$nazwisko' and telefon='$telefon' and email='$email' and kod_pocztowy='$kod_pocztowy' and miejscowosc='$miejscowosc' and adres = '$adres' and samochod = '$id_samochodu';";
+            $szukaj_id_wlasciciela = mysqli_query($polaczenie, $kwerenda_szukanie_id_wlascicela);
+            $r = mysqli_fetch_row($szukaj_id_wlasciciela);
+            $wlasciciel = $r[0];
+            $kwerenda_dodawanie_zgloszenia = "INSERT INTO `zgloszenia` (`data_przyjecia`, `godzina_przyjecia`, `samochod`, `wlasciciel`) VALUES ('$data','$godzina','$id_samochodu','$wlasciciel');";
+            $dodaj_zgloszenie = mysqli_query($polaczenie, $kwerenda_dodawanie_zgloszenia);
+
             echo "Dodano twój samochód do bazy oraz umówiono wizytę";
         }
+
+        else if(!empty($imie) and !empty($nazwisko) and !empty($id_samochodu))
+        {
+            $kwerenda_szukanie_id_wlascicela = "SELECT `id_klienta` FROM `klienci` WHERE `imie`='$imie' and `nazwisko`='$nazwisko' and telefon='$telefon' and email='$email' and kod_pocztowy='$kod_pocztowy' and miejscowosc='$miejscowosc' and adres = '$adres' and samochod = '$id_samochodu';";
+            $szukaj_id_wlasciciela = mysqli_query($polaczenie, $kwerenda_szukanie_id_wlascicela);
+            $r = mysqli_fetch_row($szukaj_id_wlasciciela);
+            $wlascicel = $r[0];
+            $kwerenda_dodawanie_zgloszenia = "INSERT INTO `zgloszenia` (`data_przyjecia`, `godzina_przyjecia`, `samochod`, `wlasciciel`) VALUES ('$data','$godzina','$id_samochodu','$wlascicel');";
+            $dodaj_zgloszenie = mysqli_query($polaczenie, $kwerenda_dodawanie_zgloszenia);
+
+            echo "Umówiono twoją wizytę";
+        }
+        
         else
         {
             echo "Błąd";
         }
         mysqli_close($polaczenie);
         ?>
-        <p>Twoja wizyta została zarezerwowana<p>
     </main>
     <footer>
         <span class="white">STACJA KONTROLI POJAZDÓW

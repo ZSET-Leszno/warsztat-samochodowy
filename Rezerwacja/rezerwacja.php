@@ -6,59 +6,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Warsztat - rezerwacja</title>
     <link rel="stylesheet" href="rezerwacja.css">
-    <link
+    <!--<link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
     />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>-->
 </head>
 <body>
-  <header>
+    <header>
             <a href="../Main/index.html"><img src="../images/logo.png" alt="logo"></a>
             <p>STACJA KONTROLI POJAZDÓW</p>
             <p>WARSZTAT SAMOCHODOWY</p>
             <a href="https://www.google.pl/maps/dir//Auto+Zagórski,+Szamarzewskiego+42,+60-552+Poznań/@52.4113947,16.8946119,17z/data=!4m16!1m7!3m6!1s0x470444c7d574b2bf:0x67e94e3dc08f37fd!2sAuto+Zagórski!3b1!8m2!3d52.4113915!4d16.8948886!4m7!1m0!1m5!1m1!1s0x470444c7d574b2bf:0x67e94e3dc08f37fd!2m2!1d16.8948886!2d52.4113915" target="_blank"><p>WYZNACZ TRASĘ</p></a> 
-    </header>
-    <main>
-        <!--<section id="calendar">
-          <form>
-            <label for="date">Wybierz datę:</label>
-            <input type="text" id="date" name="date">
-	        </form>
-        </section>-->
-        <section class="form" id="calendar">
-            <form action="posrednia.php" method="post" id='form'>
-            <label for="date">Wybierz datę:</label>
-            <input type="text" id="date" name="date">
-            <!--<script type="text/javascript" defer>
-              var pole = document.querySelector("#date");
-              pole.onchange = eventHandler;
-              function eventHandler() {
-                var data = document.querySelector("#date").value;
+            <script>
+              function validateForm() {
+                var companyName = document.forms["myForm"]["nazwa_firmy"].value;
+                var NIP = document.forms["myForm"]["nip"].value;
+                var firstName = document.forms["myForm"]["imie"].value;
+                var lastName = document.forms["myForm"]["nazwisko"].value;
+                
+                if ((companyName && NIP) && (!firstName && !lastName)) {
+                  return true;
+                } else if ((!companyName && !NIP) && (firstName && lastName)) {
+                  return true;
+                } else {
+                  alert("Proszę wypełnić pola zgodnie z wymaganiami.");
+                  return false;
+                }
               }
-            </script>-->
-            <?php /*$data = '<script type="text/javascript" defer>console.log(data);</script>'; */?>
-            <?php
-              /*if (isset($data) and !empty($data))
-              {
-                $kwerenda_godziny = "SELECT godzina_przyjecia FROM `zgloszenia` WHERE data_przyjecia = '$data';";
-                $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
-                $godziny = mysqli_query($polaczenie, $kwerenda_godziny);
-                $godziny_tab = [];
-                while($r = mysqli_fetch_row($godziny))
-                {
-                  $godziny_p = $r[0];
-                  array_push($godziny_tab, $godziny_p);
-                }
-                $tablica = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
-                $roz_tab = array_diff($tablica, $godziny_tab);
-                foreach($roz_tab as $pojedyncza_godzina)
-                {
-                  echo "$pojedyncza_godzina";
-                }
-              }*/
-            ?>
+            </script>
+    </header>
+    <main  style="height: 900px;">
+        <p style="text-align: center; height:50px">W przypadku firmy uzupełnij pola <b>Nazwę firmy</b> oraz <b>NIP</b>, a w przypadku osoby prywatnej pola <b>Imię</b> i <b>Nazwisko</b> - reszta pól jest wspólna.</p>
+        <section class="form" id="calendar">
+            <form onsubmit="return validateForm()" action="posrednia.php" method="post" id='form' name="myForm">
+            <label for="date-input">Wybierz datę:</label>
+            <input type="date" id="date-input" name="date" required>
+            <label for="czas">Wybierz godzinę:</label>
+            <select id="czas" name="czas" required>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+            </select>
+            <br>
                 Nazwa firmy: <input type="text" name="nazwa_firmy" id="nazwa_firmy" placeholder="Wpisz nazwę firmy">
                 NIP: <input type="text" pattern="[0-9]{9 or 10}" maxlength="10" placeholder="Wpisz numer NIP" name="nip">
                 Imie: <input type="text" name="imie" placeholder="Wpisz swoje imię">
@@ -71,6 +70,15 @@
                 <button type="submit" name="button1">Zarezerwuj</button>
             </form>
         </section>
+        <script>
+          const dateInput = document.querySelector('#date-input');
+          const maxDate = new Date();
+          const minDate = new Date();
+          maxDate.setDate(maxDate.getDate() + 21);
+          minDate.setDate(minDate.getDate());
+          dateInput.setAttribute('max', maxDate.toISOString().split('T')[0]);
+          dateInput.setAttribute('min', minDate.toISOString().split('T')[0]);
+        </script>
     </main>
     <footer>
         <p class="white">STACJA KONTROLI POJAZDÓW
