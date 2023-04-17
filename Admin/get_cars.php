@@ -16,35 +16,51 @@
     </header>
     <main>
 	<?php
-	// Połączenie z bazą danych
-	$host = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "warsztat";
-	$conn = new mysqli($host, $username, $password, $dbname);
-	if ($conn->connect_error) {
-		die("Connection failed: " . $conn->connect_error);
-	}
+    // Połączenie z bazą danych
+    $host = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "warsztat";
+    $conn = new mysqli($host, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
 
-	// Pobranie ID samochodu z parametru GET
-	$id_samochodu = $_GET["id_samochodu"];
+    // Pobranie ID samochodu z parametru GET
+    $id_samochodu = $_GET["id_samochodu"];
 
-	// Zapytanie SELECT dla tabeli samochody
-	$sql = "SELECT * FROM `samochody` WHERE `id_samochodu` = $id_samochodu";
-	$result = $conn->query($sql);
+    // Zapytanie SELECT dla tabeli samochody
+    $sql = "SELECT id_samochodu, marki_samochodów.nazwa, model, rodzaj_silnika, numer_rejestracyjny, rocznik FROM samochody join marki_samochodów on marki_samochodów.id_marki = samochody.marka where id_samochodu='$id_samochodu';";
+    $result = $conn->query($sql);
 
-	if ($result->num_rows > 0) {
-		// Przygotowanie danych w formacie JSON
-		$cars = array();
-		while($row = $result->fetch_assoc()) {
-			$cars[] = $row;
-		}
-		echo json_encode($cars);
-	} else {
-		echo "Brak danych";
-	}
-	$conn->close();
+    if ($result->num_rows > 0) {
+        // Wyświetlenie wyników w tabeli HTML
+        echo "<table>";
+		echo "<tr>";
+        echo "<th>ID</th>";
+        echo "<th>Marka</th>";
+        echo "<th>Model</th>";
+        echo "<th>Rodzaj silnika</th>";
+        echo "<th>Numer rejestracyjny</th>";
+        echo "<th>Rocznik</th>";
+        echo "</tr>";
+        while($row = $result->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td style='width: 100px; height: 50px; text-align: center'>" . $row["id_samochodu"] . "</td>";
+            echo "<td style='width: 100px; height: 50px; text-align: center'>" . $row["nazwa"] . "</td>";
+            echo "<td style='width: 100px; height: 50px; text-align: center'>" . $row["model"] . "</td>";
+            echo "<td style='width: 100px; height: 50px; text-align: center'>" . $row["rodzaj_silnika"] . "</td>";
+            echo "<td style='width: 100px; height: 50px; text-align: center'>" . $row["numer_rejestracyjny"] . "</td>";
+            echo "<td style='width: 100px; height: 50px; text-align: center'>" . $row["rocznik"] . "</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "Brak danych";
+    }
+    $conn->close();
 ?>
+
     </main>
     <footer>
         <span class="white">STACJA KONTROLI POJAZDÓW
