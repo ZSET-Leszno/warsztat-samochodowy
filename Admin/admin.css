@@ -46,7 +46,7 @@ header span:last-child{
 footer{
     background-color: rgb(61, 61, 61);
     width: 100%;
-    height: 25%;
+    height: 25vh;
     color: rgb(130, 130, 130);
     display: flex;
     flex-direction: column;
@@ -132,12 +132,13 @@ input{
 #car{
     display: flex;
     justify-content: center;
+}
 
 #form3{
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 500;
-    align-items: center;
-}
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 500;
+        align-items: center;
+    }
