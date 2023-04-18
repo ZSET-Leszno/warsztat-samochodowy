@@ -17,48 +17,73 @@
     <main>
 	<?php
     // Połączenie z bazą danych
-    $host = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "warsztat";
-    $conn = new mysqli($host, $username, $password, $dbname);
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+    $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
 
     // Pobranie ID samochodu z parametru GET
     $id_samochodu = $_GET["id_samochodu"];
 
     // Zapytanie SELECT dla tabeli samochody
-    $sql = "SELECT id_samochodu, marki_samochodów.nazwa, model, rodzaj_silnika, numer_rejestracyjny, rocznik FROM samochody join marki_samochodów on marki_samochodów.id_marki = samochody.marka where id_samochodu='$id_samochodu';";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        // Wyświetlenie wyników w tabeli HTML
-        echo "<table>";
-		echo "<tr>";
-        echo "<th>ID</th>";
-        echo "<th>Marka</th>";
-        echo "<th>Model</th>";
-        echo "<th>Rodzaj silnika</th>";
-        echo "<th>Numer rejestracyjny</th>";
-        echo "<th>Rocznik</th>";
-        echo "</tr>";
-        while($row = $result->fetch_assoc()) {
-            echo "<tr>";
-            echo "<td style='width: 100px; height: 50px; text-align: center'>" . $row["id_samochodu"] . "</td>";
-            echo "<td style='width: 100px; height: 50px; text-align: center'>" . $row["nazwa"] . "</td>";
-            echo "<td style='width: 100px; height: 50px; text-align: center'>" . $row["model"] . "</td>";
-            echo "<td style='width: 100px; height: 50px; text-align: center'>" . $row["rodzaj_silnika"] . "</td>";
-            echo "<td style='width: 100px; height: 50px; text-align: center'>" . $row["numer_rejestracyjny"] . "</td>";
-            echo "<td style='width: 100px; height: 50px; text-align: center'>" . $row["rocznik"] . "</td>";
-            echo "</tr>";
-        }
-        echo "</table>";
-    } else {
-        echo "Brak danych";
-    }
-    $conn->close();
+    $kwerenda_szukanie_wlascicela = "SELECT nazwa_firmy, NIP, imie, nazwisko, telefon, email, kod_pocztowy, miejscowosc, adres FROM klienci WHERE samochod = '$id_samochodu';";
+    $szukaj_wlasciciela = mysqli_query($polaczenie, $kwerenda_szukanie_wlascicela);
+            while($r = mysqli_fetch_row($szukaj_wlasciciela))
+            {
+                $nazwa_firmy = $r[0];
+                $NIP = $r[1];
+                $imie = $r[2];
+                $nazwisko = $r[3];
+                $telefon = $r[4];
+                $email = $r[5];
+                $kod_pocztowy = $r[6];
+                $miejscowosc = $r[7];
+                $adres = $r[8];
+            }
+            if ((strlen($nazwa_firmy)>0) and (strlen($NIP)>0))
+            {
+                $kwerenda_samochody = "SELECT samochod FROM klienci WHERE nazwa_firmy='$nazwa_firmy' and NIP='$NIP' and telefon='$telefon' and email='$email' and kod_pocztowy='$kod_pocztowy' and miejscowosc='$miejscowosc' and adres = '$adres';";
+                $zapytanie_samochody = mysqli_query($polaczenie, $kwerenda_samochody);
+            }
+            elseif ((strlen($imie)>0) and (strlen($nazwisko)>0))
+            {
+                $kwerenda_samochody = "SELECT samochod FROM klienci WHERE imie='$imie' and nazwisko='$nazwisko' and telefon='$telefon' and email='$email' and kod_pocztowy='$kod_pocztowy' and miejscowosc='$miejscowosc' and adres = '$adres';";
+                $zapytanie_samochody = mysqli_query($polaczenie, $kwerenda_samochody);
+            }
+            else
+            {
+                echo "Błąd";
+            }
+            $array = [];
+            while($r = mysqli_fetch_row($zapytanie_samochody))
+            {
+                $id_samochodu = $r[0];
+                array_push($array, $id_samochodu);
+            }
+                echo "<table>";
+                echo "<tr>";
+                echo "<th>ID</th>";
+                echo "<th>Marka</th>";
+                echo "<th>Model</th>";
+                echo "<th>Rodzaj silnika</th>";
+                echo "<th>Numer rejestracyjny</th>";
+                echo "<th>Rocznik</th>";
+                echo "</tr>";
+            foreach($array as $id_samochodu)
+            {
+              $kwerenda_samochody = "SELECT id_samochodu, marki_samochodów.nazwa, model, rodzaj_silnika, numer_rejestracyjny, rocznik FROM samochody join marki_samochodów on marki_samochodów.id_marki = samochody.marka where id_samochodu='$id_samochodu';";
+              $samochody = mysqli_query($polaczenie, $kwerenda_samochody);
+              while($row = mysqli_fetch_row($samochody))
+                {
+                    echo "<tr>";
+                    echo "<td style='width: 100px; height: 50px; text-align: center'>" . $row[0] . "</td>";
+                    echo "<td style='width: 100px; height: 50px; text-align: center'>" . $row[1] . "</td>";
+                    echo "<td style='width: 100px; height: 50px; text-align: center'>" . $row[2] . "</td>";
+                    echo "<td style='width: 100px; height: 50px; text-align: center'>" . $row[3] . "</td>";
+                    echo "<td style='width: 100px; height: 50px; text-align: center'>" . $row[4] . "</td>";
+                    echo "<td style='width: 100px; height: 50px; text-align: center'>" . $row[5] . "</td>";
+                    echo "</tr>";
+                }
+            }
+            echo "</table>";
+    mysqli_close($polaczenie);
 ?>
 
     </main>
