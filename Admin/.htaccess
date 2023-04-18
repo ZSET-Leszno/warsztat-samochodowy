@@ -1,0 +1,4 @@
+AuthUserFile C:\xampp\htdocs\warsztat-samochodowy\Admin\.htpasswd
+AuthName "Podaj dane logowania."
+AuthType Basic
+Require valid-user

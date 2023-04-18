@@ -19,6 +19,12 @@
                 <h3>Zestawienie miesięczne:</h3>
                 <table>
                 <?php  
+                        echo "<table>";
+                        echo "<tr>";
+                        echo "<th>Rok</th>";
+                        echo "<th>Miesiąc</th>";
+                        echo "<th>Suma</th>";
+                        echo "</tr>";
                         $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
                         $klienci = mysqli_query($polaczenie, 'SELECT date_format(`data_wydania`, "%Y") as Rok , date_format(`data_wydania`, "%M") as Miesiąc, sum(`koszt`) as suma FROM `zgloszenia` WHERE `data_wydania` is not null or data_wydania != "" group by Rok, Miesiąc order by Rok and Miesiąc;');
                         while ($row = mysqli_fetch_assoc($klienci)) {
@@ -47,6 +53,7 @@
                             echo "<td>".$suma."</td>";
                             echo "</tr>";
                         }
+                        echo "</table>";
                         mysqli_close($polaczenie);
                     ?>
             </table>

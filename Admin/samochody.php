@@ -19,6 +19,15 @@
                 <h3>Wyświetlenie danych samochodów:</h3>
                 <table>
                 <?php  
+                        echo "<table>";
+                        echo "<tr>";
+                        echo "<th>ID</th>";
+                        echo "<th>Marka</th>";
+                        echo "<th>Model</th>";
+                        echo "<th>Rodzaj silnika</th>";
+                        echo "<th>Numer rejestracyjny</th>";
+                        echo "<th>Rocznik</th>";
+                        echo "</tr>";
                         $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
                         $klienci = mysqli_query($polaczenie, 'SELECT `id_samochodu`, marki_samochodów.nazwa , `model`, `rodzaj_silnika`, `numer_rejestracyjny`, `rocznik` FROM `samochody` join marki_samochodów on marki_samochodów.id_marki = samochody.marka WHERE 1;');
                         while($r = mysqli_fetch_row($klienci)){

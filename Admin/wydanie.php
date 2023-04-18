@@ -19,6 +19,15 @@
                 <h3>Samochody do wydania</h3>
                 <table>
                 <?php  
+                        echo "<table>";
+                        echo "<tr>";
+                        echo "<th>ID</th>";
+                        echo "<th>Data przyjęcia</th>";
+                        echo "<th>Godzina przyjęcia</th>";
+                        echo "<th>Marka</th>";
+                        echo "<th>Model</th>";
+                        echo "<th>Numer rejestracyjny</th>";
+                        echo "</tr>";
                         $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
                         $klienci = mysqli_query($polaczenie, 'SELECT `id_uslugi`, `data_przyjecia`, `godzina_przyjecia`, marki_samochodów.nazwa, samochody.model, samochody.numer_rejestracyjny FROM `zgloszenia` join samochody on samochody.id_samochodu = zgloszenia.samochod join marki_samochodów on marki_samochodów.id_marki = samochody.marka WHERE `data_przyjecia` <= CURRENT_DATE and `data_wydania` is null or `data_wydania` = "";');
                         while($r = mysqli_fetch_row($klienci)){
@@ -31,6 +40,7 @@
                             echo "<td>".$r[5]."</td>";
                             echo "</tr>";
                         }
+                        echo "</table>";
                         mysqli_close($polaczenie);
                     ?>
             </table>

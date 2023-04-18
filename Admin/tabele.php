@@ -19,6 +19,20 @@
                 <h3>Tabela - klienci</h3>
                 <table>
                 <?php  
+                        echo "<table>";
+                        echo "<tr>";
+                        echo "<th>ID</th>";
+                        echo "<th>Nazwa firmy</th>";
+                        echo "<th>NIP</th>";
+                        echo "<th>Imie</th>";
+                        echo "<th>Nazwisko</th>";
+                        echo "<th>Telefon</th>";
+                        echo "<th>E-mail</th>";
+                        echo "<th>Kod pocztowy</th>";
+                        echo "<th>Miejscowość</th>";
+                        echo "<th>Adres</th>";
+                        echo "<th>ID-samochodu</th>";
+                        echo "</tr>";
                         $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
                         $klienci = mysqli_query($polaczenie, "SELECT id_klienta, nazwa_firmy, NIP, imie, nazwisko, telefon, email, kod_pocztowy, miejscowosc, adres, samochod FROM klienci;");
                         while($r = mysqli_fetch_row($klienci)){
@@ -36,6 +50,7 @@
                             echo "<td>".$r[10]."</td>";
                             echo "</tr>";
                         }
+                        echo "</table>";
                         mysqli_close($polaczenie);
                     ?>
             </table>
@@ -44,6 +59,10 @@
         <h3>Tabela - marki samochodów</h3>
         <table>
         <?php  
+                echo "<table>";
+                echo "<tr>";
+                echo "<th>ID</th>";
+                echo "<th>Nazwa marki</th>";
                 $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
                 $klienci = mysqli_query($polaczenie, "SELECT id_marki, nazwa FROM marki_samochodów;");
                 while($r = mysqli_fetch_row($klienci)){
@@ -52,6 +71,7 @@
                     echo "<td>".$r[1]."</td>";
                     echo "</tr>";
                 }
+                echo "</table>";
                 mysqli_close($polaczenie);
             ?>
         </table>
@@ -60,6 +80,15 @@
         <h3>Tabela - samochody</h3>
         <table>
         <?php  
+                echo "<table>";
+                echo "<tr>";
+                echo "<th>ID</th>";
+                echo "<th>ID-Marki</th>";
+                echo "<th>Model</th>";
+                echo "<th>Rodzaj silnika</th>";
+                echo "<th>Numer rejestracyjny</th>";
+                echo "<th>Rocznik</th>";
+                echo "</tr>";
                 $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
                 $klienci = mysqli_query($polaczenie, "SELECT id_samochodu, marka, model,rodzaj_silnika, numer_rejestracyjny, rocznik FROM samochody;");
                 while($r = mysqli_fetch_row($klienci)){
@@ -72,6 +101,7 @@
                     echo "<td>".$r[5]."</td>";
                     echo "</tr>";
                 }
+                echo "</table>";
                 mysqli_close($polaczenie);
             ?>
         </table>
@@ -80,6 +110,17 @@
         <h3>Tabela - zgloszenia</h3>
         <table>
         <?php  
+                echo "<table>";
+                echo "<tr>";
+                echo "<th>ID</th>";
+                echo "<th>Data przyjęcia</th>";
+                echo "<th>Godzina przyjęcia</th>";
+                echo "<th>Data wydania</th>";
+                echo "<th>Usługa</th>";
+                echo "<th>Koszt</th>";
+                echo "<th>Id-samochodu</th>";
+                echo "<th>Id-wlasciciela</th>";
+                echo "</tr>";
                 $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
                 $klienci = mysqli_query($polaczenie, "SELECT id_uslugi, data_przyjecia, godzina_przyjecia, data_wydania, usluga, koszt, samochod, wlasciciel FROM zgloszenia;");
                 while($r = mysqli_fetch_row($klienci)){
@@ -94,6 +135,7 @@
                     echo "<td>".$r[7]."</td>";
                     echo "</tr>";
                 }
+                echo "</table>";
                 mysqli_close($polaczenie);
             ?>
         </table>

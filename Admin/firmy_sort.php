@@ -18,7 +18,14 @@
     <section class="baza">
                 <h3>Wyświetlenie firm posortowanych po zostawionych pieniądzach:</h3>
                 <table>
-                <?php  
+                <?php   
+                        echo "<table>";
+                        echo "<tr>";
+                        echo "<th>Nazwa firmy</th>";
+                        echo "<th>NIP</th>";
+                        echo "<th>E-mail</th>";
+                        echo "<th>Suma</th>";
+                        echo "</tr>";
                         $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
                         $klienci = mysqli_query($polaczenie, 'SELECT klienci.nazwa_firmy, klienci.NIP, klienci.email , sum(`koszt`) as suma FROM `zgloszenia` join klienci on klienci.id_klienta = zgloszenia.wlasciciel WHERE klienci.imie is null or klienci.imie = "" and klienci.nazwisko is null or klienci.nazwisko = "" GROUP by klienci.email order by sum(koszt) desc;') ;
                         while($r = mysqli_fetch_row($klienci)){
@@ -29,6 +36,7 @@
                             echo "<td>".$r[3]."</td>";
                             echo "</tr>";
                         }
+                        echo "</table>";
                         mysqli_close($polaczenie);
                     ?>
             </table>

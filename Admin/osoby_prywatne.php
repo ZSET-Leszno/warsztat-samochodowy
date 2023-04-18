@@ -19,6 +19,18 @@
                 <h3>Wyświetlenie danych osób prywatnych:</h3>
                 <table>
                 <?php  
+                        echo "<table>";
+                        echo "<tr>";
+                        echo "<th>ID</th>";
+                        echo "<th>Imie</th>";
+                        echo "<th>Nazwisko</th>";
+                        echo "<th>Telefon</th>";
+                        echo "<th>E-mail</th>";
+                        echo "<th>Kod-pocztowy</th>";
+                        echo "<th>Miejscowość</th>";
+                        echo "<th>Adres</th>";
+                        echo "<th>ID-samochodu</th>";
+                        echo "</tr>";
                         $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
                         $klienci = mysqli_query($polaczenie, 'SELECT `id_klienta`, `imie`, `nazwisko`, `telefon`, `email`, `kod_pocztowy`, `miejscowosc`, `adres`, `samochod` FROM `klienci` WHERE `nazwa_firmy` is null or `nazwa_firmy` = "" and `NIP` is null or `NIP` = "";');
                         while($r = mysqli_fetch_row($klienci)){
@@ -34,6 +46,7 @@
                             echo "<td>".$r[8]."</td>";
                             echo "</tr>";
                         }
+                        echo "</table>";
                         mysqli_close($polaczenie);
                     ?>
             </table>

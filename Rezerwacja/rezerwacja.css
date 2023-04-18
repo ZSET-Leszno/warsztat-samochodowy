@@ -2,8 +2,9 @@
 
 body{
     font-family: Roboto;
-    /*overflow-x: hidden;*/
+    overflow-x: hidden;
     margin: 0;
+    padding: 0;
 }
 
 a{
@@ -14,7 +15,7 @@ header{
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 100px;
+  height: 20vh;
   width: 100%;
 }
 
@@ -49,7 +50,7 @@ header p:last-child{
 footer{
   background-color: rgb(61, 61, 61);
   width: 100%;
-  height: 200px;
+  height: 25vh;
   color: rgb(130, 130, 130);
   display: flex;
   flex-direction: column;
@@ -110,4 +111,8 @@ footer p{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+main{
+  height: 55vh;
 }

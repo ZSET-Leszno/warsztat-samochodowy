@@ -19,6 +19,18 @@
                 <h3>Wyświetlenie danych firm:</h3>
                 <table>
                 <?php  
+                        echo "<table>";
+                        echo "<tr>";
+                        echo "<th>ID</th>";
+                        echo "<th>Nazwa firmy</th>";
+                        echo "<th>NIP</th>";
+                        echo "<th>Telefon</th>";
+                        echo "<th>E-mail</th>";
+                        echo "<th>Kod-pocztowy</th>";
+                        echo "<th>Miejscowość</th>";
+                        echo "<th>Adres</th>";
+                        echo "<th>Id-samochodu</th>";
+                        echo "</tr>";
                         $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
                         $klienci = mysqli_query($polaczenie, 'SELECT `id_klienta`, `nazwa_firmy`, `NIP`, `telefon`, `email`, `kod_pocztowy`, `miejscowosc`, `adres`, `samochod` FROM `klienci` WHERE `imie` is null or `imie` = "" and `nazwisko` is null or `nazwisko` = "";');
                         while($r = mysqli_fetch_row($klienci)){
@@ -34,6 +46,7 @@
                             echo "<td>".$r[8]."</td>";
                             echo "</tr>";
                         }
+                        echo "</table>";
                         mysqli_close($polaczenie);
                     ?>
             </table>

@@ -19,6 +19,17 @@
                 <h3>Wyświetlenie zgłoszeń:</h3>
                 <table>
                 <?php  
+                        echo "<table>";
+                        echo "<tr>";
+                        echo "<th>ID</th>";
+                        echo "<th>Data przyjęcia</th>";
+                        echo "<th>Godzina przyjęcia</th>";
+                        echo "<th>Data wydania</th>";
+                        echo "<th>Usługa</th>";
+                        echo "<th>Koszt</th>";
+                        echo "<th>ID-samochodu</th>";
+                        echo "<th>ID-klienta</th>";
+                        echo "</tr>";
                         $polaczenie = mysqli_connect('localhost', 'root', '', 'warsztat');
                         $klienci = mysqli_query($polaczenie, 'SELECT * FROM `zgloszenia`;');
                         while($r = mysqli_fetch_row($klienci)){
@@ -33,6 +44,7 @@
                             echo "<td>".$r[7]."</td>";
                             echo "</tr>";
                         }
+                        echo "</table>";
                         mysqli_close($polaczenie);
                     ?>
             </table>
